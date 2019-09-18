@@ -1,0 +1,16 @@
+@mixin gradient($deg) {
+  background: linear-gradient($deg+deg, $prim, $sec, $tri);
+}
+
+@mixin btnFormat {
+  background: transparent;
+  border: none;
+  outline: none;
+  &:focus{
+    outline: none;
+  }
+}
+
+@mixin  test {
+  border: 1px solid red;
+}

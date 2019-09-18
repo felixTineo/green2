@@ -1,0 +1,46 @@
+@mixin gradient($deg) {
+  background: linear-gradient($deg+deg, $prim, $sec, $tri);
+}
+
+@mixin line($color, $width, $line_width) {
+  border: $line_width solid $color;
+  width: $width;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin btn_small_secondary {
+  border-color: $prim;
+  font-size: .8rem;
+  color: $prim;
+  margin: 0;
+  outline: none;
+  &:hover{
+    background: $prim;
+    color: #fff;
+  }
+}
+
+@mixin btn_small {
+  border-color: #fff;
+  font-size: .8rem;
+  color: #fff;
+  margin: 0;
+  outline: none;
+  &:hover{
+    background: $prim;
+  }
+}
+
+
+@mixin msg_request {
+  svg{
+    width: 100px;
+  }
+  p{
+    text-align: center;
+    padding: .5rem;
+  }
+}
+
+

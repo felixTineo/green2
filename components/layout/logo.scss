@@ -1,0 +1,19 @@
+@import '../../layout/variables';
+
+.logo_main_cont{
+  display: flex;
+  align-items: center;
+  &:hover{
+    text-decoration: none;
+  }
+  p{
+    color: $light;
+    margin: 0;
+    font-family: $logo;
+    text-transform: capitalize;
+  }
+  svg{
+    width:25px;
+    height: 25px;
+  }
+}
