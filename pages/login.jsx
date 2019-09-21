@@ -21,7 +21,7 @@ const LoginForm = ({ setLogin }) => {
     try{
       e.preventDefault();
       let count = 0;
-      const interval = setInterval(()=> {
+      let interval = setInterval(()=> {
         count = count + 25;
         dispatch({ type: ON_LOADER, loader: count });
       }, 1000);
@@ -41,6 +41,7 @@ const LoginForm = ({ setLogin }) => {
       dispatch({ type: ON_LOADER, loader: 0 });
     }catch(err){
       console.log(err);
+      dispatch({ type: ON_LOADER, loader: 0 });
     }
   }
 

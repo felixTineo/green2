@@ -6,11 +6,11 @@ const Perfil = () => {
   const router = useRouter();
 
   return(
-    <Layoute>
+    <Layout>
       <div className="perfil_main_cont">
         {console.log(router.query)}
       </div>
-    </Layoute>
+    </Layout>
   );
 }
 

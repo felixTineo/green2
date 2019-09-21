@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = require('mongoose').Schema;
 const UserSchema = new Schema({
-  owner: { type: Boolean, default: true },
+  owner: { type: Boolean, default: false },
   mail: String,
   pass: String,
   name: { type: String, default: 'Green' },
   lastName: { type: String, default: 'User' },
   birthday: { type: Date, default: '01/01/1970' },
-  greenPost: { type: String, default: `/static/random/r${Math.floor((Math.random() * 16) +1)}.jpg`},
+  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   perfilImg: { type: String, default: `/static/random/r${Math.floor((Math.random() * 16) +1)}.jpg` },
   originCity: { type: String, default: "mundo" },
   actualCity: { type: String, default: 'mundo' },
