@@ -1,0 +1,75 @@
+@import '../../layout/variables.scss';
+@import '../../layout/mixins.scss';
+
+.spacehome_main_cont{
+  height: 100%;
+//  border-top: 1px solid $prim;
+  header{
+    color: rgba(0, 0, 0, .2);
+    padding: .5rem;
+    border-bottom: 3px solid rgba(0, 0, 0, .2);
+    h1{
+      font-weight: 550;
+      font-family: $text;
+      text-transform: uppercase;
+      margin: 1rem 0 0;
+    }
+    span{
+      color: $prim;
+    }
+  }
+}
+
+.recenposts_main_cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 3px solid rgba(0, 0, 0, .2);
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  button{
+    @include btnFormat();
+    img{
+      width: 150px;
+      height: 120px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.space_home_nav{
+  margin-top: 1rem;
+  padding: .6rem;
+  background: rgba(0, 0, 0, .2);
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  button{
+    @include btnFormat();
+    color: rgba(255, 255, 255, .7);
+    font-weight: 550;
+    text-transform: uppercase;
+    margin-left: .6rem;
+    transition: 250ms ease;
+    &:hover{
+      color: $light;
+    }
+  }
+}
+
+@media (min-width: 768px){
+  .spacehome_main_cont{
+
+  }
+}

@@ -1,14 +1,16 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import Logo from './logo';
+import Router from 'next/router';
 import './header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faGift, faHeart, faUser, faCog, faCoins, faBell } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { navView, ON_VIEW_NAV, ON_LOADER } from '../../store/actions';
+import { navView, ON_VIEW_NAV, ON_LOADER, ON_NOTIFICATIONS, ON_LOGIN } from '../../store/actions';
 import axios from 'axios';
 import Link from 'next/link';
 import { Popover, PopoverBody } from 'reactstrap';
 import uuid from 'uuid/v1';
+import io from 'socket.io-client';
 
 const DownBar = () => {
   const [down, setDown] = useState(false);
@@ -22,8 +24,15 @@ const DownBar = () => {
       }
     }
   }, []);
-  console.log(down);
-  return <div className="down_bar" style={{ height: down ? 40 : 0 }} />
+
+  const [sm, setSm] = useState(false);
+  useEffect(()=> {
+    if(window.innerWidth < 576){
+      setSm(true);
+    }
+  },[])
+
+  return <div className="down_bar" style={{ height: down || sm ? 40 : 0 }} />
 };
 
 const SearchBar = () => {
@@ -56,31 +65,6 @@ const SearchBar = () => {
   )
 };
 
-const Login = () => {
-  const [mail, setMail] = useState('');
-  const [pass, setPass] = useState('');
-
-  const onSubmit = async () => {
-    try{
-      const data = { mail, pass };
-      const res = await axios.post('/user/login', data);
-      console.log(res.data);
-    }catch(err){
-      console.log(err);
-    }
-  }
-
-  return(
-    <div className="navlogin_main_cont">
-      <form onSubmit={onSubmit}>
-        <label htmlFor="mail">usuario:<input id="mail" name="mail" value={mail} onChange={(e)=> setMail(e.currentTarget.value)} type="text"/></label>
-        <label htmlFor="pass">contraseña:<input id="pass" name="pass" value={pass} onChange={(e)=> setPass(e.currentTarget.value)} type="password"/></label>
-        <button className="btn_login" type="submit">login</button>
-      </form>
-    </div>
-  )
-}
-
 const Gift = () => {
   const gifts = useSelector(state => state.nav.notifications.gifts);
   const dispatch = useDispatch();
@@ -94,17 +78,17 @@ const Gift = () => {
         id="gift"
         onClick={onView}
         style={
-          gifts.view && gifts.length > 0 
+          gifts.view && gifts.length > 0
             ? { background: "#fff", color: "#ff6c1a" }
             : { background: "transparent", color: "#fff" }
-        } 
+        }
         className="btnicon_nav"
       >
         <FontAwesomeIcon icon={faGift} />
       </button>
       <span
         style={
-          gifts.view && gifts.length > 0 
+          gifts.view && gifts.length > 0
           ? { color: "#ff6c1a" }
           : { color: "#fff" }
         }
@@ -136,7 +120,7 @@ const Note = () => {
         id="note"
         onClick={handleView}
         style={
-          notes.view && notes.length > 0 
+          notes.view && notes.length > 0
             ? { background: "#fff", color: "#ff6c1a" }
             : { background: "transparent", color: "#fff" }
         }
@@ -146,7 +130,7 @@ const Note = () => {
       </button>
       <span
         style={
-          notes.view && notes.length > 0 
+          notes.view && notes.length > 0
           ? { color: "#ff6c1a" }
           : { color: "#fff" }
         }
@@ -177,6 +161,11 @@ const Friend = () => {
     dispatch({ type: ON_VIEW_NAV, note: navView.FRIEND });
   });
 
+/*  const [list, setList] = useState([]);
+  useEffect(()=> {
+    setList(friend.items);
+  },[friend.items]);*/
+
   const [pop, setPop] = useState(false);
   const handleView = () => {
     onView();
@@ -193,17 +182,17 @@ const Friend = () => {
         id="friend"
         onClick={handleView}
         style={
-          friend.view && friend.length > 0 
+          friend.view && friend.length > 0
             ? { background: "#fff", color: "#ff6c1a" }
             : { background: "transparent", color: "#fff" }
-        }      
+        }
         className="btnicon_nav"
       >
         <FontAwesomeIcon icon={faUser} />
       </button>
       <span
         style={
-          friend.view && friend.length > 0 
+          friend.view && friend.length > 0
           ? { color: "#ff6c1a" }
           : { color: "#fff" }
         }
@@ -216,19 +205,30 @@ const Friend = () => {
               {
                 friend.items.map(item => (
                   <li key={uuid()}>
-                    {item.id}
+                    {item.name}
                   </li>
                 ))
                 }
             </ul>
           </PopoverBody>
-        </Popover>      
+        </Popover>
     </div>
   )
 }
 
 const Option = () => {
   const [pop, setPop] = useState(false);
+  const dispatch = useDispatch();
+  const onLogout = useCallback(async ()=> {
+    try{
+      await axios.get('/user/logout');
+      document.cookie = '';
+      dispatch({ type: ON_LOGIN, option: false });
+      Router.push('/');
+    }catch(err){
+      console.log(err);
+    }
+  })
 
   return(
     <div className="btnicon_cont">
@@ -239,7 +239,7 @@ const Option = () => {
         <PopoverBody style={{ padding:0 }}>
           <ul className="option_list" onMouseLeave={()=> setPop(false)}>
             <li><button>perfil</button></li>
-            <li><button>salir</button></li>
+            <li><button onClick={onLogout}>salir</button></li>
           </ul>
         </PopoverBody>
       </Popover>
@@ -283,11 +283,40 @@ const BarLoader = () => {
 const Header = () => {
   const nav = useSelector(state => state.nav);
   const [width, setWidth] = useState(0);
+  const dispatch = useDispatch();
+  const onNotifications = async () => {
+    try{
+      if(nav.login){
+        const res = await axios.get(`/user/notifications`);
+        dispatch({ type: ON_NOTIFICATIONS, notifications: res.data });
+      }
+    }catch(err){
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    const socket = io();
+    socket.open();
+    socket.on(`nav:${nav.notifications.id}`, (payload) => {
+      let items = nav.notifications[payload.note].items;
+      console.log(items);
+      items = [payload.user, ...nav.notifications[payload.note].items];
+      console.log(items);
+      const reduxPayload = { note: payload.action, items }
+      dispatch({ type: 'ON_NOTE', payload: reduxPayload });
+    });
+    return () => socket.close();
+  },[nav.notifications]);
+
+  useEffect(()=> {
+    onNotifications();
+  },[nav.login]);
 
   useEffect(()=> {
     setWidth(window.innerWidth);
   },[]);
-  
+
   return(
     <header className="header_main_cont">
         <BarLoader />
@@ -300,7 +329,7 @@ const Header = () => {
         { !nav.login && <Link href="/login"><button className="btn_login">login</button></Link> }
         { nav.login && <Notifications /> }
         </nav>
-        { width < 576 && <SearchBar /> }
+        { width < 576 && nav.login && <SearchBar /> }
     </header>
   )
 };

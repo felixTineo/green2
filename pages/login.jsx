@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { ON_LOADER } from '../store/actions';
 import { Popover, PopoverBody } from 'reactstrap';
 import Router from 'next/router';
+import { ON_LOGIN } from '../store/actions';
 
 const LoginForm = ({ setLogin }) => {
   const [mail, setMail] = useState('');
@@ -37,7 +38,9 @@ const LoginForm = ({ setLogin }) => {
         return setPopPass(true);
       }
       dispatch({ type: ON_LOADER, loader: 100 });
-      Router.push({ pathname: '/perfil', query: res.data }, `/user/perfil/${res.data._id}`);
+      res.data.posts = JSON.stringify(res.data.posts);
+      res.data.greenPost = JSON.stringify(res.data.greenPost);
+      Router.push({ pathname: `/perfil`, query: res.data }, `/perfil/${res.data._id}`);
       dispatch({ type: ON_LOADER, loader: 0 });
     }catch(err){
       console.log(err);
@@ -55,7 +58,7 @@ return(
       <label htmlFor="mail">
         <p>usuario</p>
         <input autoComplete="false" onBlur={()=> setPopMail(false)} onFocus={()=> setPopMail(false)} id="mail" value={mail} onChange={(e)=> setMail(e.currentTarget.value)} type="text"/>
-        <Popover isOpen={popMail} target="mail" placement="bottom">                                                                                                                                                                                                                                                                                                                                                 
+        <Popover isOpen={popMail} target="mail" placement="bottom">
           <PopoverBody>
             <span>El correo no es correcto, por favor verifiquelo e intentelo de nuevo</span>
           </PopoverBody>
@@ -80,6 +83,8 @@ return(
 }
 
 const RegisterForm = ({ setLogin }) => {
+  const dispatch = useDispatch();
+  const [mailPop, setMailPop] = useState();
   const [values, setValues] = useReducer((state, newState) => ({...state, ...newState}),{
     name: '',
     lastName: '',
@@ -87,7 +92,37 @@ const RegisterForm = ({ setLogin }) => {
     pass: '',
     birthday: '',
     sex: '',
-  })
+  });
+
+  const onSubmit = async (e) => {
+    try{
+      e.preventDefault();
+      let count = 0;
+      const interval = setInterval(()=> {
+        count = count + 15;
+        dispatch({ type: ON_LOADER, loader: count });
+      }, 1000);
+      const data = {
+        name: values.name,
+        lastName: values.lastName,
+        mail: values.mail.toLocaleLowerCase(),
+        pass: values.pass,
+        birthday: values.birthday,
+        sex: values.sex,
+      };
+      const res = await axios.post('/user/register', data);
+      clearInterval(interval);
+      if(res.data === 'mail'){
+        dispatch({ type: ON_LOADER, loader: 0 });
+        setMailPop(true);
+      } else {
+        dispatch({ type: ON_LOADER, loader: 0 });
+        Router.push({ pathname: `/perfil?id=${res.data.id}`, query: res.data }, `/perfil/${res.data._id}`);
+      }
+    }catch(err){
+      console.log(err);
+    }
+  }
 
   return(
     <div className="register_login_cont animated fadeIn">
@@ -95,7 +130,7 @@ const RegisterForm = ({ setLogin }) => {
         <h1>registro</h1>
         <p>Gratis, facil y rapido</p>
       </header>
-      <form action="">
+      <form onSubmit={onSubmit}>
         <div className="fullName">
           <input
             id="name"
@@ -118,8 +153,14 @@ const RegisterForm = ({ setLogin }) => {
           type="text"
           placeholder="Correo electrónico"
           value={values.mail}
+          onFocus={()=>setMailPop(false)}
           onChange={(e)=> setValues({ mail: e.currentTarget.value })}
         />
+      <Popover placement="bottom" target="mail" isOpen={mailPop}>
+        <PopoverBody>
+          <span>El correo ya fue usado para crear otra cuenta</span>
+        </PopoverBody>
+      </Popover>
         <input
           id="pass"
           type="password"
@@ -179,7 +220,7 @@ const Login = () => {
             !login && <RegisterForm setLogin={setLogin} />
           }
         </div>
-      </div>      
+      </div>
     </Layout>
   )
 };

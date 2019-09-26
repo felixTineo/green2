@@ -1,6 +1,7 @@
 import Header from './header';
 import '../../layout/base.scss';
 import Head from 'next/head';
+import Router from 'next/router';
 
 const Layout = ({ children }) => {
   return(
@@ -10,7 +11,7 @@ const Layout = ({ children }) => {
       </Head>
       <Header />
       {children}
-      <div style={{ height: 3000 }} />
+      <div style={{ height: 0 }} />
     </div>
   );
 };

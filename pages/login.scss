@@ -186,6 +186,7 @@ footer.login_register_cont{
   .login_cont{
     flex-direction: column;
     width: 90vw;
+    height: 87vh;
     .green_cont{
       height: 40%;
       width: 100%;
@@ -208,7 +209,7 @@ footer.login_register_cont{
       button{
         padding: .1rem;
         border-width: 1px;
-        font-size: $font-xs; 
+        font-size: $font-xs;
         margin: .3rem;
       }
     }

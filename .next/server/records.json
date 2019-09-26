@@ -2,11 +2,14 @@
   "modules": {
     "byIdentifier": {
       "multi private-next-pages/_app.js": 0,
-      "multi private-next-pages/index.jsx": 1,
-      "multi private-next-pages/login.jsx": 2,
-      "multi private-next-pages/perfil.jsx": 3,
-      "multi next/dist/pages/_error": 4,
-      "multi next/dist/pages/_document": 5
+      "multi private-next-pages/foo.jsx": 1,
+      "multi private-next-pages/index.js": 2,
+      "multi private-next-pages/login.jsx": 3,
+      "multi private-next-pages/old-index.jsx": 4,
+      "multi private-next-pages/old-perfil.jsx": 5,
+      "multi private-next-pages/perfil.jsx": 6,
+      "multi next/dist/pages/_error": 7,
+      "multi next/dist/pages/_document": 8
     },
     "usedIds": {
       "0": 0,
@@ -14,17 +17,23 @@
       "2": 2,
       "3": 3,
       "4": 4,
-      "5": 5
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8
     }
   },
   "chunks": {
     "byName": {
-      "static/wd1mJAovqsIKFwK3JhGlp/pages/_app.js": 0,
-      "static/wd1mJAovqsIKFwK3JhGlp/pages/_document.js": 1,
-      "static/wd1mJAovqsIKFwK3JhGlp/pages/_error.js": 2,
-      "static/wd1mJAovqsIKFwK3JhGlp/pages/index.js": 3,
-      "static/wd1mJAovqsIKFwK3JhGlp/pages/login.js": 4,
-      "static/wd1mJAovqsIKFwK3JhGlp/pages/perfil.js": 5
+      "static/2GugBxXsIVJKkkpk6j8yu/pages/_app.js": 0,
+      "static/2GugBxXsIVJKkkpk6j8yu/pages/_document.js": 1,
+      "static/2GugBxXsIVJKkkpk6j8yu/pages/_error.js": 2,
+      "static/2GugBxXsIVJKkkpk6j8yu/pages/foo.js": 3,
+      "static/2GugBxXsIVJKkkpk6j8yu/pages/index.js": 4,
+      "static/2GugBxXsIVJKkkpk6j8yu/pages/login.js": 5,
+      "static/2GugBxXsIVJKkkpk6j8yu/pages/old-index.js": 6,
+      "static/2GugBxXsIVJKkkpk6j8yu/pages/old-perfil.js": 7,
+      "static/2GugBxXsIVJKkkpk6j8yu/pages/perfil.js": 8
     },
     "bySource": {},
     "usedIds": [
@@ -33,7 +42,10 @@
       2,
       3,
       4,
-      5
+      5,
+      6,
+      7,
+      8
     ]
   }
 }

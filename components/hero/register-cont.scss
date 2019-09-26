@@ -1,0 +1,33 @@
+@import '../../layout/variables';
+@import '../../layout/mixins';
+
+.reigster_cont{
+  @include gradient(45);
+  display: flex;
+  padding-top: 2%;
+  color: #fff;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: absolute;
+  height: 100vh;
+  width: 50%;
+  z-index: 100;
+  right: -200vw;
+  transition: .7s;
+}
+.slideInRight {
+  right: 0;
+};
+
+.slideOutRight {
+  right: -200vw;
+}
+
+@media (min-width: 1280px) {
+
+  .reigster_cont{
+    padding-top: 10%;
+  }
+}

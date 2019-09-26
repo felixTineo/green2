@@ -1,0 +1,7 @@
+@import '../../layout/variables.scss';
+@import '../../layout/mixins.scss';
+
+.space_main_cont{
+  border-bottom: 1px solid $prim;
+  overflow: hidden;
+}

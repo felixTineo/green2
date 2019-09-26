@@ -1,78 +1,73 @@
 const router = require('express').Router();
 const UserSchema = require('../models/user');
+const ResumeUser = require('../classes/resume-user');
+const io = require('socket.io')();
+const adapter = require('socket.io-redis');
 
-class Resume{
-  constructor({ name, lastName, mail, perfilImg, _id  }){
-    this._id = _id;
-    this.fullName = `${name} ${lastName}`;
-    this.mail = mail;
-    this.perfilImg = perfilImg;
-    this.url = `/user/perfil/${_id}`;
-  };
-}
+io.adapter(adapter({
+  host: 'localhost',
+  port: 6379,
+}));
 
-router.get('/send/:id', async (req, res) => {
+router.get('/foo', (req, res) => {
+  const payload = 'hola'
+  io.emit(`nav:${req.session.user._id}`, payload);
+  return res.sendStatus(200);
+})
+
+router.get('/send/:id', async(req, res) => {
   try{
-
-    const { id } = req.params;
-    const targetUserBd = await UserSchema.findById(id);
-    const currentUserBd = await UserSchema.findById(req.session.user._id);
-
-    const targetUser = new Resume({ name: targetUserBd.name, _id: targetUserBd.id, perfilImg: targetUserBd.perfilImg, name: targetUserBd.name, lastName: targetUserBd.lastName, mail: targetUserBd.mail });
-    const currentUser = new Resume(req.session.user);
-
-    console.log(targetUser);
-
-    targetUser.status = 1;
-    await UserSchema.findByIdAndUpdate(req.session.user._id, {
-      $push: { friends: targetUser }
-    });
-
-    currentUser.status = 2;
-    await UserSchema.findByIdAndUpdate(id, {
-      $push: { friends: currentUser }
-    });
-
-    res.sendStatus(200);
+    const currentUser = req.session.user;
+    const targetUser = await UserSchema.findById(req.params.id);
+    const { name, lastName, perfilImg, mail  } = targetUser;
+    const current = new ResumeUser(currentUser);
+    current.status = 1;
+    const target = new ResumeUser({ name, lastName, perfilImg, mail, _id: targetUser.id });
+    target.status = 2;
+    await UserSchema.findByIdAndUpdate(current._id, { $push: { friends: target } });
+    await UserSchema.findByIdAndUpdate(target._id, { $push: { friends: current } });
+    const payload = {
+      note: 'friendReq',
+      action: 'FRIEND',
+      user: current,
+    }
+    io.emit(`nav:${targetUser._id}`, payload);
+    return res.sendStatus(200);
   }catch(err){
-
     console.log(err);
-    res.sendStatus(500);
+    res.status(500).send(err);
   }
 });
 
 router.get('/accept/:id', async (req, res) => {
   try{
-
     const { id } = req.params;
-
-    await UserSchema.update({ '_id': req.session.user._id, 'friends._id': id },{
+    await UserSchema.updateOne({ '_id': req.session.user._id, 'friends._id': id },{
       $set:{'friends.$.status': 0}
     });
-    await UserSchema.update({ '_id': id, 'friends._id': req.session.user._id },{
+    await UserSchema.updateOne({ '_id': id, 'friends._id': req.session.user._id },{
       $set:{'friends.$.status': 0}
     });
-    
     res.sendStatus(200);
   }catch(err){
-
     console.log(err);
     res.sendStatus(500);
-
   }
 });
 
-router.get('/cancel/:id', async (req, res)=> {
+router.get('/cancel/:id', async(req, res) => {
   try{
-    const { id } = req.params;
-    const { _id } = req.session.user;
-    await UserSchema.findByIdAndUpdate(_id, { $pull: { friends: { _id: id } } });
-    await UserSchema.findByIdAndUpdate(id, { $pull: { friends: { _id: _id } } });
+    const current = req.session.user._id;
+    const target = req.params.id;
+    await UserSchema.findByIdAndUpdate(target, { $pull:{ friends: { _id: current } } });
+    await UserSchema.findByIdAndUpdate(current, { $pull:{ friends: { _id: target } } });
     res.sendStatus(200);
   }catch(err){
     console.log(err);
-    res.sendStatus(500);
+    res.status(500).send(err);
   }
 })
+
+
 
 module.exports = router;

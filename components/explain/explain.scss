@@ -1,0 +1,83 @@
+@import '../../layout/variables';
+
+.explain_main_cont{
+  overflow: hidden;
+  header{
+    background: $prim;
+    height: 25vh;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    p{
+      margin: 0;
+    }
+  }
+  .explain_body_cont{
+    padding: 2rem 0;
+    margin: 0 auto;
+  }
+  .explain_cont{
+    margin: 0 auto;
+    img{
+      display: block;
+      border: 6px solid #fff;
+    }
+    strong{
+      display: block;
+      text-align: center;
+      color: $prim;
+      text-decoration: underline;
+    }
+    p{
+      font-size: 15px;
+      text-align: justify;
+      padding: 15px;
+    }
+  }
+  .explain_coin_cont{
+    padding: 2rem 0;
+    svg{
+      fill: $sec;
+      width: 20vw;
+      margin: 0 auto;
+      display: block;
+    }
+    p{
+      color: $sec;
+      text-align: center;
+    }
+  }
+  .coin_info{
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    h3{
+      color: $sec;
+    }
+    p{
+      text-align: justify;
+      font-size: 18px;
+    }
+  }
+  .explain_store_cont{
+    h3{
+      color: $sec;
+      text-align: center;
+    }
+    img{
+      display: block;
+      margin: 1rem auto;
+
+    }
+    p{
+      font-size: 18px;
+      text-align: justify;
+      margin: 0 auto;
+    }
+  }
+}

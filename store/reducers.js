@@ -1,5 +1,14 @@
 import { combineReducers } from 'redux';
-import { ON_DOWN, ON_VIEW_NAV, navView, ON_NOTE, ON_NOTIFICATIONS, ON_LOADER } from './actions';
+import {
+  ON_DOWN, ON_VIEW_NAV,
+  navView,
+  ON_NOTE,
+  ON_NOTIFICATIONS,
+  ON_LOADER,
+  ON_LOGIN,
+  ON_USER,
+  ON_GREENINFO,
+} from './actions';
 
 export const initialState = {
   nav:{
@@ -23,6 +32,9 @@ export const initialState = {
       },
     },
   },
+  greenpost:{
+    info: false,
+  },
   user:{
     id: '',
     owner: false,
@@ -31,7 +43,11 @@ export const initialState = {
     name: '',
     lastName: '',
     birthday: '',
-    greenPost: '',
+    greenPost: {
+      likes:[],
+      comments: [],
+      wish: {},
+    },
     perfilImg: '',
     originCity: '',
     actualCity: '',
@@ -39,6 +55,23 @@ export const initialState = {
     secondarySchoool: '',
     university: '',
     job: '',
+    posts: [{
+      green:true,
+      img: '',
+      date: '',
+      author: '',
+      _id: '',
+      history: '',
+      comments: [],
+      likes: [],
+      wish:{
+        id: '123456789',
+        name: 'Oreo',
+        img: '/static/store/products/gol-1.jpg',
+        tag: 'gol', price: 100,
+        description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, cumque atque, dolore qui, tempora delectus provident saepe dicta minus iusto iste autem? Aut, ipsum. Ipsam illo perspiciatis optio architecto cumque!'
+      }
+    }],
     interest: [],
     events: [],
     friends: [],
@@ -53,6 +86,8 @@ const nav = (state= initialState.nav, action) => {
       return Object.assign({}, state, { notifications: action.notifications });
     case ON_LOADER:
       return Object.assign({}, state, { loader: action.loader });
+    case ON_LOGIN:
+      return Object.assign({}, state, { login: action.option });
     case ON_VIEW_NAV:
       if(action.note === navView.GIFT){
         return Object.assign({}, state, {
@@ -82,7 +117,7 @@ const nav = (state= initialState.nav, action) => {
             gifts: Object.assign({}, state.notifications.gifts, {
               view: false,
               items: action.payload.items,
-            })            
+            })
           })
         })
       }
@@ -92,7 +127,7 @@ const nav = (state= initialState.nav, action) => {
             notes: Object.assign({}, state.notifications.notes, {
               view: false,
               items: action.payload.items,
-            })            
+            })
           })
         })
       }
@@ -102,7 +137,7 @@ const nav = (state= initialState.nav, action) => {
             friendReq: Object.assign({}, state.notifications.friendReq, {
               view: false,
               items: action.payload.items,
-            })            
+            })
           })
         })
       }
@@ -113,12 +148,24 @@ const nav = (state= initialState.nav, action) => {
 
 const user = (state= initialState.user, action) => {
   switch(action.type){
+    case ON_USER:
+      return Object.assign({}, state, action.user);
     default:
       return state;
   }
 };
 
+const greenpost = (state = initialState.greenpost, action) => {
+  switch (action.type) {
+    case ON_GREENINFO:
+      return Object.assign({}, state, { info: !state.info });
+    default:
+      return state;
+  }
+}
+
 export const store = combineReducers({
   nav,
   user,
+  greenpost,
 });

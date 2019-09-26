@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const ON_DOWN = 'ON_DOWN';\nexport const ON_NOTIFICATIONS = 'ON_NOTIFICATIONS';\nexport const ON_VIEW_NAV = 'ON_VIEW_NAV';\nexport const ON_NOTE = 'ON_NOTE';\nexport const ON_LOADER = 'ON_LOADER';\nexport const navView = {\n  GIFT: 'GIFT',\n  NOTES: 'NOTES',\n  FRIEND: 'FRIEND'\n};","map":null,"metadata":{},"sourceType":"module"}
