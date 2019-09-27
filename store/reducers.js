@@ -8,6 +8,9 @@ import {
   ON_LOGIN,
   ON_USER,
   ON_GREENINFO,
+  ON_STORE,
+  storeSections,
+  ON_PRODUCTS,
 } from './actions';
 
 export const initialState = {
@@ -76,6 +79,18 @@ export const initialState = {
     events: [],
     friends: [],
   },
+  store:{
+    visible: false,
+    homme: true,
+    product: false,
+    music: false,
+    ebook: false,
+    toy: false,
+    tv: false,
+    jewel: false,
+    candy: false,
+    items: [],
+  }
 };
 
 const nav = (state= initialState.nav, action) => {
@@ -162,10 +177,111 @@ const greenpost = (state = initialState.greenpost, action) => {
     default:
       return state;
   }
+};
+
+const greenstore = (state = initialState.store, action) => {
+  const { HOME, PRODUCT, MUSIC, TV, EBOOK, CANDY, TOY, JEWEL } = storeSections;
+  switch(action.type){
+    case ON_STORE:
+      return Object.assign({}, state, { visible: true, home: true });
+    case ON_PRODUCTS:
+      return Object.assign({}, state, { items: action.products });
+    case PRODUCT:
+      return Object.assign({}, state, {
+        product: true,
+        home: false,
+        jewel: false,
+        ebook: false,
+        music: false,
+        toy: false,
+        tv: false,
+        candy: false,
+      });
+    case HOME:
+      return Object.assign({}, state, {
+        product: false,
+        home: true,
+        jewel: false,
+        ebook: false,
+        music: false,
+        toy: false,
+        tv: false,
+        candy: false,
+      });
+    case MUSIC:
+      return Object.assign({}, state, {
+        product: false,
+        home: false,
+        jewel: false,
+        ebook: false,
+        music: true,
+        toy: false,
+        tv: false,
+        candy: false,
+      });
+    case TV:
+      return Object.assign({}, state, {
+        product: false,
+        home: false,
+        jewel: false,
+        ebook: false,
+        music: false,
+        toy: false,
+        tv: true,
+        candy: false,
+      });
+    case JEWEL:
+      return Object.assign({}, state, {
+        product: false,
+        home: false,
+        jewel: true,
+        ebook: false,
+        music: false,
+        toy: false,
+        tv: false,
+        candy: false,
+      });
+    case TOY:
+      return Object.assign({}, state, {
+        product: false,
+        home: false,
+        jewel: false,
+        ebook: false,
+        music: false,
+        toy: true,
+        tv: false,
+        candy: false,
+      });
+    case CANDY:
+      return Object.assign({}, state, {
+        product: false,
+        home: false,
+        jewel: false,
+        ebook: false,
+        music: false,
+        toy: false,
+        tv: false,
+        candy: true,
+      });
+    case EBOOK:
+      return Object.assign({}, state, {
+        product: false,
+        home: false,
+        jewel: false,
+        ebook: true,
+        music: false,
+        toy: false,
+        tv: false,
+        candy: false,
+      });
+    default:
+      return state
+  }
 }
 
 export const store = combineReducers({
   nav,
   user,
   greenpost,
+  greenstore,
 });
