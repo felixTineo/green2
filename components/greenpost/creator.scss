@@ -1,0 +1,34 @@
+@import '../../layout/variables';
+@import '../../layout/mixins';
+
+.creator_main_cont{
+  background: #fff;
+  header{
+    padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p{
+      color: $prim;
+      margin: 0;
+    }
+    button{
+      @include btnFormat();
+      transition: 250ms ease;
+      &:hover{
+        color: $prim;
+      }
+    }
+  }
+  .body{
+    height: 80vh;
+  }
+}
+
+.creator_greenpost_main{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}

@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{tLCo:function(n,o,t){"use strict";t.r(o);var e=t("q1tI"),u=t.n(e),w=t("nOHt"),r=u.a.createElement;o.default=function(){var n=Object(w.useRouter)();return r("div",null,console.log(n.query))}},vwVf:function(n,o,t){(window.__NEXT_P=window.__NEXT_P||[]).push(["/foo",function(){return t("tLCo")}])}},[["vwVf",1,0]]]);

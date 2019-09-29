@@ -1,9 +1,8 @@
 import React, {} from 'react';
 import './greenpost.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDispatch } from 'react-redux';
-import { ON_GREENINFO } from '../../store/actions';
+import { ON_GREENINFO, ON_GREEN_CREATOR } from '../../store/actions';
 import classnames from 'classnames';
 import {
   faExpandArrowsAlt,
@@ -21,6 +20,7 @@ import {
   faPhone,
 } from '@fortawesome/free-solid-svg-icons';
 import GreenHome from './home';
+import Creator from './creator';
 
 const GreenNav = () => {
 
@@ -52,6 +52,7 @@ const GreenNav = () => {
 
 const GreenInfo = () => {
   const info = useSelector(state => state.greenpost.info);
+  const dispatch = useDispatch();
 
   return(
     <div className={classnames({
@@ -62,7 +63,7 @@ const GreenInfo = () => {
         <GreenHome />
       </div>
       <footer>
-        <button title="Crear Post">GreenPost</button>
+        <button onClick={()=> dispatch({ type: ON_GREEN_CREATOR })} title="Crear Post">GreenPost</button>
         <GreenNav />
       </footer>
     </div>
@@ -71,6 +72,7 @@ const GreenInfo = () => {
 
 const BtnInfo = () => {
   const info = useSelector(state => state.greenpost.info);
+  const green = useSelector(state => state.greenpost);
   const dispatch = useDispatch();
   return(
     <button
@@ -81,6 +83,7 @@ const BtnInfo = () => {
         btngreen_info_rotate: info,
       })}
     >
+      {console.log(green)}
       <FontAwesomeIcon icon={faArrowCircleLeft} />
     </button>
   )
@@ -91,6 +94,7 @@ const GreenPost = () => {
   const img = green.img;
   return(
     <div style={{ backgroundImage: `url(${img})` }} className="greenpost_main_cont">
+      <Creator />
       <GreenInfo />
       <BtnInfo />
     </div>

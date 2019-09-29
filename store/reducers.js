@@ -8,6 +8,7 @@ import {
   ON_LOGIN,
   ON_USER,
   ON_GREENINFO,
+  ON_GREEN_CREATOR,
   ON_STORE,
   storeSections,
   ON_PRODUCTS,
@@ -34,9 +35,6 @@ export const initialState = {
         items: [],
       },
     },
-  },
-  greenpost:{
-    info: false,
   },
   user:{
     id: '',
@@ -79,11 +77,16 @@ export const initialState = {
     events: [],
     friends: [],
   },
+  greenpost:{
+    info: false,
+    creator: true,
+  },
   store:{
-    visible: false,
-    homme: true,
+    visible: true,
+    current: {},
+    home: false,
     product: false,
-    music: false,
+    music: true,
     ebook: false,
     toy: false,
     tv: false,
@@ -174,6 +177,8 @@ const greenpost = (state = initialState.greenpost, action) => {
   switch (action.type) {
     case ON_GREENINFO:
       return Object.assign({}, state, { info: !state.info });
+    case ON_GREEN_CREATOR:
+      return Object.assign({}, state, { creator: !state.creator });
     default:
       return state;
   }
@@ -183,11 +188,12 @@ const greenstore = (state = initialState.store, action) => {
   const { HOME, PRODUCT, MUSIC, TV, EBOOK, CANDY, TOY, JEWEL } = storeSections;
   switch(action.type){
     case ON_STORE:
-      return Object.assign({}, state, { visible: true, home: true });
+      return Object.assign({}, state, { visible: !state.visible, home: true });
     case ON_PRODUCTS:
       return Object.assign({}, state, { items: action.products });
     case PRODUCT:
       return Object.assign({}, state, {
+        current: action.product,
         product: true,
         home: false,
         jewel: false,

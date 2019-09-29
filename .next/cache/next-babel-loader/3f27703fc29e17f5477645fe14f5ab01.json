@@ -1,1 +1,0 @@
-{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport router, { useRouter } from 'next/router';\n\nvar Perfil = function Perfil() {\n  var router = useRouter();\n  return __jsx(\"div\", null, console.log(router.query));\n};\n\nexport default Perfil;","map":null,"metadata":{},"sourceType":"module"}
