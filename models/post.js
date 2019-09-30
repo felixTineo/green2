@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
-    green: { type: Boolean, default: false },
-    author: { type: Schema.Types.ObjectId, ref: 'User' },
+    targetId: { type: Schema.Types.ObjectId, ref: 'User' },
+    author: Object,
+    date: { type: Date, default: Date.now() },
     img: { type: String, default: '' },
     history: { type: String, default: '' },
     comments: Array,

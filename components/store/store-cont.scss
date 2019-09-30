@@ -1,0 +1,51 @@
+@import '../../layout/variables';
+@import '../../layout/mixins';
+
+.storecont_main_cont{
+  header{
+    display: flex;
+    justify-content: space-between;
+    padding: .3rem;
+    button{
+      @include btnFormat();
+      transition: 250ms ease;
+      &:hover{
+        color: $prim;
+      }
+    }
+    nav{
+      display: flex;
+      align-items: center;
+    }
+    .storesearch_cont{
+      display: flex;
+      align-items: center;
+      position: relative;
+      div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid $prim;
+        input{
+          border: none;
+          outline: none;
+          padding-left: .5rem;
+        }
+        p{
+          padding: 0 .5rem;
+          margin: 0;
+        }
+      }
+      ul{
+        position: absolute;
+        left: 0;
+        top: 100%;
+        list-style: none;
+        margin: 0;
+        background: $light;
+        width: 100%;
+      }
+    }
+  }
+}

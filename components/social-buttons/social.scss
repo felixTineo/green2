@@ -1,0 +1,55 @@
+@import '../../layout/variables';
+
+.btn_social{
+  color: #fff;
+  background: transparent;
+  border: none;
+  svg{
+    fill: #fff;
+    width: 30px;
+    height: 30px;
+    transition: .5s ease;
+  }
+  &:hover{
+    svg{
+      fill: $prim;
+    }
+    color: $prim;
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+.gifts_cont{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100px;
+  li{
+    svg{
+      margin: .2rem;
+      width: 25px;
+      height: 25px;
+      fill: $prim;
+    }
+    &:hover{
+      svg{
+        fill: $danger;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.send_comment{
+  outline: none;
+  &:hover{
+    color: $prim;
+  }
+  &:focus{
+    outline: none;
+  }
+}

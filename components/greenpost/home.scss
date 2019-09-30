@@ -1,0 +1,76 @@
+@import '../../layout/variables';
+@import '../../layout/mixins';
+
+.greenhome_main_cont{
+  user-select: none;
+  .user_info{
+    color: $light;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .user_name{
+      display: flex;
+      align-items: center;
+      p{
+        margin: 0;
+        margin-top: .5rem;
+        font-weight: 900;
+        font-size: $font-lg;
+        text-transform: capitalize;
+        span{
+          color: transparent;
+          -webkit-text-stroke: 1px $light;
+        }
+      }
+      button{
+        @include btnFormat();
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        transition: 250ms ease;
+        border: 1px solid $light;
+        color: $light;
+        margin-left: .5rem;
+        &:hover{
+          background: $prim;
+          color: $light;
+        }
+      }
+      svg{
+        width: 20px;
+      }
+    }
+  }
+  ul{
+    list-style: none;
+    margin: .5rem 0;
+    padding: 0;
+    display: flex;
+  }
+  li:first-child{
+    margin-left: 0 !important;
+  }
+};
+
+.greenicon_info_cont{
+  margin-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  svg{
+    width: 30px;
+  }
+  p{
+    margin: 0;
+    font-size: 2rem;
+  }
+}

@@ -143,7 +143,7 @@ button.btn_login{
   align-items: center;
   span{
     margin-left: .2rem;
-    font-size: $font-xs;
+    font-size: $font-xs !important;
     color: $light;
   }
 }
@@ -175,6 +175,10 @@ button.btn_login{
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: $font-xs;
+  svg{
+    width: 25px;
+  }
   &:hover{
     background: $light !important;
     color: $prim !important;
@@ -189,4 +193,7 @@ button.btn_login{
   display: flex;
   justify-content: center;
   align-items: center;
+  svg{
+    width: 24px;
+  }
 }

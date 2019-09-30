@@ -1,0 +1,12 @@
+      <svg className="green_loader" width="200" height="200" viewBox="0 0 200 200">
+        <polyline
+          id="loader_line"
+          fill="none"
+          stroke='#669f09'
+          stroke-width="10px"
+          points="15,185 95,15 185,180 15,180"
+        />
+        <circle className="circle" id="circle-1" fill="#669f09" cx="20" cy="180" r="20" />
+        <circle className="circle" id="circle-2" fill="#669f09" cx="95" cy="20" r="20" />
+        <circle className="circle" id="circle-3" fill="#669f09" cx="180" cy="180" r="20" />
+    </svg>

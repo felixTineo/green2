@@ -1,0 +1,45 @@
+@import '../../layout/variables.scss';
+@import '../../layout/mixins.scss';
+
+.spacenav_main_cont{
+  background: $prim;
+  padding: .5rem;
+  ul{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: space-around;
+    align-items: center;
+    color: $light;
+  }
+  li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+      .line{
+        transition: 250ms ease;
+        width: 100%;
+      }
+    }
+  }
+  button{
+    @include btnFormat();
+    color: rgba(255, 255, 255, .7);
+    text-transform: uppercase;
+    font-size: $font-sm;
+    transition: 250ms ease;
+    font-weight: 550;
+    &:hover{
+      color: $light;
+    }
+  }
+  .line{
+    height: 2px;
+    background: $light;
+    transition: 250ms ease;
+    width: 0px;
+  }
+}

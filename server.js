@@ -1,21 +1,34 @@
 const app = require('./midlewares/app');
-const server = require('./midlewares/server.js');
-const handle = app.getRequestHandler();
+const server = require('./midlewares/server');
 const http = require('http').createServer(server);
-const port = process.env.PORT || 3000;
+const handler = app.getRequestHandler();
 const mongoose = require('./midlewares/mongoose');
+const io = require('socket.io')(http);
+const adapter = require('socket.io-redis');
 
+io.adapter(adapter({
+  host: 'localhost',
+  port: 6379,
+}));
+
+const indexRoutes = require('./routes/index');
 const userRoutes = require('./routes/user');
 const friendRoutes = require('./routes/friend-req');
+const postRoutes = require('./routes/post');
+
 
 app.prepare().then(()=> {
 
-  server.use('/user', userRoutes);
-  server.use('/friend', friendRoutes);
-
-  server.get('*', (req, res) => {
-    return handle(req, res);
+  io.on('connection', (socket) => {
+    console.log('user conectado');
+    socket.on('disconnect', ()=> console.log('user desconectado'));
   });
 
-  http.listen(port, ()=> console.log(`server on port ${port}`));
-});
+  server.use('/', indexRoutes);
+  server.use('/user', userRoutes);
+  server.use('/friend', friendRoutes);
+  server.use('/post', postRoutes);
+
+  server.get('*', (req, res)=> handler(req, res));
+  http.listen(3000, ()=> console.log('server on port 3000'));
+})
