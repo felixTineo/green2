@@ -12,6 +12,7 @@ import {
   ON_STORE,
   storeSections,
   ON_PRODUCTS,
+  ON_POST_REGISTER,
 } from './actions';
 
 export const initialState = {
@@ -93,7 +94,8 @@ export const initialState = {
     jewel: false,
     candy: false,
     items: [],
-  }
+  },
+  postregister: false,
 };
 
 const nav = (state= initialState.nav, action) => {
@@ -283,6 +285,13 @@ const greenstore = (state = initialState.store, action) => {
     default:
       return state
   }
+};
+
+const postregister = (state = initialState.postregister, action) => {
+  if(action.type === ON_POST_REGISTER){
+    return !state;
+  }
+  return state;
 }
 
 export const store = combineReducers({
@@ -290,4 +299,5 @@ export const store = combineReducers({
   user,
   greenpost,
   greenstore,
+  postregister,
 });

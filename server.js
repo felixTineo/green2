@@ -23,12 +23,10 @@ app.prepare().then(()=> {
     console.log('user conectado');
     socket.on('disconnect', ()=> console.log('user desconectado'));
   });
-
-  server.use('/', indexRoutes);
   server.use('/user', userRoutes);
   server.use('/friend', friendRoutes);
   server.use('/post', postRoutes);
-
-  server.get('*', (req, res)=> handler(req, res));
+  server.use('/', indexRoutes);
+  server.get('*', handler);
   http.listen(3000, ()=> console.log('server on port 3000'));
 })

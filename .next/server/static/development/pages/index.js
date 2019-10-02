@@ -108,7 +108,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _about_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_about_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _logo_logo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../logo/logo */ "./components/logo/logo.jsx");
 /* harmony import */ var _buttons_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../buttons/button */ "./components/buttons/button.jsx");
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/about/about.jsx";
+=======
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -117,6 +120,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const About = () => __jsx("section", {
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
   className: "about_main_cont",
   __source: {
     fileName: _jsxFileName,
@@ -182,6 +186,26 @@ const About = () => __jsx("section", {
 
 /* harmony default export */ __webpack_exports__["default"] = (About);
 
+=======
+  className: "about_main_cont"
+}, __jsx("div", {
+  className: "container-fluid"
+}, __jsx("div", {
+  className: "container_relative"
+}, __jsx("h1", null, "EL mundo es tuyo, cuidalo!"), __jsx("div", {
+  className: "about_line"
+}), __jsx("p", null, "Greenlink parte de la iniciativa del cambio, Somos la unica red social dispuesta a unir personas por un mundo mas limpio. Mas de 1000 especies hoy en dia estan en la lista de peligro de extigncion, especies que incluso llevan en el mundo mas tiempo que el hombre. Nuestro estilo de vida esta deborando el planeta a un paso alarmante. En greenlink incentivamos la union, la celebracion de la vida, el amor. Nuestra moneda busca aportar a ese cambio."), __jsx("a", {
+  href: "#more"
+}, "\xBFQuieres saber mas?"), __jsx("div", {
+  className: "logo_about_cont"
+}, __jsx(_buttons_button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  size: "lg",
+  color: "light"
+}, "Unete")))));
+
+/* harmony default export */ __webpack_exports__["default"] = (About);
+
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 /***/ }),
 
 /***/ "./components/about/about.scss":
@@ -210,7 +234,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _button_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_button_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "classnames");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/buttons/button.jsx";
+=======
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -225,12 +252,16 @@ const Button = ({
   children,
   title
 }) => __jsx("div", {
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
   className: "my_button",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 5
   },
   __self: undefined
+=======
+  className: "my_button"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 }, __jsx("button", {
   id: id,
   title: title,
@@ -243,12 +274,16 @@ const Button = ({
     lg: size === "lg",
     light: color === "light",
     dark: color === "dark"
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
   }),
   __source: {
     fileName: _jsxFileName,
     lineNumber: 6
   },
   __self: undefined
+=======
+  })
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 }, children));
 
 /* harmony default export */ __webpack_exports__["default"] = (Button);
@@ -279,12 +314,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _explain_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./explain.scss */ "./components/explain/explain.scss");
 /* harmony import */ var _explain_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_explain_scss__WEBPACK_IMPORTED_MODULE_1__);
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/explain/explain.jsx";
+=======
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const Explain = () => __jsx("section", {
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
   className: "explain_main_cont",
   __source: {
     fileName: _jsxFileName,
@@ -425,10 +464,47 @@ const Explain = () => __jsx("section", {
   },
   __self: undefined
 }, "Gana credito por tu publicasion a travez de corazones, comentarios y Ey! quizas recibas una grata Sorpresa de nuestra tienda.")))), __jsx("div", {
+=======
+  className: "explain_main_cont"
+}, __jsx("header", {
+  className: "explain_title"
+}, __jsx("p", {
+  className: "container-fluid"
+}, "Nuestra estrategia incluye a las empresas y los usuarios, Juntos por un mundo mas limpio")), __jsx("div", {
+  className: "explain_body_cont container"
+}, __jsx("div", {
+  className: "row"
+}, __jsx("div", {
+  className: "col-4"
+}, __jsx("div", {
+  className: "explain_cont shadow"
+}, __jsx("img", {
+  className: "img-fluid",
+  src: "/static/explain-1.jpg",
+  alt: ""
+}), __jsx("strong", null, "Crea"), __jsx("p", null, "Crea tu publicasion, como en cualquier otra red social. Diviertete publicando tus fotos, videos y pensamientos."))), __jsx("div", {
+  className: "col-4"
+}, __jsx("div", {
+  className: "explain_cont shadow"
+}, __jsx("img", {
+  className: "img-fluid",
+  src: "/static/explain-2.jpg",
+  alt: ""
+}), __jsx("strong", null, "Comparte"), __jsx("p", null, "Comparte con tus familiares y amigos. Unidos crearemos un mundo mejor para todos. Simplemente compartiendo e incentivando el cambio!"))), __jsx("div", {
+  className: "col-4"
+}, __jsx("div", {
+  className: "explain_cont shadow"
+}, __jsx("img", {
+  className: "img-fluid",
+  src: "/static/explain-3.jpg",
+  alt: ""
+}), __jsx("strong", null, "Gana"), __jsx("p", null, "Gana credito por tu publicasion a travez de corazones, comentarios y Ey! quizas recibas una grata Sorpresa de nuestra tienda.")))), __jsx("div", {
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   className: "row",
   style: {
     margin: "2rem 0",
     borderBottom: "4px solid  #8bb940"
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
   },
   __source: {
     fileName: _jsxFileName,
@@ -545,6 +621,34 @@ const Explain = () => __jsx("section", {
     lineNumber: 61
   },
   __self: undefined
+=======
+  }
+}, __jsx("div", {
+  className: "col-4"
+}, __jsx("div", {
+  className: "explain_coin_cont"
+}, __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 512 512"
+}, __jsx("path", {
+  d: "M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zm-141.651-35.33c4.937-32.999-20.191-50.739-54.55-62.573l11.146-44.702-27.213-6.781-10.851 43.524c-7.154-1.783-14.502-3.464-21.803-5.13l10.929-43.81-27.198-6.781-11.153 44.686c-5.922-1.349-11.735-2.682-17.377-4.084l.031-.14-37.53-9.37-7.239 29.062s20.191 4.627 19.765 4.913c11.022 2.751 13.014 10.044 12.68 15.825l-12.696 50.925c.76.194 1.744.473 2.829.907-.907-.225-1.876-.473-2.876-.713l-17.796 71.338c-1.349 3.348-4.767 8.37-12.471 6.464.271.395-19.78-4.937-19.78-4.937l-13.51 31.147 35.414 8.827c6.588 1.651 13.045 3.379 19.4 5.006l-11.262 45.213 27.182 6.781 11.153-44.733a1038.209 1038.209 0 0 0 21.687 5.627l-11.115 44.523 27.213 6.781 11.262-45.128c46.404 8.781 81.299 5.239 95.986-36.727 11.836-33.79-.589-53.281-25.004-65.991 17.78-4.098 31.174-15.792 34.747-39.949zm-62.177 87.179c-8.41 33.79-65.308 15.523-83.755 10.943l14.944-59.899c18.446 4.603 77.6 13.717 68.811 48.956zm8.417-87.667c-7.673 30.736-55.031 15.12-70.393 11.292l13.548-54.327c15.363 3.828 64.836 10.973 56.845 43.035z"
+})), __jsx("p", null, "Greencoin"))), __jsx("div", {
+  className: "col-8"
+}, __jsx("div", {
+  className: "coin_info"
+}, __jsx("h3", null, "\xBFComo obtener Greencoins?"), __jsx("p", null, "Existen varios met\xF3dos para obtener greencoins; reciclando, comprando productos participantes en nuestra iniciativa, creando publicasiones y colaborando en los eventos de greenlink. Unidos crearemos un mundo mejor para las generaciones futuras.")))), __jsx("div", {
+  className: "explain_store_cont"
+}, __jsx("div", {
+  className: "row"
+}, __jsx("div", {
+  className: "col-12"
+}, __jsx("h3", null, "\xBFDonde canjear los greencoins?"), __jsx("img", {
+  src: "/static/store-2.jpg",
+  alt: "",
+  className: "img-fluid shadow"
+}), __jsx("p", null, "En nuestra tienda encontraras un amplia variedad de productos participantes, divididos en categorias tales como: Acesorios, Golosinas, Juguetes, Ebooks, Musica y Supscripciones a servicios de streaming. Podras canjear tus greencoins, enviarle regalos a amigos por sus publicasiones, participar por premios y mas.")), __jsx("div", {
+  className: "col-12"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 })))));
 
 /* harmony default export */ __webpack_exports__["default"] = (Explain);
@@ -572,6 +676,7 @@ const Explain = () => __jsx("section", {
 
 
 /***/ }),
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 
 /***/ "./components/form/input.jsx":
 /*!***********************************!*\
@@ -612,10 +717,42 @@ const eyeOpen = __jsx("svg", {
     lineNumber: 6
   },
   __self: undefined
+=======
+
+/***/ "./components/form/input.jsx":
+/*!***********************************!*\
+  !*** ./components/form/input.jsx ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "classnames");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _form_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./form.scss */ "./components/form/form.scss");
+/* harmony import */ var _form_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_form_scss__WEBPACK_IMPORTED_MODULE_3__);
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+const eyeOpen = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 576 512"
+}, __jsx("path", {
+  d: "M569.354 231.631C512.969 135.949 407.81 72 288 72 168.14 72 63.004 135.994 6.646 231.631a47.999 47.999 0 0 0 0 48.739C63.031 376.051 168.19 440 288 440c119.86 0 224.996-63.994 281.354-159.631a47.997 47.997 0 0 0 0-48.738zM288 392c-75.162 0-136-60.827-136-136 0-75.162 60.826-136 136-136 75.162 0 136 60.826 136 136 0 75.162-60.826 136-136 136zm104-136c0 57.438-46.562 104-104 104s-104-46.562-104-104c0-17.708 4.431-34.379 12.236-48.973l-.001.032c0 23.651 19.173 42.823 42.824 42.823s42.824-19.173 42.824-42.823c0-23.651-19.173-42.824-42.824-42.824l-.032.001C253.621 156.431 270.292 152 288 152c57.438 0 104 46.562 104 104z"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 }));
 
 const eyeClose = __jsx("svg", {
   xmlns: "http://www.w3.org/2000/svg",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
   viewBox: "0 0 576 512",
   __source: {
     fileName: _jsxFileName,
@@ -629,6 +766,11 @@ const eyeClose = __jsx("svg", {
     lineNumber: 7
   },
   __self: undefined
+=======
+  viewBox: "0 0 576 512"
+}, __jsx("path", {
+  d: "M286.693 391.984l32.579 46.542A333.958 333.958 0 0 1 288 440C168.19 440 63.031 376.051 6.646 280.369a47.999 47.999 0 0 1 0-48.739c24.023-40.766 56.913-75.775 96.024-102.537l57.077 81.539C154.736 224.82 152 240.087 152 256c0 74.736 60.135 135.282 134.693 135.984zm282.661-111.615c-31.667 53.737-78.747 97.46-135.175 125.475l.011.015 41.47 59.2c7.6 10.86 4.96 25.82-5.9 33.42l-13.11 9.18c-10.86 7.6-25.82 4.96-33.42-5.9L100.34 46.94c-7.6-10.86-4.96-25.82 5.9-33.42l13.11-9.18c10.86-7.6 25.82-4.96 33.42 5.9l51.038 72.617C230.68 75.776 258.905 72 288 72c119.81 0 224.969 63.949 281.354 159.631a48.002 48.002 0 0 1 0 48.738zM424 256c0-75.174-60.838-136-136-136-17.939 0-35.056 3.473-50.729 9.772l19.299 27.058c25.869-8.171 55.044-6.163 80.4 7.41h-.03c-23.65 0-42.82 19.17-42.82 42.82 0 23.626 19.147 42.82 42.82 42.82 23.65 0 42.82-19.17 42.82-42.82v-.03c18.462 34.49 16.312 77.914-8.25 110.95v.01l19.314 27.061C411.496 321.2 424 290.074 424 256zM262.014 356.727l-77.53-110.757c-5.014 52.387 29.314 98.354 77.53 110.757z"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 }));
 
 class Input extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
@@ -692,18 +834,23 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       eye
     } = this.state;
     return __jsx("div", {
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       className: "input_main_cont",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 54
       },
       __self: this
+=======
+      className: "input_main_cont"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     }, __jsx("div", {
       className: classnames__WEBPACK_IMPORTED_MODULE_2___default()({
         input_cont: true,
         light: color === 'light',
         dark: color === 'dark'
       }),
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       style: style,
       __source: {
         fileName: _jsxFileName,
@@ -724,6 +871,13 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         lineNumber: 65
       },
       __self: this
+=======
+      style: style
+    }, __jsx("label", {
+      htmlFor: id
+    }, label), __jsx("div", {
+      className: "input_eye"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     }, __jsx("input", {
       id: id,
       value: value,
@@ -732,6 +886,7 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       onBlur: onBlur,
       onFocus: onFocus,
       onChange: onChange,
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       placeholder: placeholder,
       __source: {
         fileName: _jsxFileName,
@@ -777,6 +932,22 @@ class Input extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, popText))));
+=======
+      placeholder: placeholder
+    }), this.state.eyeShow && __jsx("span", {
+      className: "pass"
+    }, eye ? __jsx("button", {
+      onClick: this.handleEye,
+      type: "button"
+    }, eyeOpen) : __jsx("button", {
+      onClick: this.handleEye,
+      type: "button"
+    }, eyeClose))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Popover"], {
+      placement: "bottom",
+      target: id,
+      isOpen: pop
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["PopoverBody"], null, popText))));
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   }
 
 }
@@ -813,7 +984,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(gsap__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_13__);
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/hero/hero.jsx";
+=======
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -951,6 +1125,7 @@ class Hero extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     const arrowCircle = __jsx("svg", {
       className: "next",
       xmlns: "http://www.w3.org/2000/svg",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       viewBox: "0 0 512 512",
       __source: {
         fileName: _jsxFileName,
@@ -1009,6 +1184,26 @@ class Hero extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         lineNumber: 114
       },
       __self: this
+=======
+      viewBox: "0 0 512 512"
+    }, __jsx("path", {
+      d: "M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm-28.9 143.6l75.5 72.4H120c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h182.6l-75.5 72.4c-9.7 9.3-9.9 24.8-.4 34.3l11 10.9c9.4 9.4 24.6 9.4 33.9 0L404.3 273c9.4-9.4 9.4-24.6 0-33.9L271.6 106.3c-9.4-9.4-24.6-9.4-33.9 0l-11 10.9c-9.5 9.6-9.3 25.1.4 34.4z"
+    }));
+
+    return __jsx("section", {
+      className: "hero_main_cont"
+    }, __jsx("p", {
+      className: "vertical_text"
+    }, "La unica red social donde puedes ganar regalos y criptomonedas mientras te diviertes y ayudas al planeta"), __jsx(_register_cont__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      isOpen: register
+    }, !spinner && __jsx("form", {
+      className: "p-0",
+      onSubmit: this.onSubmit
+    }, __jsx("div", {
+      className: "inputs_cont"
+    }, __jsx("div", {
+      className: "mail_cont_registro"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     }, __jsx(_form_input__WEBPACK_IMPORTED_MODULE_7__["default"], {
       id: "mail",
       type: "text",
@@ -1024,23 +1219,31 @@ class Hero extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         borderColor: 'red'
       } : {
         borderColor: '#fff'
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       },
       __source: {
         fileName: _jsxFileName,
         lineNumber: 115
       },
       __self: this
+=======
+      }
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     }), __jsx("small", {
       style: mailError ? {
         display: 'block'
       } : {
         display: 'none'
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       },
       __source: {
         fileName: _jsxFileName,
         lineNumber: 128
       },
       __self: this
+=======
+      }
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     }, "El correo ya existe!")), __jsx(_form_input__WEBPACK_IMPORTED_MODULE_7__["default"], {
       id: "pass",
       type: "password",
@@ -1051,6 +1254,7 @@ class Hero extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       placeholder: "Contrase\xF1a",
       label: "Contrase\xF1a",
       onChange: this.handleChange,
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       onFocus: this.handleFocus,
       __source: {
         fileName: _jsxFileName,
@@ -1172,10 +1376,48 @@ class Hero extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         lineNumber: 165
       },
       __self: this
+=======
+      onFocus: this.handleFocus
+    })), __jsx("button", {
+      title: "Registrar",
+      type: "submit",
+      className: "btn_next"
+    }, arrowCircle)), spinner && __jsx("div", {
+      style: {
+        marginTop: '25%'
+      }
+    }, __jsx("div", {
+      className: "register_loader"
+    }, __jsx(_loader_loader__WEBPACK_IMPORTED_MODULE_10__["default"], null)))), __jsx("div", {
+      className: "container-fluid"
+    }, __jsx("div", {
+      className: "row"
+    }, __jsx("div", {
+      className: "col-3"
+    }, __jsx("div", {
+      className: "social_nav_cont"
+    }, __jsx("nav", {
+      className: "social_nav"
+    }, __jsx(_social_buttons_heart__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      className: "fadeIn"
+    }), __jsx(_social_buttons_share__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      className: "fadeIn delay-1s"
+    }), __jsx(_social_buttons_gift__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      className: "fadeIn delay-2s"
+    }), __jsx(_social_buttons_comment__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      className: "fadeIn delay-3s"
+    })))), __jsx("div", {
+      className: "col-7"
+    }, __jsx("div", {
+      className: "msg_cont"
+    }, __jsx("div", {
+      className: "msg_cont-2 animated fadeIn delay-5s"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     }, __jsx(_buttons_button__WEBPACK_IMPORTED_MODULE_5__["default"], {
       title: "Registro",
       onClick: this.onRegister,
       size: "lg",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       color: "light",
       __source: {
         fileName: _jsxFileName,
@@ -1211,6 +1453,17 @@ class Hero extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         lineNumber: 171
       },
       __self: this
+=======
+      color: "light"
+    }, "Unete"), __jsx("p", null, "A Greenlink")), __jsx("div", {
+      className: "msg_cont-1"
+    }, __jsx("h1", {
+      className: "animated delay-2s"
+    }, __jsx("svg", {
+      width: "376px",
+      height: "86",
+      className: "hero_comparte"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     }, __jsx("text", {
       id: "comparte",
       fill: "none",
@@ -1220,6 +1473,7 @@ class Hero extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       strokeDashoffset: "600",
       fontSize: "72px",
       x: "0",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       y: "68",
       __source: {
         fileName: _jsxFileName,
@@ -1254,6 +1508,17 @@ class Hero extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         lineNumber: 178
       },
       __self: this
+=======
+      y: "68"
+    }, "COMPARTE"))), __jsx("div", {
+      className: "msg_complementary"
+    }, __jsx("p", {
+      className: "animated fadeIn delay-3s"
+    }, "Disfruta,"), __jsx("p", {
+      className: "animated fadeIn delay-4s"
+    }, "Diviertete,"), __jsx("p", {
+      className: "animated fadeIn delay-5s"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     }, "Gana greencoins"))))))));
   }
 
@@ -1290,7 +1555,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _register_cont_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_register_cont_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "classnames");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/hero/register-cont.jsx";
+=======
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -1311,6 +1579,7 @@ class RegisterCont extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         reigster_cont: true,
         slideInRight: isOpen,
         slideOutRight: !isOpen
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       }),
       __source: {
         fileName: _jsxFileName,
@@ -1324,6 +1593,10 @@ class RegisterCont extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, "Registro"), children);
+=======
+      })
+    }, __jsx("h1", null, "Registro"), children);
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   }
 
 }
@@ -1761,12 +2034,11 @@ const Option = () => {
   const onLogout = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async () => {
     try {
       await axios__WEBPACK_IMPORTED_MODULE_8___default.a.get('/user/logout');
-      document.cookie = '';
       dispatch({
         type: _store_actions__WEBPACK_IMPORTED_MODULE_7__["ON_LOGIN"],
         option: false
       });
-      next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/');
+      window.location = '/';
     } catch (err) {
       console.log(err);
     }
@@ -2128,9 +2400,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/layout/layout.jsx";
+=======
+/* harmony import */ var _postregister_postregister__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../postregister/postregister */ "./components/postregister/postregister.jsx");
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -2154,6 +2431,7 @@ const Layout = ({
     __self: undefined
   }, __jsx("link", {
     rel: "stylesheet",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
     href: "/static/animate.min.css",
     __source: {
       fileName: _jsxFileName,
@@ -2167,6 +2445,10 @@ const Layout = ({
     },
     __self: undefined
   }), children, __jsx("div", {
+=======
+    href: "/static/animate.min.css"
+  })), __jsx(_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), __jsx(_postregister_postregister__WEBPACK_IMPORTED_MODULE_5__["default"], null), children, __jsx("div", {
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     style: {
       height: 0
     },
@@ -2204,7 +2486,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const Logo = ({
-  url
+  url,
+  dark
 }) => {
   const tirangle = __jsx("svg", {
     width: "200",
@@ -2228,26 +2511,35 @@ const Logo = ({
     cx: "26.548",
     cy: "250.43",
     r: "3.2741",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
     fill: "#fff",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
     },
     __self: undefined
+=======
+    fill: dark ? "#8bb940" : "#fff"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   }), __jsx("ellipse", {
     cx: "46.306",
     cy: "289.77",
     r: "3.2741",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
     fill: "#fff",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
     },
     __self: undefined
+=======
+    fill: dark ? "#8bb940" : "#fff"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   }), __jsx("path", {
     transform: "matrix(.62733 0 0 .72498 9.012 74.897)",
     d: "m59.521 296.7h-31.551-31.551l31.551-54.648 15.776 27.324z",
     fill: "none",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
     stroke: "#fff",
     strokeWidth: "2",
     __source: {
@@ -2255,20 +2547,29 @@ const Logo = ({
       lineNumber: 9
     },
     __self: undefined
+=======
+    stroke: dark ? "#8bb940" : "#fff",
+    strokeWidth: "2"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   }), __jsx("circle", {
     cx: "46.306",
     cy: "289.77",
     r: "3.2741",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
     fill: "#fff",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 10
     },
     __self: undefined
+=======
+    fill: dark ? "#8bb940" : "#fff"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   }), __jsx("circle", {
     cx: "7.2335",
     cy: "289.77",
     r: "3.2741",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
     fill: "#fff",
     __source: {
       fileName: _jsxFileName,
@@ -2285,16 +2586,28 @@ const Logo = ({
       lineNumber: 12
     },
     __self: undefined
+=======
+    fill: dark ? "#8bb940" : "#fff"
+  }), __jsx("path", {
+    d: "m25.542 276.71c0.25134 0.37102-0.37613 0.52185-0.61667 0.41774-0.65184-0.28213-0.59357-1.1753-0.21882-1.6511 0.67035-0.85098 1.9605-0.71767 2.6855-0.0199 1.0639 1.024 0.84772 2.7571-0.17903 3.7199-1.3685 1.2832-3.558 0.98044-4.7543-0.37795-1.5055-1.7094-1.1146-4.3608 0.57688-5.7887 2.0486-1.7294 5.1648-1.2495 6.8231 0.7758 1.9543 2.3868 1.385 5.9694-0.97472 7.8575-2.7244 2.1798-6.7746 1.5208-8.8919-1.1736-2.4058-3.0616-1.6568-7.5801 1.3726-9.9264 3.3985-2.6321 8.3859-1.7931 10.961 1.5715 2.8586 3.7353 1.9294 9.1918-1.7704 11.995",
+    fill: "none",
+    stroke: dark ? "#8bb940" : "#fff",
+    strokeWidth: ".79375"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   }), __jsx("circle", {
     cx: "26.541",
     cy: "250.72",
     r: "3.2741",
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
     fill: "#fff",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 13
     },
     __self: undefined
+=======
+    fill: dark ? "#8bb940" : "#fff"
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   })));
 
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -2305,6 +2618,7 @@ const Logo = ({
     },
     __self: undefined
   }, __jsx("a", {
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
     className: "logo_main_cont",
     __source: {
       fileName: _jsxFileName,
@@ -2317,6 +2631,15 @@ const Logo = ({
       lineNumber: 21
     },
     __self: undefined
+=======
+    className: "logo_main_cont"
+  }, tirangle, __jsx("p", {
+    style: dark ? {
+      color: '#8bb940'
+    } : {
+      color: '#fff'
+    }
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   }, "greenlink")));
 };
 
@@ -2339,6 +2662,8 @@ const Logo = ({
 /*!**************************************!*\
   !*** ./components/loader/loader.jsx ***!
   \**************************************/
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
+=======
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2350,12 +2675,427 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(gsap__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _loader_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loader.scss */ "./components/loader/loader.scss");
 /* harmony import */ var _loader_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_loader_scss__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/loader/loader.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
+class Loader extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].to('#loader_line', 3.5, {
+      strokeDashoffset: '-1000',
+      repeat: -1,
+      ease: Linear.easeNone
+    });
+  }
+
+  render() {
+    const {
+      dark
+    } = this.props;
+    return __jsx("svg", {
+      className: "green_loader",
+      width: "200",
+      height: "200",
+      viewBox: "0 0 200 200"
+    }, __jsx("polyline", {
+      id: "loader_line",
+      fill: "none",
+      stroke: dark ? "#669f09" : '#fff',
+      strokeWidth: "10px",
+      strokeDasharray: "500",
+      points: "15,185 95,15 185,180 15,180"
+    }), __jsx("circle", {
+      className: "circle",
+      id: "circle-1",
+      fill: dark ? "#669f09" : '#fff',
+      cx: "20",
+      cy: "180",
+      r: "20"
+    }), __jsx("circle", {
+      className: "circle",
+      id: "circle-2",
+      fill: dark ? "#669f09" : '#fff',
+      cx: "95",
+      cy: "20",
+      r: "20"
+    }), __jsx("circle", {
+      className: "circle",
+      id: "circle-3",
+      fill: dark ? "#669f09" : '#fff',
+      cx: "180",
+      cy: "180",
+      r: "20"
+    }));
+  }
+
+}
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (Loader);
+
+/***/ }),
+
+/***/ "./components/loader/loader.scss":
+/*!***************************************!*\
+  !*** ./components/loader/loader.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./components/logo/logo.jsx":
+/*!**********************************!*\
+  !*** ./components/logo/logo.jsx ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _logo_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logo.scss */ "./components/logo/logo.scss");
+/* harmony import */ var _logo_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_logo_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "classnames");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const Logo = ({
+  size,
+  color
+}) => __jsx("div", {
+  title: "Inicio",
+  className: "logo_cont"
+}, __jsx("a", {
+  className: classnames__WEBPACK_IMPORTED_MODULE_2___default()({
+    dark: color === 'dark'
+  }),
+  href: "/"
+}, __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 512 512"
+}, __jsx("path", {
+  d: "M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zm-141.651-35.33c4.937-32.999-20.191-50.739-54.55-62.573l11.146-44.702-27.213-6.781-10.851 43.524c-7.154-1.783-14.502-3.464-21.803-5.13l10.929-43.81-27.198-6.781-11.153 44.686c-5.922-1.349-11.735-2.682-17.377-4.084l.031-.14-37.53-9.37-7.239 29.062s20.191 4.627 19.765 4.913c11.022 2.751 13.014 10.044 12.68 15.825l-12.696 50.925c.76.194 1.744.473 2.829.907-.907-.225-1.876-.473-2.876-.713l-17.796 71.338c-1.349 3.348-4.767 8.37-12.471 6.464.271.395-19.78-4.937-19.78-4.937l-13.51 31.147 35.414 8.827c6.588 1.651 13.045 3.379 19.4 5.006l-11.262 45.213 27.182 6.781 11.153-44.733a1038.209 1038.209 0 0 0 21.687 5.627l-11.115 44.523 27.213 6.781 11.262-45.128c46.404 8.781 81.299 5.239 95.986-36.727 11.836-33.79-.589-53.281-25.004-65.991 17.78-4.098 31.174-15.792 34.747-39.949zm-62.177 87.179c-8.41 33.79-65.308 15.523-83.755 10.943l14.944-59.899c18.446 4.603 77.6 13.717 68.811 48.956zm8.417-87.667c-7.673 30.736-55.031 15.12-70.393 11.292l13.548-54.327c15.363 3.828 64.836 10.973 56.845 43.035z"
+})), __jsx("span", null, "Greenlink")));
+
+/* harmony default export */ __webpack_exports__["default"] = (Logo);
+
+/***/ }),
+
+/***/ "./components/logo/logo.scss":
+/*!***********************************!*\
+  !*** ./components/logo/logo.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./components/postregister/postregister.jsx":
+/*!**************************************************!*\
+  !*** ./components/postregister/postregister.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _store_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/actions */ "./store/actions.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _postregister_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./postregister.scss */ "./components/postregister/postregister.scss");
+/* harmony import */ var _postregister_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_postregister_scss__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _layout_logo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../layout/logo */ "./components/layout/logo.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _loader_loader__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../loader/loader */ "./components/loader/loader.jsx");
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+
+
+
+
+
+
+const BtnUpload = () => {
+  return __jsx("div", {
+    className: "btnUpload_main_cont"
+  }, __jsx("label", {
+    htmlFor: "img"
+  }, __jsx("div", {
+    className: "img_cont"
+  }, __jsx("img", {
+    src: "",
+    alt: ""
+  }), __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faUser"]
+  })), __jsx("input", {
+    id: "img",
+    name: "img",
+    type: "file"
+  })));
+};
+
+const Welcome = () => {
+  return __jsx("div", {
+    className: "welcome_main_cont"
+  }, __jsx("h1", null, "Bienvenido a ", __jsx("span", null, "Greenlink!")), __jsx("p", null, "Completa el registro agregando informacion adicional y creando tu primer ", __jsx("strong", null, "GreenPost,"), " de esta manera podras ser encontrado por otros usuarios ademas de recibir obsequios. Recuerda, mietras mas preciso seas mas facil sera que tus seres queridos contacten contigo."));
+};
+
+const Congratulations = () => {
+  const user = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.user);
+  return __jsx("div", {
+    className: "welcome_main_cont"
+  }, __jsx("h1", null, "Felicidades ", user.name), __jsx("p", null, "No olvides crear tu primer", __jsx("strong", null, "GreenPost,")));
+};
+
+const UserInfo = ({
+  values,
+  setValues,
+  onImg
+}) => {
+  const user = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.user);
+  return __jsx("div", {
+    className: "user_postregister_cont"
+  }, __jsx("label", {
+    htmlFor: "perfilImg"
+  }, !values.perfilImgFrontEnd && __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faUser"]
+  }), values.perfilImgFrontEnd && __jsx("img", {
+    src: values.perfilImgFrontEnd,
+    alt: ""
+  }), __jsx("input", {
+    onChange: onImg,
+    type: "file",
+    name: "perfilImg",
+    id: "perfilImg"
+  })), __jsx("p", null, "Elige una foto de perfil"), user.name === 'Green' && __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx("input", {
+    value: values.name,
+    onChange: e => setValues({
+      name: e.currentTarget.value
+    }),
+    placeholder: "Nombre",
+    type: "text"
+  }), __jsx("input", {
+    value: values.lastName,
+    onChange: e => setValues({
+      lastName: e.currentTarget.value
+    }),
+    placeholder: "Apellido",
+    type: "text"
+  }), __jsx("div", {
+    className: "birth_sex_main"
+  }, __jsx("p", null, "Cumplea\xF1os"), __jsx("input", {
+    type: "date",
+    value: values.birthday,
+    onChange: e => setValues({
+      birthday: e.currentTarget.value
+    })
+  }), __jsx("div", {
+    className: "birthday_sex",
+    style: {
+      marginLeft: '1rem'
+    }
+  }, __jsx("p", null, "Sexo"), __jsx("select", {
+    onChange: e => setValues({
+      sex: e.currentTarget.value
+    }),
+    name: "sex",
+    id: "sex"
+  }, __jsx("option", {
+    value: "female"
+  }, "Mujer"), __jsx("option", {
+    value: "male"
+  }, "Hombre"), __jsx("option", {
+    value: "otro"
+  }, "Otro"))))));
+};
+
+const PostRegister = () => {
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
+  const {
+    0: values,
+    1: setValues
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])((state, next) => Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, next), {
+    name: '',
+    lastName: '',
+    birthday: '',
+    sex: '',
+    perfilImgFrontEnd: '',
+    perfilImg: ''
+  });
+  const user = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.user);
+
+  const onImg = e => {
+    const img = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      if (reader.result) {
+        setValues({
+          perfilImgFrontEnd: reader.result,
+          perfilImg: img
+        });
+      } else {
+        setValues({
+          perfilImgFrontEnd: null,
+          perfilImg: null
+        });
+      }
+    };
+
+    reader.readAsDataURL(img);
+    console.log(perfilImg);
+    console.log(img);
+  };
+
+  const {
+    0: section,
+    1: setSection
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])((state, next) => Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, next), {
+    welcome: true,
+    info: false,
+    loader: false,
+    congratulations: false
+  });
+  const visible = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.postregister);
+
+  const onSubmit = async () => {
+    try {
+      const {
+        name,
+        lastName,
+        birthday,
+        sex,
+        perfilImg
+      } = values;
+      const data = new FormData();
+      setSection({
+        info: false,
+        loader: true
+      });
+
+      if (user.name === 'Green') {
+        data.append('name', name);
+        data.append('lastName', lastName);
+        data.append('birthday', birthday);
+        data.append('sex', sex);
+      }
+
+      data.append('perfilImg', perfilImg);
+      await axios__WEBPACK_IMPORTED_MODULE_9___default.a.post('/user/postregister', data);
+      setSection({
+        loader: false,
+        congratulations: true
+      });
+      setTimeout(() => {
+        dispatch({
+          type: _store_actions__WEBPACK_IMPORTED_MODULE_3__["ON_POST_REGISTER"]
+        });
+      }, 3000);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Modal"], {
+    className: "my_modal",
+    isOpen: visible
+  }, __jsx("div", {
+    className: "postregister_main_cont"
+  }, __jsx("header", null, __jsx(_layout_logo__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    dark: true,
+    url: "/"
+  })), __jsx("div", {
+    className: "body"
+  }, section.welcome && __jsx(Welcome, null), section.info && __jsx(UserInfo, {
+    values: values,
+    setValues: setValues,
+    onImg: onImg
+  }), section.loader && __jsx(_loader_loader__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    dark: true
+  }), section.congratulations && __jsx(Congratulations, null)), __jsx("footer", null, section.welcome && __jsx("button", {
+    onClick: () => setSection({
+      welcome: false,
+      info: true
+    })
+  }, "siguiente"), section.info && __jsx("button", {
+    onClick: onSubmit
+  }, "enviar"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PostRegister);
+
+/***/ }),
+
+/***/ "./components/postregister/postregister.scss":
+/*!***************************************************!*\
+  !*** ./components/postregister/postregister.scss ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./components/social-buttons/comment.jsx":
+/*!***********************************************!*\
+  !*** ./components/social-buttons/comment.jsx ***!
+  \***********************************************/
+>>>>>>> perfil:.next/server/static/development/pages/index.js
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "gsap");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(gsap__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _loader_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loader.scss */ "./components/loader/loader.scss");
+/* harmony import */ var _loader_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_loader_scss__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/loader/loader.jsx";
+=======
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _social_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./social.scss */ "./components/social-buttons/social.scss");
+/* harmony import */ var _social_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_social_scss__WEBPACK_IMPORTED_MODULE_2__);
+>>>>>>> perfil:.next/server/static/development/pages/index.js
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 class Loader extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
     super(props);
@@ -2438,24 +3178,104 @@ class Loader extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Loader);
+=======
+class Comment extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+    this.state = {
+      comment: '',
+      commentPop: false
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handlePop = this.handlePop.bind(this);
+  }
 
-/***/ }),
+  handleChange(e) {
+    this.setState({
+      comment: e.target.value
+    });
+  }
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
+  handlePop() {
+    const {
+      commentPop
+    } = this.state;
+    this.setState({
+      commentPop: !commentPop
+    });
+  }
+
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 /***/ "./components/loader/loader.scss":
 /*!***************************************!*\
   !*** ./components/loader/loader.scss ***!
   \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
+=======
+  render() {
+    const {
+      commentPop,
+      comment
+    } = this.state;
+    const {
+      className
+    } = this.props;
+    return __jsx("div", {
+      className: "comment_cont"
+    }, __jsx("button", {
+      title: "Comentar",
+      id: "btn_comment",
+      onClick: this.handlePop,
+      className: `btn_social animated ${className}`
+    }, __jsx("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 512 512"
+    }, __jsx("path", {
+      d: "M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 140.6-51.4 32.7 12.3 69 19.4 107.4 19.4 141.4 0 256-93.1 256-208S397.4 32 256 32z"
+    }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Popover"], {
+      placement: "bottom",
+      target: "btn_comment",
+      isOpen: commentPop
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["PopoverBody"], null, __jsx("form", null, __jsx("textarea", {
+      style: {
+        resize: 'none',
+        border: 'none',
+        outline: 'none'
+      },
+      value: comment,
+      className: "text_area_comment",
+      onChange: this.handleChange,
+      name: "commet",
+      id: "comment",
+      cols: "15",
+      rows: "5"
+    }), __jsx("button", {
+      className: "send_comment",
+      type: "submit"
+    }, "enviar")))));
+  }
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
+}
 
+;
+/* harmony default export */ __webpack_exports__["default"] = (Comment);
 
 /***/ }),
 
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 /***/ "./components/logo/logo.jsx":
 /*!**********************************!*\
   !*** ./components/logo/logo.jsx ***!
   \**********************************/
+=======
+/***/ "./components/social-buttons/gift.jsx":
+/*!********************************************!*\
+  !*** ./components/social-buttons/gift.jsx ***!
+  \********************************************/
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2463,16 +3283,31 @@ class Loader extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 /* harmony import */ var _logo_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./logo.scss */ "./components/logo/logo.scss");
 /* harmony import */ var _logo_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_logo_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "classnames");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/logo/logo.jsx";
 
+=======
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _social_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./social.scss */ "./components/social-buttons/social.scss");
+/* harmony import */ var _social_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_social_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var uuid_v1__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid/v1 */ "uuid/v1");
+/* harmony import */ var uuid_v1__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(uuid_v1__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _store_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../store/actions */ "./store/actions.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 const Logo = ({
   size,
   color
@@ -2518,24 +3353,157 @@ const Logo = ({
 }, "Greenlink")));
 
 /* harmony default export */ __webpack_exports__["default"] = (Logo);
+=======
 
-/***/ }),
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
+
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 /***/ "./components/logo/logo.scss":
 /*!***********************************!*\
   !*** ./components/logo/logo.scss ***!
   \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
+=======
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
 
+const brocha = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 640 512"
+}, __jsx("path", {
+  d: "M256.47 216.77l86.73 109.18s-16.6 102.36-76.57 150.12C206.66 523.85 0 510.19 0 510.19s3.8-23.14 11-55.43l94.62-112.17c3.97-4.7-.87-11.62-6.65-9.5l-60.4 22.09c14.44-41.66 32.72-80.04 54.6-97.47 59.97-47.76 163.3-40.94 163.3-40.94zM636.53 31.03l-19.86-25c-5.49-6.9-15.52-8.05-22.41-2.56l-232.48 177.8-34.14-42.97c-5.09-6.41-15.14-5.21-18.59 2.21l-25.33 54.55 86.73 109.18 58.8-12.45c8-1.69 11.42-11.2 6.34-17.6l-34.09-42.92 232.48-177.8c6.89-5.48 8.04-15.53 2.55-22.44z"
+}));
+
+const candy = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 512 512"
+}, __jsx("path", {
+  d: "M497.5 92C469.6 33.1 411.8 0 352.4 0c-27.9 0-56.2 7.3-81.8 22.6L243.1 39c-15.2 9.1-20.1 28.7-11 43.9l32.8 54.9c6 10 16.6 15.6 27.5 15.6 5.6 0 11.2-1.5 16.4-4.5l27.5-16.4c5.1-3.1 10.8-4.5 16.4-4.5 10.9 0 21.5 5.6 27.5 15.6 9.1 15.1 4.1 34.8-11 43.9L15.6 397.6c-15.2 9.1-20.1 28.7-11 43.9l32.8 54.9c6 10 16.6 15.6 27.5 15.6 5.6 0 11.2-1.5 16.4-4.5L428.6 301c71.7-42.9 104.6-133.5 68.9-209zm-177.7 13l-2.5 1.5L296.8 45c9.7-4.7 19.8-8.1 30.3-10.2l20.6 61.8c-9.8.8-19.4 3.3-27.9 8.4zM145.9 431.8l-60.5-38.5 30.8-18.3 60.5 38.5-30.8 18.3zm107.5-63.9l-60.5-38.5 30.8-18.3 60.5 38.5-30.8 18.3zM364.3 302l-60.5-38.5 30.8-18.3 60.5 38.5-30.8 18.3zm20.4-197.3l46-46c8.4 6.5 16 14.1 22.6 22.6L407.6 127c-5.7-9.3-13.7-16.9-22.9-22.3zm82.1 107.8l-59.5-19.8c3.2-5.3 5.8-10.9 7.4-17.1 1.1-4.5 1.7-9.1 1.8-13.6l60.4 20.1c-2.1 10.4-5.5 20.6-10.1 30.4z"
+}));
+
+const carrot = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 512 512"
+}, __jsx("path", {
+  d: "M298.2 156.6c-52.7-25.7-114.5-10.5-150.2 32.8l55.2 55.2c6.3 6.3 6.3 16.4 0 22.6-3.1 3.1-7.2 4.7-11.3 4.7s-8.2-1.6-11.3-4.7L130.4 217 2.3 479.7c-2.9 6-3.1 13.3 0 19.7 5.4 11.1 18.9 15.7 30 10.3l133.6-65.2-49.2-49.2c-6.3-6.2-6.3-16.4 0-22.6 6.3-6.2 16.4-6.2 22.6 0l57 57 102-49.8c24-11.7 44.5-31.3 57.1-57.1 30.1-61.7 4.5-136.1-57.2-166.2zm92.1-34.9C409.8 81 399.7 32.9 360 0c-50.3 41.7-52.5 107.5-7.9 151.9l8 8c44.4 44.6 110.3 42.4 151.9-7.9-32.9-39.7-81-49.8-121.7-30.3z"
+}));
+
+const chicken = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 512 512"
+}, __jsx("path", {
+  d: "M462.79 49.57c-66.14-66.09-173.36-66.09-239.5 0C187.81 85.02 160.12 128 160.12 192v85.83l-40.62 40.59c-9.7 9.69-24.04 11.07-36.78 5.98-21.72-8.68-47.42-4.29-65.02 13.29-23.61 23.59-23.61 61.84 0 85.43 15.28 15.27 36.53 19.58 56.14 15.09-4.5 19.6-.18 40.83 15.1 56.1 23.61 23.59 61.88 23.59 85.49 0 17.6-17.58 21.99-43.26 13.31-64.97-5.09-12.73-3.72-27.05 5.99-36.75L234.35 352h85.89c23.2 0 43.57-3.72 61.89-10.03-39.64-43.89-39.83-110.23 1.05-151.07 34.38-34.36 86.76-39.46 128.74-16.8 1.3-44.93-14.81-90.25-49.13-124.53z"
+}));
+
+const hat = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 512 512"
+}, __jsx("path", {
+  d: "M496 448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h480c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zm-304-64l-64-32 64-32 32-64 32 64 64 32-64 32-16 32h208l-86.41-201.63a63.955 63.955 0 0 1-1.89-45.45L416 0 228.42 107.19a127.989 127.989 0 0 0-53.46 59.15L64 416h144l-16-32zm64-224l16-32 16 32 32 16-32 16-16 32-16-32-32-16 32-16z"
+}));
+
+const game = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 640 512"
+}, __jsx("path", {
+  d: "M480 96H160C71.6 96 0 167.6 0 256s71.6 160 160 160c44.8 0 85.2-18.4 114.2-48h91.5c29 29.6 69.5 48 114.2 48 88.4 0 160-71.6 160-160S568.4 96 480 96zM256 276c0 6.6-5.4 12-12 12h-52v52c0 6.6-5.4 12-12 12h-40c-6.6 0-12-5.4-12-12v-52H76c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h52v-52c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h52c6.6 0 12 5.4 12 12v40zm184 68c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48zm80-80c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48-21.5 48-48 48z"
+}));
+
+const glass = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 640 512"
+}, __jsx("path", {
+  d: "M639.4 433.6c-8.4-20.4-31.8-30.1-52.2-21.6l-22.1 9.2-38.7-101.9c47.9-35 64.8-100.3 34.5-152.8L474.3 16c-8-13.9-25.1-19.7-40-13.6L320 49.8 205.7 2.4c-14.9-6.2-32-.3-40 13.6L79.1 166.5C48.9 219 65.7 284.3 113.6 319.2L74.9 421.1l-22.1-9.2c-20.4-8.5-43.7 1.2-52.2 21.6-1.7 4.1.2 8.8 4.3 10.5l162.3 67.4c4.1 1.7 8.7-.2 10.4-4.3 8.4-20.4-1.2-43.8-21.6-52.3l-22.1-9.2L173.3 342c4.4.5 8.8 1.3 13.1 1.3 51.7 0 99.4-33.1 113.4-85.3l20.2-75.4 20.2 75.4c14 52.2 61.7 85.3 113.4 85.3 4.3 0 8.7-.8 13.1-1.3L506 445.6l-22.1 9.2c-20.4 8.5-30.1 31.9-21.6 52.3 1.7 4.1 6.4 6 10.4 4.3L635.1 444c4-1.7 6-6.3 4.3-10.4zM275.9 162.1l-112.1-46.5 36.5-63.4 94.5 39.2-18.9 70.7zm88.2 0l-18.9-70.7 94.5-39.2 36.5 63.4-112.1 46.5z"
+}));
+
+const drum = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 576 512"
+}, __jsx("path", {
+  d: "M458.08 120.88l102.39-61.43c15.16-9.09 20.06-28.75 10.97-43.91C562.34.39 542.7-4.53 527.53 4.57l-160.69 96.41A629.32 629.32 0 0 0 288 96C128.94 96 0 153.31 0 224v160.83c0 30.46 24.03 58.4 64 80.37v-96.37c0-17.6 14.4-32 32-32s32 14.4 32 32v122.41c37.4 11.13 81 18.44 128 20.75V400.84c0-17.6 14.4-32 32-32s32 14.4 32 32V512c47-2.31 90.6-9.62 128-20.75V368.84c0-17.6 14.4-32 32-32s32 14.4 32 32v96.37c39.97-21.97 64-49.91 64-80.37V224.01c-.01-42.38-46.54-79.84-117.92-103.13zM288 304c-132.55 0-240-35.82-240-80s107.45-80 240-80c2.34 0 4.62.1 6.94.12l-87.41 52.44c-15.16 9.09-20.06 28.75-10.97 43.91 9.56 15.93 29.51 19.61 43.91 10.97l162.71-97.62C477.55 167.41 528 193.74 528 224.01 528 268.19 420.54 304 288 304z"
+}));
+
+const money = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 288 512"
+}, __jsx("path", {
+  d: "M209.2 233.4l-108-31.6C88.7 198.2 80 186.5 80 173.5c0-16.3 13.2-29.5 29.5-29.5h66.3c12.2 0 24.2 3.7 34.2 10.5 6.1 4.1 14.3 3.1 19.5-2l34.8-34c7.1-6.9 6.1-18.4-1.8-24.5C238 74.8 207.4 64.1 176 64V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48h-2.5C45.8 64-5.4 118.7.5 183.6c4.2 46.1 39.4 83.6 83.8 96.6l102.5 30c12.5 3.7 21.2 15.3 21.2 28.3 0 16.3-13.2 29.5-29.5 29.5h-66.3C100 368 88 364.3 78 357.5c-6.1-4.1-14.3-3.1-19.5 2l-34.8 34c-7.1 6.9-6.1 18.4 1.8 24.5 24.5 19.2 55.1 29.9 86.5 30v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-48.2c46.6-.9 90.3-28.6 105.7-72.7 21.5-61.6-14.6-124.8-72.5-141.7z"
+}));
+
+const gifts = [brocha, candy, carrot, chicken, hat, game, glass, drum, money];
+
+class Gift extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+    this.state = {
+      popGift: false
+    };
+    this.handleGift = this.handleGift.bind(this);
+  }
+
+  handleGift() {
+    const {
+      onStore
+    } = this.props;
+    onStore(_store_actions__WEBPACK_IMPORTED_MODULE_4__["storeSections"].OPEN_STORE); //const { popGift } = this.state;
+    //this.setState({ popGift: !popGift });
+  }
+
+  render() {
+    const {
+      popGift
+    } = this.state;
+    const {
+      className
+    } = this.props;
+    return __jsx("div", {
+      className: "gift_cont"
+    }, __jsx("button", {
+      title: "Obsequiar",
+      onClick: this.handleGift,
+      id: "gift_button",
+      className: `btn_social animated ${className}`
+    }, __jsx("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 512 512"
+    }, __jsx("path", {
+      d: "M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z"
+    }))), __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Popover"], {
+      isOpen: popGift,
+      target: "gift_button",
+      placement: "bottom"
+    }, __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_1__["PopoverBody"], null, __jsx("ul", {
+      className: "gifts_cont"
+    }, gifts.map(gift => __jsx("li", {
+      key: uuid_v1__WEBPACK_IMPORTED_MODULE_3___default()()
+    }, gift))))));
+  }
+
+}
+
+;
+
+const mapDispatchToProps = dispatch => Object(redux__WEBPACK_IMPORTED_MODULE_5__["bindActionCreators"])({
+  onStore: _store_actions__WEBPACK_IMPORTED_MODULE_4__["onStore"]
+}, dispatch);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["connect"])(null, mapDispatchToProps)(Gift));
 
 /***/ }),
 
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 /***/ "./components/social-buttons/comment.jsx":
 /*!***********************************************!*\
   !*** ./components/social-buttons/comment.jsx ***!
   \***********************************************/
+=======
+/***/ "./components/social-buttons/heart.jsx":
+/*!*********************************************!*\
+  !*** ./components/social-buttons/heart.jsx ***!
+  \*********************************************/
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2543,16 +3511,28 @@ const Logo = ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _social_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./social.scss */ "./components/social-buttons/social.scss");
 /* harmony import */ var _social_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_social_scss__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/social-buttons/comment.jsx";
+=======
+/* harmony import */ var _social_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./social.scss */ "./components/social-buttons/social.scss");
+/* harmony import */ var _social_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_social_scss__WEBPACK_IMPORTED_MODULE_1__);
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+const heart = __jsx("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 512 512"
+}, __jsx("path", {
+  d: "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+}));
 
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 class Comment extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
     super(props);
@@ -2883,10 +3863,46 @@ class Gift extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   render() {
     const {
       popGift
+=======
+class Heart extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+    this.state = {
+      like: 0,
+      myLike: false
+    };
+    this.handleLike = this.handleLike.bind(this);
+  }
+
+  handleLike() {
+    const {
+      myLike,
+      like
+    } = this.state;
+
+    if (myLike) {
+      this.setState({
+        like: like - 1,
+        myLike: false
+      });
+    } else {
+      this.setState({
+        like: like + 1,
+        myLike: true
+      });
+    }
+  }
+
+  render() {
+    const {
+      like,
+      myLike
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     } = this.state;
     const {
       className
     } = this.props;
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
     return __jsx("div", {
       className: "gift_cont",
       __source: {
@@ -2966,6 +3982,37 @@ const mapDispatchToProps = dispatch => Object(redux__WEBPACK_IMPORTED_MODULE_5__
 /***/ "./components/social-buttons/heart.jsx":
 /*!*********************************************!*\
   !*** ./components/social-buttons/heart.jsx ***!
+=======
+    return __jsx("button", {
+      title: "Amor",
+      onClick: this.handleLike,
+      className: `btn_social animated ${className}`
+    }, __jsx("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 512 512",
+      style: myLike ? {
+        fill: "#ff6c1a"
+      } : null
+    }, __jsx("path", {
+      d: "M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"
+    })), __jsx("span", {
+      style: myLike ? {
+        color: "#ff6c1a"
+      } : null
+    }, " +", like));
+  }
+
+}
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (Heart);
+
+/***/ }),
+
+/***/ "./components/social-buttons/share.jsx":
+/*!*********************************************!*\
+  !*** ./components/social-buttons/share.jsx ***!
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2976,11 +4023,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _social_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./social.scss */ "./components/social-buttons/social.scss");
 /* harmony import */ var _social_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_social_scss__WEBPACK_IMPORTED_MODULE_1__);
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 var _jsxFileName = "/home/felix/Documentos/projects/greenlink/components/social-buttons/heart.jsx";
+=======
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 const heart = __jsx("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 512 512",
@@ -3025,17 +4076,43 @@ class Heart extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         myLike: true
       });
     }
+=======
+class Share extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shared: 0,
+      myShare: false
+    };
+    this.handleShare = this.handleShare.bind(this);
+  }
+
+  handleShare() {
+    const {
+      shared
+    } = this.state;
+    this.setState({
+      myShare: true,
+      shared: shared + 1
+    });
+>>>>>>> perfil:.next/server/static/development/pages/index.js
   }
 
   render() {
     const {
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       like,
       myLike
+=======
+      shared,
+      myShare
+>>>>>>> perfil:.next/server/static/development/pages/index.js
     } = this.state;
     const {
       className
     } = this.props;
     return __jsx("button", {
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
       title: "Amor",
       onClick: this.handleLike,
       className: `btn_social animated ${className}`,
@@ -3167,6 +4244,27 @@ class Share extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   }
 
 }
+=======
+      title: "Compartir",
+      onClick: this.handleShare,
+      className: `btn_social animated ${className}`
+    }, __jsx("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 512 512",
+      style: myShare ? {
+        fill: "#ff6c1a"
+      } : null
+    }, __jsx("path", {
+      d: "M352 320c-22.608 0-43.387 7.819-59.79 20.895l-102.486-64.054a96.551 96.551 0 0 0 0-41.683l102.486-64.054C308.613 184.181 329.392 192 352 192c53.019 0 96-42.981 96-96S405.019 0 352 0s-96 42.981-96 96c0 7.158.79 14.13 2.276 20.841L155.79 180.895C139.387 167.819 118.608 160 96 160c-53.019 0-96 42.981-96 96s42.981 96 96 96c22.608 0 43.387-7.819 59.79-20.895l102.486 64.054A96.301 96.301 0 0 0 256 416c0 53.019 42.981 96 96 96s96-42.981 96-96-42.981-96-96-96z"
+    })), __jsx("span", {
+      style: myShare ? {
+        color: "#ff6c1a"
+      } : null
+    }, " +", shared));
+  }
+
+}
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Share);
@@ -3250,6 +4348,17 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-prope
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-symbols */ "core-js/library/fn/object/get-own-property-symbols");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js ***!
@@ -3269,6 +4378,79 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/keys */ "core
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/promise */ "core-js/library/fn/promise");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _objectSpread; });
+/* harmony import */ var _core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/get-own-property-descriptor */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js");
+/* harmony import */ var _core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../core-js/object/get-own-property-symbols */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js");
+/* harmony import */ var _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_keys__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _defineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+
+
+
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    var ownKeys = _core_js_object_keys__WEBPACK_IMPORTED_MODULE_2___default()(source);
+
+    if (typeof _core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1___default.a === 'function') {
+      ownKeys = ownKeys.concat(_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_1___default()(source).filter(function (sym) {
+        return _core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_0___default()(source, sym).enumerable;
+      }));
+    }
+
+    ownKeys.forEach(function (key) {
+      Object(_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(target, key, source[key]);
+    });
+  }
+
+  return target;
+}
 
 /***/ }),
 
@@ -5162,13 +6344,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_hero_hero__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/hero/hero */ "./components/hero/hero.jsx");
 /* harmony import */ var _components_about_about__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/about/about */ "./components/about/about.jsx");
 /* harmony import */ var _components_explain_explain__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/explain/explain */ "./components/explain/explain.jsx");
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 var _jsxFileName = "/home/felix/Documentos/projects/greenlink/pages/index.js";
+=======
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 /* harmony default export */ __webpack_exports__["default"] = (() => __jsx(_components_layout_layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
   __source: {
     fileName: _jsxFileName,
@@ -5194,6 +6380,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
   },
   __self: undefined
 })));
+=======
+/* harmony default export */ __webpack_exports__["default"] = (() => __jsx(_components_layout_layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, __jsx(_components_hero_hero__WEBPACK_IMPORTED_MODULE_2__["default"], null), __jsx(_components_about_about__WEBPACK_IMPORTED_MODULE_3__["default"], null), __jsx(_components_explain_explain__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 
 /***/ }),
 
@@ -5201,7 +6390,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /*!**************************!*\
   !*** ./store/actions.js ***!
   \**************************/
-/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, navView, ON_USER, ON_STORE, ON_PRODUCTS, storeSections, ON_GREENINFO, ON_GREEN_CREATOR, onStore */
+/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, navView, ON_USER, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, onStore */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5217,6 +6406,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_STORE", function() { return ON_STORE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_PRODUCTS", function() { return ON_PRODUCTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeSections", function() { return storeSections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_POST_REGISTER", function() { return ON_POST_REGISTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREENINFO", function() { return ON_GREENINFO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREEN_CREATOR", function() { return ON_GREEN_CREATOR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onStore", function() { return onStore; });
@@ -5255,6 +6445,11 @@ const storeSections = {
   CANDY: 'CANDY',
   EBOOK: 'EBOOK'
 };
+/************************
+POSTREGISTER
+*************************/
+
+const ON_POST_REGISTER = 'ON_POST_REGISTER';
 /************************
 GREENPOST
 *************************/
@@ -5309,7 +6504,11 @@ const validateEmpty = value => value && true;
 
 /***/ }),
 
+<<<<<<< HEAD:.next/server/static/development/pages/index.js
 /***/ 3:
+=======
+/***/ 4:
+>>>>>>> perfil:.next/server/static/development/pages/index.js
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -5417,6 +6616,17 @@ module.exports = require("core-js/library/fn/object/define-property");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/get-own-property-descriptor");
+
+/***/ }),
+
+/***/ "core-js/library/fn/object/get-own-property-symbols":
+/*!*********************************************************************!*\
+  !*** external "core-js/library/fn/object/get-own-property-symbols" ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/get-own-property-symbols");
 
 /***/ }),
 

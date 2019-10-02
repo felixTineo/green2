@@ -1,18 +1,24 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+<<<<<<< HEAD
 import { ON_STORE, storeSections, ON_PRODUCTS, ON_GREEN_CREATOR } from '../store/actions';
 import Store from '../components/store/store';
 import StoreCont from '../components/store/store-cont';
 import GreenCreator from '../components/greenpost/creator';
+=======
+import { ON_STORE, storeSections, ON_PRODUCTS, ON_POST_REGISTER } from '../store/actions';
+import Store from '../components/store/store';
+import StoreCont from '../components/store/store-cont';
+import PostRegister from '../components/postregister/postregister';
+import '../node_modules/bootstrap/scss/bootstrap.scss';
+>>>>>>> perfil
 
 /*const Foo = () => {
   const dispatch = useDispatch();
-  const visible = useSelector(state => state.greenstore.visible);
   return(
     <div className="foo_main_cont">
-      <StoreCont><Store /></StoreCont>
-      <button onClick={()=> dispatch({ type: ON_STORE })} >store</button>
-      {console.log(visible)}
+      <button onClick={()=> dispatch({ type: ON_POST_REGISTER })}>PostRegister</button>
+      <PostRegister />
     </div>
   )
 };*/

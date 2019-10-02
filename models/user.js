@@ -3,6 +3,7 @@ const Schema = require('mongoose').Schema;
 
 const UserSchema = new Schema({
   owner: { type: Boolean, default: false },
+  firstTime: { type: Boolean, default: true  },
   mail: String,
   pass: String,
   name: { type: String, default: 'Green' },

@@ -40,7 +40,7 @@ const LoginForm = ({ setLogin }) => {
       dispatch({ type: ON_LOADER, loader: 100 });
       res.data.posts = JSON.stringify(res.data.posts);
       res.data.greenPost = JSON.stringify(res.data.greenPost);
-      Router.push({ pathname: `/perfil`, query: res.data }, `/perfil/${res.data._id}`);
+      Router.replace({ pathname: `/perfil`, query: res.data }, `/perfil/${res.data._id}`, {shallow: true});
       dispatch({ type: ON_LOADER, loader: 0 });
     }catch(err){
       console.log(err);
