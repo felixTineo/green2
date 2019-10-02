@@ -35,6 +35,10 @@ export const storeSections = {
 };
 
 /************************
+POSTREGISTER
+*************************/
+export const ON_POST_REGISTER = 'ON_POST_REGISTER';
+/************************
 GREENPOST
 *************************/
 

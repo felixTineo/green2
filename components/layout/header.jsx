@@ -222,7 +222,6 @@ const Option = () => {
   const onLogout = useCallback(async ()=> {
     try{
       await axios.get('/user/logout');
-      document.cookie = '';
       dispatch({ type: ON_LOGIN, option: false });
       Router.push('/');
     }catch(err){

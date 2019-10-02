@@ -2000,7 +2000,7 @@ class Greenlink extends next_app__WEBPACK_IMPORTED_MODULE_3___default.a {
 /*!**************************!*\
   !*** ./store/actions.js ***!
   \**************************/
-/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, navView, ON_USER, ON_STORE, ON_PRODUCTS, storeSections, ON_GREENINFO, ON_GREEN_CREATOR, onStore */
+/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, navView, ON_USER, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, onStore */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2016,6 +2016,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_STORE", function() { return ON_STORE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_PRODUCTS", function() { return ON_PRODUCTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeSections", function() { return storeSections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_POST_REGISTER", function() { return ON_POST_REGISTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREENINFO", function() { return ON_GREENINFO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREEN_CREATOR", function() { return ON_GREEN_CREATOR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onStore", function() { return onStore; });
@@ -2054,6 +2055,11 @@ const storeSections = {
   CANDY: 'CANDY',
   EBOOK: 'EBOOK'
 };
+/************************
+POSTREGISTER
+*************************/
+
+const ON_POST_REGISTER = 'ON_POST_REGISTER';
 /************************
 GREENPOST
 *************************/
@@ -2149,7 +2155,7 @@ const initialState = {
   },
   greenpost: {
     info: false,
-    creator: true
+    creator: false
   },
   store: {
     visible: true,
@@ -2163,7 +2169,8 @@ const initialState = {
     jewel: false,
     candy: false,
     items: []
-  }
+  },
+  postregister: false
 };
 
 const nav = (state = initialState.nav, action) => {
@@ -2411,11 +2418,20 @@ const greenstore = (state = initialState.store, action) => {
   }
 };
 
+const postregister = (state = initialState.postregister, action) => {
+  if (action.type === _actions__WEBPACK_IMPORTED_MODULE_2__["ON_POST_REGISTER"]) {
+    return !state;
+  }
+
+  return state;
+};
+
 const store = Object(redux__WEBPACK_IMPORTED_MODULE_1__["combineReducers"])({
   nav,
   user,
   greenpost,
-  greenstore
+  greenstore,
+  postregister
 });
 
 /***/ }),

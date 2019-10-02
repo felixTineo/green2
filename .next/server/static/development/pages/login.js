@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -365,12 +365,11 @@ const Option = () => {
   const onLogout = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async () => {
     try {
       await axios__WEBPACK_IMPORTED_MODULE_8___default.a.get('/user/logout');
-      document.cookie = '';
       dispatch({
         type: _store_actions__WEBPACK_IMPORTED_MODULE_7__["ON_LOGIN"],
         option: false
       });
-      next_router__WEBPACK_IMPORTED_MODULE_2___default.a.push('/');
+      window.location = '/';
     } catch (err) {
       console.log(err);
     }
@@ -528,8 +527,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _postregister_postregister__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../postregister/postregister */ "./components/postregister/postregister.jsx");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -543,7 +544,7 @@ const Layout = ({
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("link", {
     rel: "stylesheet",
     href: "/static/animate.min.css"
-  })), __jsx(_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), children, __jsx("div", {
+  })), __jsx(_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), __jsx(_postregister_postregister__WEBPACK_IMPORTED_MODULE_5__["default"], null), children, __jsx("div", {
     style: {
       height: 0
     }
@@ -575,7 +576,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const Logo = ({
-  url
+  url,
+  dark
 }) => {
   const tirangle = __jsx("svg", {
     width: "200",
@@ -589,45 +591,51 @@ const Logo = ({
     cx: "26.548",
     cy: "250.43",
     r: "3.2741",
-    fill: "#fff"
+    fill: dark ? "#8bb940" : "#fff"
   }), __jsx("ellipse", {
     cx: "46.306",
     cy: "289.77",
     r: "3.2741",
-    fill: "#fff"
+    fill: dark ? "#8bb940" : "#fff"
   }), __jsx("path", {
     transform: "matrix(.62733 0 0 .72498 9.012 74.897)",
     d: "m59.521 296.7h-31.551-31.551l31.551-54.648 15.776 27.324z",
     fill: "none",
-    stroke: "#fff",
+    stroke: dark ? "#8bb940" : "#fff",
     strokeWidth: "2"
   }), __jsx("circle", {
     cx: "46.306",
     cy: "289.77",
     r: "3.2741",
-    fill: "#fff"
+    fill: dark ? "#8bb940" : "#fff"
   }), __jsx("circle", {
     cx: "7.2335",
     cy: "289.77",
     r: "3.2741",
-    fill: "#fff"
+    fill: dark ? "#8bb940" : "#fff"
   }), __jsx("path", {
     d: "m25.542 276.71c0.25134 0.37102-0.37613 0.52185-0.61667 0.41774-0.65184-0.28213-0.59357-1.1753-0.21882-1.6511 0.67035-0.85098 1.9605-0.71767 2.6855-0.0199 1.0639 1.024 0.84772 2.7571-0.17903 3.7199-1.3685 1.2832-3.558 0.98044-4.7543-0.37795-1.5055-1.7094-1.1146-4.3608 0.57688-5.7887 2.0486-1.7294 5.1648-1.2495 6.8231 0.7758 1.9543 2.3868 1.385 5.9694-0.97472 7.8575-2.7244 2.1798-6.7746 1.5208-8.8919-1.1736-2.4058-3.0616-1.6568-7.5801 1.3726-9.9264 3.3985-2.6321 8.3859-1.7931 10.961 1.5715 2.8586 3.7353 1.9294 9.1918-1.7704 11.995",
     fill: "none",
-    stroke: "#fff",
+    stroke: dark ? "#8bb940" : "#fff",
     strokeWidth: ".79375"
   }), __jsx("circle", {
     cx: "26.541",
     cy: "250.72",
     r: "3.2741",
-    fill: "#fff"
+    fill: dark ? "#8bb940" : "#fff"
   })));
 
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
     href: url
   }, __jsx("a", {
     className: "logo_main_cont"
-  }, tirangle, __jsx("p", null, "greenlink")));
+  }, tirangle, __jsx("p", {
+    style: dark ? {
+      color: '#8bb940'
+    } : {
+      color: '#fff'
+    }
+  }, "greenlink")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Logo);
@@ -638,6 +646,359 @@ const Logo = ({
 /*!*************************************!*\
   !*** ./components/layout/logo.scss ***!
   \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./components/loader/loader.jsx":
+/*!**************************************!*\
+  !*** ./components/loader/loader.jsx ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "gsap");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(gsap__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _loader_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loader.scss */ "./components/loader/loader.scss");
+/* harmony import */ var _loader_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_loader_scss__WEBPACK_IMPORTED_MODULE_2__);
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+class Loader extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].to('#loader_line', 3.5, {
+      strokeDashoffset: '-1000',
+      repeat: -1,
+      ease: Linear.easeNone
+    });
+  }
+
+  render() {
+    const {
+      dark
+    } = this.props;
+    return __jsx("svg", {
+      className: "green_loader",
+      width: "200",
+      height: "200",
+      viewBox: "0 0 200 200"
+    }, __jsx("polyline", {
+      id: "loader_line",
+      fill: "none",
+      stroke: dark ? "#669f09" : '#fff',
+      strokeWidth: "10px",
+      strokeDasharray: "500",
+      points: "15,185 95,15 185,180 15,180"
+    }), __jsx("circle", {
+      className: "circle",
+      id: "circle-1",
+      fill: dark ? "#669f09" : '#fff',
+      cx: "20",
+      cy: "180",
+      r: "20"
+    }), __jsx("circle", {
+      className: "circle",
+      id: "circle-2",
+      fill: dark ? "#669f09" : '#fff',
+      cx: "95",
+      cy: "20",
+      r: "20"
+    }), __jsx("circle", {
+      className: "circle",
+      id: "circle-3",
+      fill: dark ? "#669f09" : '#fff',
+      cx: "180",
+      cy: "180",
+      r: "20"
+    }));
+  }
+
+}
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (Loader);
+
+/***/ }),
+
+/***/ "./components/loader/loader.scss":
+/*!***************************************!*\
+  !*** ./components/loader/loader.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ "./components/postregister/postregister.jsx":
+/*!**************************************************!*\
+  !*** ./components/postregister/postregister.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _store_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/actions */ "./store/actions.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _postregister_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./postregister.scss */ "./components/postregister/postregister.scss");
+/* harmony import */ var _postregister_scss__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_postregister_scss__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _layout_logo__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../layout/logo */ "./components/layout/logo.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _loader_loader__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../loader/loader */ "./components/loader/loader.jsx");
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+
+
+
+
+
+
+const BtnUpload = () => {
+  return __jsx("div", {
+    className: "btnUpload_main_cont"
+  }, __jsx("label", {
+    htmlFor: "img"
+  }, __jsx("div", {
+    className: "img_cont"
+  }, __jsx("img", {
+    src: "",
+    alt: ""
+  }), __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faUser"]
+  })), __jsx("input", {
+    id: "img",
+    name: "img",
+    type: "file"
+  })));
+};
+
+const Welcome = () => {
+  return __jsx("div", {
+    className: "welcome_main_cont"
+  }, __jsx("h1", null, "Bienvenido a ", __jsx("span", null, "Greenlink!")), __jsx("p", null, "Completa el registro agregando informacion adicional y creando tu primer ", __jsx("strong", null, "GreenPost,"), " de esta manera podras ser encontrado por otros usuarios ademas de recibir obsequios. Recuerda, mietras mas preciso seas mas facil sera que tus seres queridos contacten contigo."));
+};
+
+const Congratulations = () => {
+  const user = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.user);
+  return __jsx("div", {
+    className: "welcome_main_cont"
+  }, __jsx("h1", null, "Felicidades ", user.name), __jsx("p", null, "No olvides crear tu primer", __jsx("strong", null, "GreenPost,")));
+};
+
+const UserInfo = ({
+  values,
+  setValues,
+  onImg
+}) => {
+  const user = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.user);
+  return __jsx("div", {
+    className: "user_postregister_cont"
+  }, __jsx("label", {
+    htmlFor: "perfilImg"
+  }, !values.perfilImgFrontEnd && __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faUser"]
+  }), values.perfilImgFrontEnd && __jsx("img", {
+    src: values.perfilImgFrontEnd,
+    alt: ""
+  }), __jsx("input", {
+    onChange: onImg,
+    type: "file",
+    name: "perfilImg",
+    id: "perfilImg"
+  })), __jsx("p", null, "Elige una foto de perfil"), user.name === 'Green' && __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx("input", {
+    value: values.name,
+    onChange: e => setValues({
+      name: e.currentTarget.value
+    }),
+    placeholder: "Nombre",
+    type: "text"
+  }), __jsx("input", {
+    value: values.lastName,
+    onChange: e => setValues({
+      lastName: e.currentTarget.value
+    }),
+    placeholder: "Apellido",
+    type: "text"
+  }), __jsx("div", {
+    className: "birth_sex_main"
+  }, __jsx("p", null, "Cumplea\xF1os"), __jsx("input", {
+    type: "date",
+    value: values.birthday,
+    onChange: e => setValues({
+      birthday: e.currentTarget.value
+    })
+  }), __jsx("div", {
+    className: "birthday_sex",
+    style: {
+      marginLeft: '1rem'
+    }
+  }, __jsx("p", null, "Sexo"), __jsx("select", {
+    onChange: e => setValues({
+      sex: e.currentTarget.value
+    }),
+    name: "sex",
+    id: "sex"
+  }, __jsx("option", {
+    value: "female"
+  }, "Mujer"), __jsx("option", {
+    value: "male"
+  }, "Hombre"), __jsx("option", {
+    value: "otro"
+  }, "Otro"))))));
+};
+
+const PostRegister = () => {
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
+  const {
+    0: values,
+    1: setValues
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])((state, next) => Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, next), {
+    name: '',
+    lastName: '',
+    birthday: '',
+    sex: '',
+    perfilImgFrontEnd: '',
+    perfilImg: ''
+  });
+  const user = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.user);
+
+  const onImg = e => {
+    const img = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      if (reader.result) {
+        setValues({
+          perfilImgFrontEnd: reader.result,
+          perfilImg: img
+        });
+      } else {
+        setValues({
+          perfilImgFrontEnd: null,
+          perfilImg: null
+        });
+      }
+    };
+
+    reader.readAsDataURL(img);
+    console.log(perfilImg);
+    console.log(img);
+  };
+
+  const {
+    0: section,
+    1: setSection
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])((state, next) => Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, next), {
+    welcome: true,
+    info: false,
+    loader: false,
+    congratulations: false
+  });
+  const visible = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.postregister);
+
+  const onSubmit = async () => {
+    try {
+      const {
+        name,
+        lastName,
+        birthday,
+        sex,
+        perfilImg
+      } = values;
+      const data = new FormData();
+      setSection({
+        info: false,
+        loader: true
+      });
+
+      if (user.name === 'Green') {
+        data.append('name', name);
+        data.append('lastName', lastName);
+        data.append('birthday', birthday);
+        data.append('sex', sex);
+      }
+
+      data.append('perfilImg', perfilImg);
+      await axios__WEBPACK_IMPORTED_MODULE_9___default.a.post('/user/postregister', data);
+      setSection({
+        loader: false,
+        congratulations: true
+      });
+      setTimeout(() => {
+        dispatch({
+          type: _store_actions__WEBPACK_IMPORTED_MODULE_3__["ON_POST_REGISTER"]
+        });
+      }, 3000);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return __jsx(reactstrap__WEBPACK_IMPORTED_MODULE_6__["Modal"], {
+    className: "my_modal",
+    isOpen: visible
+  }, __jsx("div", {
+    className: "postregister_main_cont"
+  }, __jsx("header", null, __jsx(_layout_logo__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    dark: true,
+    url: "/"
+  })), __jsx("div", {
+    className: "body"
+  }, section.welcome && __jsx(Welcome, null), section.info && __jsx(UserInfo, {
+    values: values,
+    setValues: setValues,
+    onImg: onImg
+  }), section.loader && __jsx(_loader_loader__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    dark: true
+  }), section.congratulations && __jsx(Congratulations, null)), __jsx("footer", null, section.welcome && __jsx("button", {
+    onClick: () => setSection({
+      welcome: false,
+      info: true
+    })
+  }, "siguiente"), section.info && __jsx("button", {
+    onClick: onSubmit
+  }, "enviar"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PostRegister);
+
+/***/ }),
+
+/***/ "./components/postregister/postregister.scss":
+/*!***************************************************!*\
+  !*** ./components/postregister/postregister.scss ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2814,10 +3175,12 @@ const LoginForm = ({
       });
       res.data.posts = _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1___default()(res.data.posts);
       res.data.greenPost = _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1___default()(res.data.greenPost);
-      next_router__WEBPACK_IMPORTED_MODULE_13___default.a.push({
+      next_router__WEBPACK_IMPORTED_MODULE_13___default.a.replace({
         pathname: `/perfil`,
         query: res.data
-      }, `/perfil/${res.data._id}`);
+      }, `/perfil/${res.data._id}`, {
+        shallow: true
+      });
       dispatch({
         type: _store_actions__WEBPACK_IMPORTED_MODULE_11__["ON_LOADER"],
         loader: 0
@@ -3069,7 +3432,7 @@ const Login = () => {
 /*!**************************!*\
   !*** ./store/actions.js ***!
   \**************************/
-/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, navView, ON_USER, ON_STORE, ON_PRODUCTS, storeSections, ON_GREENINFO, ON_GREEN_CREATOR, onStore */
+/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, navView, ON_USER, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, onStore */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3085,6 +3448,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_STORE", function() { return ON_STORE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_PRODUCTS", function() { return ON_PRODUCTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "storeSections", function() { return storeSections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_POST_REGISTER", function() { return ON_POST_REGISTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREENINFO", function() { return ON_GREENINFO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREEN_CREATOR", function() { return ON_GREEN_CREATOR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onStore", function() { return onStore; });
@@ -3124,6 +3488,11 @@ const storeSections = {
   EBOOK: 'EBOOK'
 };
 /************************
+POSTREGISTER
+*************************/
+
+const ON_POST_REGISTER = 'ON_POST_REGISTER';
+/************************
 GREENPOST
 *************************/
 
@@ -3133,7 +3502,7 @@ const onStore = () => null;
 
 /***/ }),
 
-/***/ 3:
+/***/ 5:
 /*!*******************************!*\
   !*** multi ./pages/login.jsx ***!
   \*******************************/

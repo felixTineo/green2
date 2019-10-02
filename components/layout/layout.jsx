@@ -2,6 +2,7 @@ import Header from './header';
 import '../../layout/base.scss';
 import Head from 'next/head';
 import Router from 'next/router';
+import PostRegister from '../postregister/postregister';
 
 const Layout = ({ children }) => {
   return(
@@ -10,6 +11,7 @@ const Layout = ({ children }) => {
         <link rel="stylesheet" href="/static/animate.min.css"/>
       </Head>
       <Header />
+      <PostRegister />
       {children}
       <div style={{ height: 0 }} />
     </div>

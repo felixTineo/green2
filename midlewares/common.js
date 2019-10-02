@@ -16,9 +16,9 @@ module.exports=[
   session({
     genid: (req) => uuid(),
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
     resave: false,
-    cookie: { expires: 60000 * 60 * 12, secure: false},
-    store: new redisSessionStore({ client, ttl: 86400 }),
+    saveUninitialized: false,
+    cookie: { maxAge: null, secure: false},
+    store: new redisSessionStore({ client }),
   }),
 ];
