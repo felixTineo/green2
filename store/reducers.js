@@ -79,7 +79,7 @@ export const initialState = {
   },
   greenpost:{
     info: false,
-    creator: true,
+    creator: false,
   },
   store:{
     visible: true,
