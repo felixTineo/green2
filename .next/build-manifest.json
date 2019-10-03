@@ -21,10 +21,6 @@
       "static/chunks/commons.e6815e328379571ae6e5.js",
       "static/runtime/main-0f5dc0c9af57ad023af0.js"
     ],
-    "/foo": [
-      "static/runtime/webpack-9369c5c69dbf6d4912cb.js",
-      "static/runtime/main-0f5dc0c9af57ad023af0.js"
-    ],
     "/index": [
       "static/runtime/webpack-9369c5c69dbf6d4912cb.js",
       "static/css/commons.c8c69b84.chunk.css",

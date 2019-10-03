@@ -495,22 +495,28 @@
       "static/aZxJhpuXn3nCkxCyFHexN/pages/old-index.js": 8,
       "static/aZxJhpuXn3nCkxCyFHexN/pages/old-perfil.js": 9,
       "static/aZxJhpuXn3nCkxCyFHexN/pages/perfil.js": 10,
-      "static/runtime/main.js": 11
+      "static/runtime/main.js": 11,
+      "static/a4Irsb6gGSAAPMxo8Prgr/pages/_app.js": 12,
+      "static/a4Irsb6gGSAAPMxo8Prgr/pages/_error.js": 13,
+      "static/a4Irsb6gGSAAPMxo8Prgr/pages/index.js": 14,
+      "static/a4Irsb6gGSAAPMxo8Prgr/pages/login.js": 15,
+      "static/a4Irsb6gGSAAPMxo8Prgr/pages/old-index.js": 16,
+      "static/a4Irsb6gGSAAPMxo8Prgr/pages/old-perfil.js": 17,
+      "static/a4Irsb6gGSAAPMxo8Prgr/pages/perfil.js": 18
     },
     "bySource": {},
     "usedIds": [
       0,
       1,
-      10,
       11,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      2
     ]
   }
 }
