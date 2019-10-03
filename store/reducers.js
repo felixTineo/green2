@@ -83,7 +83,7 @@ export const initialState = {
     creator: false,
   },
   store:{
-    visible: true,
+    visible: false,
     current: {},
     home: false,
     product: false,

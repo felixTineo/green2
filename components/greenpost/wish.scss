@@ -1,0 +1,97 @@
+@import '../../layout/variables';
+@import '../../layout/mixins';
+
+.wish_main_cont{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .wish_cont{
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    footer{
+      background: $light;
+      color: $dark;
+      p{
+        margin: 0;
+      }
+    }
+    form{
+      background: $light;
+      display: flex;
+      justify-content: flex-end;
+      padding: .3rem;
+      input[type=number]{
+        margin-right: .5rem;
+        width: 15%;
+        padding: .2rem;
+      }
+      input[type='number'] {
+        -moz-appearance:textfield;
+      }
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+      }
+    }
+    button{
+      @include btnFormat();
+      border: 2px solid $prim;
+      color: $prim;
+      transition: 250ms ease;
+      &:hover{
+        background: $prim;
+        color: $light;
+      }
+    }
+  }
+  .wish_loader_cont{
+    background: #bbb;
+    height: 5px;
+    width: 100%;
+    max-width: 100%;
+    .wish_loader{
+      height: 5px;
+      width: 10%;
+      background: $prim;
+    }
+  }
+}
+
+.nowish_main_cont{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $light;
+  button{
+    @include btnFormat();
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    color: $light;
+    transition: 250ms ease;
+    width: 100%;
+    &:hover{
+      color: $prim;
+    }
+    svg{
+      width: 120px;
+    }
+  }
+  button:disabled{
+    color: $light !important;
+  }
+}

@@ -16,7 +16,7 @@ const GreenHome = () => {
   const user = useSelector(state => state.user);
   const { name, lastName, perfilImg, _id } = user;
   return(
-    <div className="greenhome_main_cont">
+    <div className="greenhome_main_cont animated fadeIn">
       <div className="user_info">
         <img src={perfilImg} alt=""/>
         <div className="user_name">

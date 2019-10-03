@@ -3,6 +3,8 @@ import '../../layout/base.scss';
 import Head from 'next/head';
 import Router from 'next/router';
 import PostRegister from '../postregister/postregister';
+import StoreCont from '../store/store-cont';
+import Store from '../store/store';
 
 const Layout = ({ children }) => {
   return(
@@ -12,6 +14,7 @@ const Layout = ({ children }) => {
       </Head>
       <Header />
       <PostRegister />
+      <StoreCont><Store /></StoreCont>
       {children}
       <div style={{ height: 0 }} />
     </div>

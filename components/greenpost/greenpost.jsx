@@ -1,4 +1,4 @@
-import React, {} from 'react';
+import React, { useReducer } from 'react';
 import './greenpost.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,20 +21,21 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import GreenHome from './home';
 import Creator from './creator';
+import Wish from './wish';
 
-const GreenNav = () => {
+const GreenNav = ({ setVisible }) => {
 
   return(
     <nav className="greennav_main_cont">
       <ul>
         <li>
-          <button title="Inicio"><FontAwesomeIcon icon={faHome} /></button>
+          <button onClick={()=>setVisible({ home: true, wish: false })} title="Inicio"><FontAwesomeIcon icon={faHome} /></button>
         </li>
         <li>
           <button title="Reaccionar"><FontAwesomeIcon icon={faHeart} /></button>
         </li>
         <li>
-          <button title="Ver Deseo"><FontAwesomeIcon icon={faGift} /></button>
+          <button onClick={()=>setVisible({ home: false, wish: true })} title="Ver Deseo"><FontAwesomeIcon icon={faGift} /></button>
         </li>
         <li>
           <button title="Comentar"><FontAwesomeIcon icon={faComment} /></button>
@@ -53,6 +54,10 @@ const GreenNav = () => {
 const GreenInfo = () => {
   const info = useSelector(state => state.greenpost.info);
   const dispatch = useDispatch();
+  const [visible, setVisible] = useReducer((state, next) => ({ ...state, ...next }),{
+    home: false,
+    wish: true,
+  })
 
   return(
     <div className={classnames({
@@ -60,11 +65,14 @@ const GreenInfo = () => {
       greeninfo_main_cont_visible: info,
     })}>
       <div className="section_main_cont">
-        <GreenHome />
+        { visible.home && <GreenHome /> }
+        { visible.wish && <Wish /> }
       </div>
       <footer>
         <button onClick={()=> dispatch({ type: ON_GREEN_CREATOR })} title="Crear Post">GreenPost</button>
-        <GreenNav />
+        <GreenNav
+          setVisible={setVisible}
+        />
       </footer>
     </div>
   )
