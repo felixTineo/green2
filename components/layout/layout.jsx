@@ -5,16 +5,18 @@ import Router from 'next/router';
 import PostRegister from '../postregister/postregister';
 import StoreCont from '../store/store-cont';
 import Store from '../store/store';
+import FloatingNotes from '../floating-notes/floating-notes';
 
 const Layout = ({ children }) => {
   return(
-    <div className="lauout_main_cont">
+    <div className="lauout_main_cont" style={{ position: 'relative' }}>
       <Head>
         <link rel="stylesheet" href="/static/animate.min.css"/>
       </Head>
       <Header />
       <PostRegister />
       <StoreCont><Store /></StoreCont>
+      <FloatingNotes />
       {children}
       <div style={{ height: 0 }} />
     </div>

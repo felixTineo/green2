@@ -71,11 +71,37 @@
     position: absolute;
     background: $light;
     margin: 0;
-    padding: 0;
+    padding: 0 !important;
     width: 100%;
     list-style: none;
     border: 1px solid $prim;
     border-top: none;
+    button{
+      width: 100%;
+    }
+    .user_search_cont{
+      display: flex;
+      justify-content: space-between;
+      padding: .3rem;
+      align-items: center;
+      transition: 250ms ease;
+      &:hover{
+        cursor: pointer;
+        background: $prim;
+        color: #fff;
+      }
+    }
+    img{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+    }
+    p{
+      margin: 0;
+      text-transform: capitalize;
+    }
   }
 }
 

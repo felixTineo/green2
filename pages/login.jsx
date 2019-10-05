@@ -17,23 +17,32 @@ const LoginForm = ({ setLogin }) => {
   const [pass, setPass] = useState('');
   const [popMail, setPopMail] = useState(false);
   const [popPass, setPopPass] = useState(false);
+  const [active, setActive] = useState(false);
   const dispatch = useDispatch();
   const onSubmit = async (e) => {
     try{
       e.preventDefault();
       let count = 0;
+      setActive(true);
       let interval = setInterval(()=> {
-        count = count + 25;
-        dispatch({ type: ON_LOADER, loader: count });
+        count = count + 15;
+        if(count >= 75){
+          clearInterval(interval);
+          dispatch({ type: ON_LOADER, loader: 99 });
+        } else{
+          dispatch({ type: ON_LOADER, loader: count });
+        }
       }, 1000);
       const data = { mail, pass };
       const res = await axios.post('/user/login', data);
       clearInterval(interval);
       if(res.data === 'mail'){
+        setActive(false);
         dispatch({ type: ON_LOADER, loader: 0 });
         return setPopMail(true);
       }
       if(res.data === 'pass'){
+        setActive(false);
         dispatch({ type: ON_LOADER, loader: 0 });
         return setPopPass(true);
       }
@@ -41,7 +50,7 @@ const LoginForm = ({ setLogin }) => {
       res.data.posts = JSON.stringify(res.data.posts);
       res.data.greenPost = JSON.stringify(res.data.greenPost);
       Router.replace({ pathname: `/perfil`, query: res.data }, `/perfil/${res.data._id}`, {shallow: true});
-      dispatch({ type: ON_LOADER, loader: 0 });
+      dispatch({ type: ON_LOADER, loader: 100 });
     }catch(err){
       console.log(err);
       dispatch({ type: ON_LOADER, loader: 0 });
@@ -57,7 +66,7 @@ return(
     <form onSubmit={onSubmit}>
       <label htmlFor="mail">
         <p>usuario</p>
-        <input autoComplete="false" onBlur={()=> setPopMail(false)} onFocus={()=> setPopMail(false)} id="mail" value={mail} onChange={(e)=> setMail(e.currentTarget.value)} type="text"/>
+        <input disabled={active} autoComplete="false" onBlur={()=> setPopMail(false)} onFocus={()=> setPopMail(false)} id="mail" value={mail} onChange={(e)=> setMail(e.currentTarget.value)} type="text"/>
         <Popover isOpen={popMail} target="mail" placement="bottom">
           <PopoverBody>
             <span>El correo no es correcto, por favor verifiquelo e intentelo de nuevo</span>
@@ -66,7 +75,7 @@ return(
       </label>
       <label htmlFor="pass">
         <p>contraseña</p>
-        <input onBlur={()=> setPopPass(false)} onFocus={()=> setPopPass(false)} id="pass" value={pass} onChange={(e)=> setPass(e.currentTarget.value)} type="password"/>
+        <input disabled={active} onBlur={()=> setPopPass(false)} onFocus={()=> setPopPass(false)} id="pass" value={pass} onChange={(e)=> setPass(e.currentTarget.value)} type="password"/>
         <Popover isOpen={popPass} target="pass" placement="bottom">
           <PopoverBody>
             <span>El correo no es correcto, por favor verifiquelo e intentelo de nuevo</span>
@@ -74,8 +83,8 @@ return(
         </Popover>
       </label>
       <footer className="login_register_cont">
-        <button onClick={()=>setLogin(false)} className="btn_loogin_register btn_inactive" type="button">registro</button>
-        <button className="btn_loogin_register btn_active" type="submit">login</button>
+        <button disabled={active} onClick={()=>setLogin(false)} className="btn_loogin_register btn_inactive" type="button">registro</button>
+        <button disabled={active} className="btn_loogin_register btn_active" type="submit">login</button>
       </footer>
     </form>
   </div>
@@ -116,7 +125,7 @@ const RegisterForm = ({ setLogin }) => {
         dispatch({ type: ON_LOADER, loader: 0 });
         setMailPop(true);
       } else {
-        dispatch({ type: ON_LOADER, loader: 0 });
+        dispatch({ type: ON_LOADER, loader: 100 });
         Router.push({ pathname: `/perfil?id=${res.data.id}`, query: res.data }, `/perfil/${res.data._id}`);
       }
     }catch(err){

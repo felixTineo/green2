@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { Popover, PopoverBody } from 'reactstrap';
 import uuid from 'uuid/v1';
 import io from 'socket.io-client';
+import MyLink from '../mylink/link';
 
 const DownBar = () => {
   const [down, setDown] = useState(false);
@@ -39,12 +40,12 @@ const SearchBar = () => {
   const testList = ["felix", "luis", "maximiliano", "francisco", 'teresa', 'yleana'];
   const [suggest, setSuggest] = useState([]);
 
-  const onSuggest = (e) => {
+  const onSuggest = async (e) => {
     const value = e.target.value;
     if(value){
       value.toLocaleLowerCase();
-      const suggest = testList.filter(name => name.toLocaleLowerCase().indexOf(value) > -1);
-      setSuggest(suggest);
+      const res = await axios.get(`/user/search/${value}`);
+      setSuggest(res.data);
     } else{
       setSuggest([]);
     }
@@ -58,7 +59,16 @@ const SearchBar = () => {
       </div>
       <ul style={{ padding: suggest.length > 0 ? '.2rem' : '0' }} className="sugesstlist">
         {
-          suggest.map(item => <li>{item}</li>)
+          suggest.map(item => (
+            <li key={uuid()}>
+              <MyLink id={item._id}>
+                <div className="user_search_cont">
+                  <img src={item.perfilImg} alt=""/>
+                  <p>{item.fullName}</p>
+                </div>
+              </MyLink>
+            </li>
+          ))
         }
       </ul>
     </div>
@@ -223,7 +233,7 @@ const Option = () => {
     try{
       await axios.get('/user/logout');
       dispatch({ type: ON_LOGIN, option: false });
-      Router.push('/');
+      Router.push('/login');
     }catch(err){
       console.log(err);
     }
@@ -247,7 +257,7 @@ const Option = () => {
 }
 
 const Wallet = () => {
-  const wallet = useSelector(state => state.nav.wallet);
+  const wallet = useSelector(state => state.nav.notifications.wallet);
 
   return (
   <div className="btnicon_cont">
@@ -275,7 +285,7 @@ const BarLoader = () => {
   const dispatch = useDispatch();
   const onLoader = useCallback((loader)=> dispatch({ type: ON_LOADER, loader }));
 
-  return <div className="barloader" style={{ width: `${loader}%` }} />
+  return <div className="barloader" style={{ width: `${loader}%`, opacity: loader > 0 ? 1 : 0 }} />
 }
 
 

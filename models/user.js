@@ -11,7 +11,7 @@ const UserSchema = new Schema({
   birthday: { type: Date, default: '01/01/1970' },
   sex: String,
   posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
-  greenPost: { type: Schema.Types.ObjectId, ref: 'GreenPost' },
+  greenPost: [{ type: Schema.Types.ObjectId, ref: 'GreenPost' }],
   perfilImg: { type: String, default: `/static/random/r${Math.floor((Math.random() * 16) +1)}.jpg` },
   originCity: { type: String, default: "mundo" },
   actualCity: { type: String, default: 'mundo' },

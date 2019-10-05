@@ -5,10 +5,12 @@ const PostSchema = require('../models/post');
 const Notifications = require('../classes/notifications');
 const client = require('../midlewares/client');
 const upload = require('../midlewares/upload');
+const ResumeUser = require('../classes/resume-user');
+const search = require('../functions/search');
 
 router.post('/register', async(req, res) => {
   try{
-    const { mail } = req.body;
+    const { mail, name } = req.body;
     const checkMail = await UserSchema.findOne({ mail });
     if(checkMail) return res.status(200).send('mail');
     const newUser = new UserSchema(req.body);
@@ -16,12 +18,14 @@ router.post('/register', async(req, res) => {
     newUser.greenPost = newPost.id;
     await newUser.save();
     await newPost.save();
-    console.log(req.session.user);
     req.session.user = {};
     delete req.session.user;
-    console.log(req.session.user);
     req.session.user = newUser;
-    console.log(req.session.user);
+    if(name){
+      const user = new ResumeUser(newUser);
+      await client.lpushAsync('users', JSON.stringify(user));
+    }
+    newUser.owner = true;
     res.status(200).json(newUser);
   }catch(err){
     console.log(err);
@@ -35,12 +39,14 @@ router.post('/postregister', upload.single('perfilImg') ,async(req, res) => {
       ...req.body,
       firstTime: false,
       perfilImg: req.file.location,
+      wallet: 50,
     };
     console.log(update);
     const id = req.session.user._id;
-    console.log(id);
-    await UserSchema.findByIdAndUpdate(id, update);
-    res.sendStatus(200);
+    const updated = await UserSchema.findByIdAndUpdate(id, update, { new: true });
+    const user = new ResumeUser(updated);
+    await client.lpushAsync('users', JSON.stringify(user));
+    res.status(200).json(update);
   }catch(err){
     res.status(200).send(err);
   }
@@ -52,18 +58,35 @@ router.post('/login', async(req, res) => {
     const user = await UserSchema.findOne({ mail }).populate('posts').populate('greenPost');
     if(!user) return res.status(200).send('mail');
     if(user.pass !== pass) res.status(200).send('pass');
-    console.log(req.session.user);
     req.session.user = {};
     delete req.session.user;
-    console.log(req.session.user);
+    delete user.pass;
+    user.owner = true;
     req.session.user = user;
-    console.log(req.session.user);
     setTimeout(()=> res.status(200).json(user), 10000);
   }catch(err){
     console.log(err);
     res.sendStatus(501);
   }
 });
+
+router.get('/perfil/:_id', async(req, res) => {
+  try{
+    const { _id } = req.params;
+    const user = await UserSchema.findById(_id).populate('greenPost').populate('posts');
+    delete user.pass;
+    console.log(user);
+    if(_id === req.session.user._id){
+      user.owner = true;
+      return res.status(200).json(user);
+    } else {
+      return res.status(200).json(user);
+    }
+  }catch(err){
+    console.log(err);
+    res.status(500).send(err);
+  }
+})
 
 router.get('/notifications', async(req,res) => {
   try{
@@ -75,6 +98,16 @@ router.get('/notifications', async(req,res) => {
     res.sendStatus(501);
   }
 });
+
+router.get('/search/:name', async(req, res) => {
+  try{
+    const { name } = req.params;
+    const suggest = await search(name, 'users');
+    res.status(200).json(suggest);
+  } catch(err){
+    console.log(err);
+  }
+})
 
 router.get('/logout', async(req, res) => {
   try{

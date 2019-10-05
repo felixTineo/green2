@@ -13,6 +13,9 @@ import {
   storeSections,
   ON_PRODUCTS,
   ON_POST_REGISTER,
+  ON_WALLET,
+  ON_UPDATE,
+  ON_GREENPOST,
 } from './actions';
 
 export const initialState = {
@@ -23,6 +26,7 @@ export const initialState = {
     wallet: 0,
     notifications: {
       id: '',
+      wallet: 0,
       notes: {
         view: false,
         items: [],
@@ -45,11 +49,7 @@ export const initialState = {
     name: '',
     lastName: '',
     birthday: '',
-    greenPost: {
-      likes:[],
-      comments: [],
-      wish: {},
-    },
+    greenPost: [],
     perfilImg: '',
     originCity: '',
     actualCity: '',
@@ -81,6 +81,11 @@ export const initialState = {
   greenpost:{
     info: false,
     creator: false,
+    current:{
+      likes:[],
+      comments: [],
+      wish: {},
+    },
   },
   store:{
     visible: false,
@@ -108,6 +113,10 @@ const nav = (state= initialState.nav, action) => {
       return Object.assign({}, state, { loader: action.loader });
     case ON_LOGIN:
       return Object.assign({}, state, { login: action.option });
+    case ON_WALLET:
+      return Object.assign({}, state, {
+        notifications: Object.assign({}, state.notifications, { wallet: state.wallet + action.coin })
+      });
     case ON_VIEW_NAV:
       if(action.note === navView.GIFT){
         return Object.assign({}, state, {
@@ -170,6 +179,8 @@ const user = (state= initialState.user, action) => {
   switch(action.type){
     case ON_USER:
       return Object.assign({}, state, action.user);
+    case ON_UPDATE:
+      return Object.assign({}, state, { ...action.payload });
     default:
       return state;
   }
@@ -181,6 +192,8 @@ const greenpost = (state = initialState.greenpost, action) => {
       return Object.assign({}, state, { info: !state.info });
     case ON_GREEN_CREATOR:
       return Object.assign({}, state, { creator: !state.creator });
+    case ON_GREENPOST:
+      return Object.assign({}, state, { current: action.greenpost });
     default:
       return state;
   }

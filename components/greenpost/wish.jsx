@@ -7,7 +7,7 @@ import { faGift } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
 const Wish = () => {
-  const wish = useSelector(state => state.user.greenPost.wish);
+  const wish = useSelector(state => state.greenpost.current.wish);
   const user = useSelector(state => state.user);
   const [tip, setTip] = useState(0);
   const dispatch = useDispatch();

@@ -14,6 +14,7 @@ const GreenInfoIcon = ({ icon, info }) => {
 
 const GreenHome = () => {
   const user = useSelector(state => state.user);
+  const greenpost = useSelector(state => state.greenpost.current);
   const { name, lastName, perfilImg, _id } = user;
   return(
     <div className="greenhome_main_cont animated fadeIn">
@@ -24,9 +25,9 @@ const GreenHome = () => {
           <button type="button" title="Enviar solicitud de amistad"><FontAwesomeIcon icon={faUserPlus} /></button>
         </div>
         <ul>
-          <GreenInfoIcon info={user.greenPost.likes.length} icon={faHeart} />
-          <GreenInfoIcon info={user.greenPost.comments.length} icon={faComment} />
-          <GreenInfoIcon info={user.greenPost.wish.found} icon={faGift} />
+          <GreenInfoIcon info={greenpost.likes.length} icon={faHeart} />
+          <GreenInfoIcon info={greenpost.comments.length} icon={faComment} />
+          <GreenInfoIcon info={greenpost.wish.found} icon={faGift} />
         </ul>
         <p>{user.greenPost.history}</p>
       </div>

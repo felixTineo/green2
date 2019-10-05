@@ -55,8 +55,8 @@ const GreenInfo = () => {
   const info = useSelector(state => state.greenpost.info);
   const dispatch = useDispatch();
   const [visible, setVisible] = useReducer((state, next) => ({ ...state, ...next }),{
-    home: false,
-    wish: true,
+    home: true,
+    wish: false,
   })
 
   return(
@@ -91,14 +91,13 @@ const BtnInfo = () => {
         btngreen_info_rotate: info,
       })}
     >
-      {console.log(green)}
       <FontAwesomeIcon icon={faArrowCircleLeft} />
     </button>
   )
 }
 
 const GreenPost = () => {
-  const green = useSelector(state => state.user.greenPost);
+  const green = useSelector(state => state.greenpost.current);
   const img = green.img;
   return(
     <div style={{ backgroundImage: `url(${img})` }} className="greenpost_main_cont">

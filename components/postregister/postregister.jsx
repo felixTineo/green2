@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ON_POST_REGISTER, ON_GREEN_CREATOR } from '../../store/actions';
+import { ON_POST_REGISTER, ON_GREEN_CREATOR, ON_UPDATE, ON_WALLET } from '../../store/actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { Modal } from 'reactstrap';
@@ -133,7 +133,9 @@ const onImg = (e) => {
         data.append('sex', sex);
       }
       data.append('perfilImg', perfilImg);
-      await axios.post('/user/postregister', data);
+      const res = await axios.post('/user/postregister', data);
+      dispatch({ type: ON_UPDATE, payload: res.data });
+      dispatch({ type: ON_WALLET, coin: 50 });
       setSection({ loader: false, congratulations: true });
       setTimeout(()=> {
         dispatch({ type: ON_POST_REGISTER });

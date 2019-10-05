@@ -1,6 +1,7 @@
 class Notifications{
-  constructor({ notes, friends, gifts, _id }){
+  constructor({ notes, friends, gifts, _id, wallet }){
     this.id = _id;
+    this.wallet= wallet;
     this.notes = {
       view: false,
       items: notes,

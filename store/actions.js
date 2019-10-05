@@ -7,6 +7,7 @@ export const ON_VIEW_NAV = 'ON_VIEW_NAV';
 export const ON_NOTE = 'ON_NOTE';
 export const ON_LOADER = 'ON_LOADER';
 export const ON_LOGIN = 'ON_LOGIN';
+export const ON_WALLET = 'ON_WALLET';
 export const navView = {
   GIFT: 'GIFT',
   NOTES: 'NOTES',
@@ -16,6 +17,7 @@ export const navView = {
 USER
 ************************/
 export const ON_USER = 'ON_USER';
+export const ON_UPDATE = 'ON_UPDATE';
 
 /************************
 STORE
@@ -44,5 +46,6 @@ GREENPOST
 
 export const ON_GREENINFO = 'ON_GREENINFO';
 export const ON_GREEN_CREATOR = 'ON_GREEN_CREATOR';
+export const ON_GREENPOST = 'ON_GREENPOST';
 
 export const onStore = () => null;
