@@ -2,7 +2,8 @@ const dotEnv = require('dotenv');
 dotEnv.config();
 const mongoose = require('mongoose');
 //const mongoDB = process.env.URI_DB;
-const mongoDB = process.env.URI_DB_LOCAL;
+//const mongoDB = process.env.URI_DB_LOCAL;
+const mongoDB = process.env.URI_DB_DOCKER;
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
