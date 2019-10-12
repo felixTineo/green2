@@ -1,0 +1,47 @@
+{
+  "modules": {
+    "byIdentifier": {
+      "multi private-next-pages/_app.js": 0,
+      "multi private-next-pages/index.js": 1,
+      "multi private-next-pages/login.jsx": 2,
+      "multi private-next-pages/old-index.jsx": 3,
+      "multi private-next-pages/old-perfil.jsx": 4,
+      "multi private-next-pages/perfil.jsx": 5,
+      "multi next/dist/pages/_error": 6,
+      "multi next/dist/pages/_document": 7
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7
+    }
+  },
+  "chunks": {
+    "byName": {
+      "static/VTUqLk87YU_6pu_ldcuWF/pages/_app.js": 0,
+      "static/VTUqLk87YU_6pu_ldcuWF/pages/_document.js": 1,
+      "static/VTUqLk87YU_6pu_ldcuWF/pages/_error.js": 2,
+      "static/VTUqLk87YU_6pu_ldcuWF/pages/index.js": 3,
+      "static/VTUqLk87YU_6pu_ldcuWF/pages/login.js": 4,
+      "static/VTUqLk87YU_6pu_ldcuWF/pages/old-index.js": 5,
+      "static/VTUqLk87YU_6pu_ldcuWF/pages/old-perfil.js": 6,
+      "static/VTUqLk87YU_6pu_ldcuWF/pages/perfil.js": 7
+    },
+    "bySource": {},
+    "usedIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  }
+}

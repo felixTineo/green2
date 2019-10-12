@@ -7,7 +7,7 @@ const io = require('socket.io')(http);
 const adapter = require('socket.io-redis');
 
 io.adapter(adapter({
-  host: 'localhost',
+  host: 'redis',
   port: 6379,
 }));
 
