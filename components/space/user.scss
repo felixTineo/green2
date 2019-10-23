@@ -4,7 +4,7 @@
 .user_main_cont{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  //justify-content: center;
   align-items: center;
   padding: 1rem;
   height: 100%;
@@ -24,7 +24,7 @@
     border-right: 3px solid $prim;
     #arrow_right{
       position: absolute;
-      top: 5%;
+      //top: 5%;
       right: -41px;
       background: #fff;
     }
@@ -67,6 +67,9 @@
         border: 1px solid $prim;
         color: $prim;
         margin-left: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &:hover{
           background: $prim;
           color: $light;
@@ -85,6 +88,9 @@
   li{
     margin: .5rem 0;
     flex-shrink: 0;
+    button{
+      @include btnFormat();
+    }
   }
   svg{
     width: 15px;

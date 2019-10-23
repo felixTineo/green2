@@ -1,13 +1,8 @@
 const router = require('express').Router();
 const UserSchema = require('../models/user');
 const ResumeUser = require('../classes/resume-user');
-const io = require('socket.io')();
-const adapter = require('socket.io-redis');
-
-io.adapter(adapter({
-  host: 'redis',
-  port: 6379,
-}));
+const io = require('../midlewares/io');
+const uuid = require('uuid/v1');
 
 router.get('/foo', (req, res) => {
   const payload = 'hola'
@@ -27,8 +22,9 @@ router.get('/send/:id', async(req, res) => {
     await UserSchema.findByIdAndUpdate(current._id, { $push: { friends: target } });
     await UserSchema.findByIdAndUpdate(target._id, { $push: { friends: current } });
     const payload = {
-      note: 'friendReq',
-      action: 'FRIEND',
+      id: uuid(),
+      type: 'FRIEND',
+      note: 'FRIEND',
       user: current,
     }
     io.emit(`nav:${targetUser._id}`, payload);

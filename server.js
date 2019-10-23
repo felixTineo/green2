@@ -7,7 +7,7 @@ const io = require('socket.io')(http);
 const adapter = require('socket.io-redis');
 
 io.adapter(adapter({
-  host: 'redis',
+  host: 'localhost',
   port: 6379,
 }));
 
@@ -15,7 +15,7 @@ const indexRoutes = require('./routes/index');
 const userRoutes = require('./routes/user');
 const friendRoutes = require('./routes/friend-req');
 const postRoutes = require('./routes/post');
-
+const greenRoutes = require('./routes/greenpost');
 
 app.prepare().then(()=> {
 
@@ -26,7 +26,8 @@ app.prepare().then(()=> {
   server.use('/user', userRoutes);
   server.use('/friend', friendRoutes);
   server.use('/post', postRoutes);
+  server.use('/green', greenRoutes);
   server.use('/', indexRoutes);
   server.get('*', handler);
   http.listen(3000, ()=> console.log('server on port 3000'));
-})
+});

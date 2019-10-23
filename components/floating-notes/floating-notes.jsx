@@ -1,39 +1,68 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { OFF_FLOAT } from '../../store/actions'
 import './floating-notes.scss';
 import io from 'socket.io-client';
 import MyLink from '../mylink/link';
+import uuid from 'uuid/v1';
 
-const notification = {
-  noteId: '123456789',
-  type: 'Reaccion',
-  msg: 'Reacciono a tu post',
-  user: {
-    perfilImg: '/static/random/r2.jpg',
-    fullName: 'Green Star',
-    id: '123456789',
-  }
-}
-
-const Note = ({ note, rmNote }) => {
-  const { type, user, msg } = note;
+const Note = ({ note }) => {
+  const dispatch = useDispatch();
+  const { user } = note;
+  useEffect(()=> {
+    setTimeout(() => {
+      dispatch({ type: OFF_FLOAT, id: note.id })
+    }, 6000)
+  },[note]);
+  const date = new Date(Date.now());
   return(
-      <div className="floating_note_cont shadow animated fadeInLeft">
+      <div id={note.id} className="floating_note_cont shadow animated">
         <header>
-          <p>{note.type}</p>
-          <button id={note.noteId} onClick={rmNote} >x</button>
+          <p>
+            {
+              (()=> {
+                switch (note.type) {
+                  case 'REACTION':
+                    return 'Reaccion';
+                  case 'FRIEND':
+                    return 'Solicitud'
+                  case 'COMMENT':
+                    return 'Comentario'
+                  case 'GIFT':
+                    return 'Regalo'
+                }
+              })()
+            }
+          </p>
+          <button onClick={()=> dispatch({ type: OFF_FLOAT, id: note.id })} >x</button>
         </header>
-        <MyLink>
+        <MyLink id={user._id}>
           <div className="body">
-            <img src={user.perfilImg} alt=""/>
+            <img src={note.type === 'GIFT' ? user.img : user.perfilImg} alt=""/>
             <div className="info">
-              <p>{user.fullName}</p>
-              <small>{msg}</small>
+              <p>{note.type === 'GIFT' ? user.name : user.fullName}</p>
+              <small>
+                {
+                  (()=> {
+                    switch (note.type) {
+                      case 'REACTION':
+                        return 'Reacciono a uno de tus posts';
+                      case 'FRIEND':
+                        return 'Quiere Ser Tu Amigo'
+                      case 'COMMENT':
+                        return 'Comento uno de tus posts'
+                      case 'GIFT':
+                        return 'Has recibido un regalo'
+                    }
+                  })()
+                }
+              </small>
             </div>
           </div>
         </MyLink>
         <style jsx>{`
           div.floating_note_cont{
-            width: 60%;
+            width: 65%;
             background: #fff;
             position: relative;
             left: 100%;
@@ -76,7 +105,11 @@ const Note = ({ note, rmNote }) => {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+          }
+          small{
+            font-size: 11px;
+            margin: 0;
           }
           img{
             width: 60px;
@@ -92,31 +125,26 @@ const Note = ({ note, rmNote }) => {
 }
 
 const FloatingNotes = () => {
-  const [notes, setNotes] = useState([notification]);
-  const rmNote = (e) => {
-    const newNotes = notes.filter(note => note.noteId !== e.target.id);
-    setNotes(newNotes);
-  }
+  const notes = useSelector(state => state.floatingnotes);
   return(
     <div className="floating_main_cont">
       {
-        notes.map(note => <Note note={note} rmNote={rmNote} />)
+        notes.map((note, i) => <div className="animated fadeInLeft"><Note key={uuid()} note={note} /></div>)
       }
-    <style jsx>{`
-      .floating_main_cont{
-        position: fixed;
-        top: 0;
-        left: -30%;
-        border: 1px solid red;
-        width: 30%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        z-index: 50;
-      }
-    `}
-    </style>
+      <style jsx>{`
+        .floating_main_cont{
+          position: fixed;
+          top: 0;
+          left: -30%;
+          border: 1px solid red;
+          width: 30%;
+          height: 100vh;
+          display: flex;
+          flex-direction: column-reverse;
+          z-index: 50;
+        }
+      `}
+      </style>
     </div>
   )
 }

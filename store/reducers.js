@@ -7,8 +7,13 @@ import {
   ON_LOADER,
   ON_LOGIN,
   ON_USER,
+  ON_GIFT,
   ON_GREENINFO,
   ON_GREEN_CREATOR,
+  ON_GREEN_LIKE,
+  OFF_GREEN_LIKE,
+  ON_GREEN_WISH_FOUND,
+  ON_GREEN_COMMENT,
   ON_STORE,
   storeSections,
   ON_PRODUCTS,
@@ -16,6 +21,19 @@ import {
   ON_WALLET,
   ON_UPDATE,
   ON_GREENPOST,
+  ON_FLOAT,
+  OFF_FLOAT,
+  ON_VAULT,
+  ON_VAULT_HOME,
+  ON_VAULT_PRODUCT,
+  ON_SPACE_HOME,
+  ON_SPACE_WALL,
+  ON_SPACE_CHAT,
+  ON_SPACE_FRIENDS,
+  ON_SPACE_EVENTS,
+  spaceSections,
+  ON_WALL_TOP,
+  ON_WALL_POSTS,
 } from './actions';
 
 export const initialState = {
@@ -49,7 +67,9 @@ export const initialState = {
     name: '',
     lastName: '',
     birthday: '',
-    greenPost: [],
+    greenPost: [{
+      _id:'',
+    }],
     perfilImg: '',
     originCity: '',
     actualCity: '',
@@ -79,6 +99,7 @@ export const initialState = {
     friends: [],
   },
   greenpost:{
+    _id: '',
     info: false,
     creator: false,
     current:{
@@ -92,7 +113,7 @@ export const initialState = {
     current: {},
     home: false,
     product: false,
-    music: true,
+    music: false,
     ebook: false,
     toy: false,
     tv: false,
@@ -100,7 +121,26 @@ export const initialState = {
     candy: false,
     items: [],
   },
+  vault:{
+    visible: false,
+    home: true,
+    product: false,
+    current: {},
+    items: [],
+  },
   postregister: false,
+  floatingnotes:[],
+  space:{
+    home: true,
+    wall: false,
+    chat: false,
+    friends: false,
+    envents: false,
+  },
+  wall:{
+    top:[],
+    posts:[],
+  }
 };
 
 const nav = (state= initialState.nav, action) => {
@@ -115,7 +155,7 @@ const nav = (state= initialState.nav, action) => {
       return Object.assign({}, state, { login: action.option });
     case ON_WALLET:
       return Object.assign({}, state, {
-        notifications: Object.assign({}, state.notifications, { wallet: state.wallet + action.coin })
+        notifications: Object.assign({}, state.notifications, { wallet: state.notifications.wallet + action.coin })
       });
     case ON_VIEW_NAV:
       if(action.note === navView.GIFT){
@@ -140,12 +180,14 @@ const nav = (state= initialState.nav, action) => {
         });
       }
     case ON_NOTE:
+      const { gifts, notes, friendReq } = state.notifications;
+
       if(action.payload.note === navView.GIFT){
         return Object.assign({}, state, {
           notifications: Object.assign({}, state.notifications, {
             gifts: Object.assign({}, state.notifications.gifts, {
               view: false,
-              items: action.payload.items,
+              items: [action.payload.user, ...gifts.items],
             })
           })
         })
@@ -155,7 +197,7 @@ const nav = (state= initialState.nav, action) => {
           notifications: Object.assign({}, state.notifications, {
             notes: Object.assign({}, state.notifications.notes, {
               view: false,
-              items: action.payload.items,
+              items: [action.payload.user, ...notes.items],
             })
           })
         })
@@ -165,7 +207,7 @@ const nav = (state= initialState.nav, action) => {
           notifications: Object.assign({}, state.notifications, {
             friendReq: Object.assign({}, state.notifications.friendReq, {
               view: false,
-              items: action.payload.items,
+              items: [action.payload.user, ...friendReq.items],
             })
           })
         })
@@ -189,11 +231,32 @@ const user = (state= initialState.user, action) => {
 const greenpost = (state = initialState.greenpost, action) => {
   switch (action.type) {
     case ON_GREENINFO:
-      return Object.assign({}, state, { info: !state.info });
+      return Object.assign({}, state, { info: action.option });
     case ON_GREEN_CREATOR:
       return Object.assign({}, state, { creator: !state.creator });
     case ON_GREENPOST:
       return Object.assign({}, state, { current: action.greenpost });
+    case ON_GREEN_LIKE:
+      return Object.assign({}, state, {
+        current: Object.assign({}, state.current, { likes: [action.like, ...state.current.likes] })
+      });
+    case OFF_GREEN_LIKE:
+      const nextState = state.current.likes.filter(like => like._id !== action.uid);
+      return Object.assign({}, state, {
+        current: Object.assign({}, state.current, { likes: nextState })
+      });
+    case ON_GREEN_WISH_FOUND:
+      return Object.assign({}, state, {
+        current: Object.assign({}, state.current, {
+          wish: Object.assign({}, state.current.wish, {
+            found: state.current.wish.found + action.found
+          })
+        })
+      });
+    case ON_GREEN_COMMENT:
+      return Object.assign({}, state, {
+        current: Object.assign({}, state.current, { comments: [...state.current.comments, action.comment] })
+      })
     default:
       return state;
   }
@@ -305,6 +368,57 @@ const postregister = (state = initialState.postregister, action) => {
     return !state;
   }
   return state;
+};
+
+const floatingnotes = (state = initialState.floatingnotes, action) => {
+  if(action.type === ON_FLOAT){
+    return [...state, action.payload];
+  }
+  if(action.type === OFF_FLOAT){
+    const nextState = state.filter(note => note.id !== action.id);
+    return nextState;
+  }
+  return state;
+};
+
+const vault = (state = initialState.vault, action) => {
+  switch (action.type) {
+    case ON_VAULT:
+      return Object.assign({}, state, { visible: !state.visible });
+    case ON_VAULT_HOME:
+      return Object.assign({}, state, { home: true, product: false });
+    case ON_VAULT_PRODUCT:
+      return Object.assign({}, state, { home: false, product: true, current: action.product })
+    default:
+      return state;
+  }
+};
+
+const space = (state = initialState.space, action) => {
+  switch (action.type) {
+    case ON_SPACE_HOME:
+      return Object.assign({}, state, { home: true, wall: false, chat: false, friends: false, events: false });
+    case ON_SPACE_WALL:
+      return Object.assign({}, state, { home: false, wall: true, chat: false, friends: false, events: false });
+    case ON_SPACE_CHAT:
+      return Object.assign({}, state, { home: false, wall: false, chat: true, friends: false, events: false });
+    case ON_SPACE_FRIENDS:
+      return Object.assign({}, state, { home: false, wall: false, chat: false, friends: true, events: false });
+    case ON_SPACE_EVENTS:
+      return Object.assign({}, state, { home: false, wall: false, chat: false, friends: false, events: true });
+    default:
+      return state;
+  }
+};
+const wall = (state = initialState.wall, action) => {
+  switch (action.type) {
+    case ON_WALL_TOP:
+      return Object.assign({}, state, { top: action.posts });
+    case ON_WALL_POSTS:
+      return Object.assign({}, state, { posts: action.posts });
+    default:
+      return state;
+  }
 }
 
 export const store = combineReducers({
@@ -313,4 +427,8 @@ export const store = combineReducers({
   greenpost,
   greenstore,
   postregister,
+  floatingnotes,
+  vault,
+  space,
+  wall,
 });

@@ -7,6 +7,7 @@ const client = require('../midlewares/client');
 const upload = require('../midlewares/upload');
 const ResumeUser = require('../classes/resume-user');
 const search = require('../functions/search');
+const io = require('../midlewares/io');
 
 router.post('/register', async(req, res) => {
   try{
@@ -38,7 +39,8 @@ router.post('/postregister', upload.single('perfilImg') ,async(req, res) => {
     const update = {
       ...req.body,
       firstTime: false,
-      perfilImg: req.file.location,
+      //perfilImg: req.file.location,
+      perfilImg: `/${req.file.path}`,
       wallet: 50,
     };
     console.log(update);
@@ -50,7 +52,7 @@ router.post('/postregister', upload.single('perfilImg') ,async(req, res) => {
   }catch(err){
     res.status(200).send(err);
   }
-})
+});
 
 router.post('/login', async(req, res) => {
   try{
@@ -73,18 +75,48 @@ router.post('/login', async(req, res) => {
 router.get('/perfil/:_id', async(req, res) => {
   try{
     const { _id } = req.params;
-    const user = await UserSchema.findById(_id).populate('greenPost').populate('posts');
+    console.log(req.session.user);
+    const user = await UserSchema.findById(_id).populate('greenPost').populate('posts').lean();
     delete user.pass;
-    console.log(user);
     if(_id === req.session.user._id){
       user.owner = true;
+      console.log(_id);
+      console.log(user.owner);
       return res.status(200).json(user);
     } else {
+      console.log(user);
       return res.status(200).json(user);
     }
   }catch(err){
     console.log(err);
     res.status(500).send(err);
+  }
+});
+
+router.post('/gift', async(req, res) => {
+  try{
+    const { gift, uid, note } = req.body;
+    const user = await UserSchema.findById(req.session.user._id, 'wallet');
+    gift.price = parseInt(gift.price, 10);
+    if(user.wallet < gift.price) return res.status(200).send('credit');
+    await UserSchema.findByIdAndUpdate(req.session.user._id, { $inc: { wallet: -gift.price } });
+    const sender = new ResumeUser(req.session.user);
+    const newGift = {
+      sender,
+      ...gift,
+    };
+    console.log(newGift);
+    await UserSchema.findByIdAndUpdate(uid, { $push:{ gifts: newGift } });
+    const payload = {
+      type: "GIFT",
+      note: "GIFT",
+      user: newGift,
+    };
+    io.emit(`nav:${uid}`, payload);
+    res.sendStatus(200);
+  }catch(err){
+    console.log(err);
+    res.sendStatus(500);
   }
 })
 
@@ -107,7 +139,19 @@ router.get('/search/:name', async(req, res) => {
   } catch(err){
     console.log(err);
   }
-})
+});
+
+router.post('/update', async(req, res) => {
+  try{
+    const { key, value } = req.body;
+    const newUser = await UserSchema.findByIdAndUpdate(req.session.user._id, { [key]: value }, { new: true }).lean();
+    req.session.user= newUser;
+    res.sendStatus(200);
+  }catch(err){
+    console.log(err);
+    res.sendStatus(500);
+  }
+});
 
 router.get('/logout', async(req, res) => {
   try{

@@ -6,6 +6,7 @@ import PostRegister from '../postregister/postregister';
 import StoreCont from '../store/store-cont';
 import Store from '../store/store';
 import FloatingNotes from '../floating-notes/floating-notes';
+import Vault from '../vault/vault';
 
 const Layout = ({ children }) => {
   return(
@@ -17,6 +18,7 @@ const Layout = ({ children }) => {
       <PostRegister />
       <StoreCont><Store /></StoreCont>
       <FloatingNotes />
+      <Vault />
       {children}
       <div style={{ height: 0 }} />
     </div>

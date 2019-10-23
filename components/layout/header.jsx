@@ -5,7 +5,16 @@ import './header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faGift, faHeart, faUser, faCog, faCoins, faBell } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { navView, ON_VIEW_NAV, ON_LOADER, ON_NOTIFICATIONS, ON_LOGIN } from '../../store/actions';
+import {
+  navView,
+  ON_VIEW_NAV,
+  ON_LOADER,
+  ON_NOTIFICATIONS,
+  ON_LOGIN, OFF_FLOAT,
+  ON_FLOAT,
+  ON_GREEN_LIKE,
+  ON_VAULT,
+} from '../../store/actions';
 import axios from 'axios';
 import Link from 'next/link';
 import { Popover, PopoverBody } from 'reactstrap';
@@ -37,7 +46,6 @@ const DownBar = () => {
 };
 
 const SearchBar = () => {
-  const testList = ["felix", "luis", "maximiliano", "francisco", 'teresa', 'yleana'];
   const [suggest, setSuggest] = useState([]);
 
   const onSuggest = async (e) => {
@@ -80,6 +88,7 @@ const Gift = () => {
   const dispatch = useDispatch();
   const onView = useCallback(()=> {
     dispatch({ type: ON_VIEW_NAV, note: navView.GIFT });
+    dispatch({ type: ON_VAULT });
   })
 
   return(
@@ -88,7 +97,7 @@ const Gift = () => {
         id="gift"
         onClick={onView}
         style={
-          gifts.view && gifts.length > 0
+          !gifts.view && gifts.items.length > 0
             ? { background: "#fff", color: "#ff6c1a" }
             : { background: "transparent", color: "#fff" }
         }
@@ -98,7 +107,7 @@ const Gift = () => {
       </button>
       <span
         style={
-          gifts.view && gifts.length > 0
+          !gifts.view && gifts.items.length > 0
           ? { color: "#ff6c1a" }
           : { color: "#fff" }
         }
@@ -130,7 +139,7 @@ const Note = () => {
         id="note"
         onClick={handleView}
         style={
-          notes.view && notes.length > 0
+          !notes.view && notes.items.length > 0
             ? { background: "#fff", color: "#ff6c1a" }
             : { background: "transparent", color: "#fff" }
         }
@@ -140,7 +149,7 @@ const Note = () => {
       </button>
       <span
         style={
-          notes.view && notes.length > 0
+          !notes.view && notes.items.length > 0
           ? { color: "#ff6c1a" }
           : { color: "#fff" }
         }
@@ -149,17 +158,59 @@ const Note = () => {
       </span>
       <Popover target="note" isOpen={pop} placement="bottom">
           <PopoverBody>
-            <ul onClick={handleViewOut}>
+            <ul onClick={handleViewOut} onMouseLeave={handleViewOut}>
               {
                 notes.items.map(item => (
                   <li key={uuid()}>
-                    {item.id}
+                    <MyLink id={item._id}>
+                      <div className="friend_cont">
+                        <img src={item.perfilImg} alt=""/>
+                        <p>
+                          <strong>{`${item.name} ${item.lastName}`}</strong>
+                          <small>
+                            {item.action === 'LIKE' ? 'le gusta uno de tus posts' : 'comento uno de tus posts'}
+                          </small>
+                        </p>
+                      </div>
+                    </MyLink>
                   </li>
                 ))
                 }
             </ul>
           </PopoverBody>
         </Popover>
+        <style jsx>{`
+          ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+          }
+          .friend_cont{
+            display: flex;
+            align-items: center;
+            transition: 250ms ease;
+          }
+          .friend_cont p {
+            margin: 0;
+            margin-left: .5rem;
+            text-transform: capitalize;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .friend_cont p strong:hover{
+            text-decoration: underline;
+            color: #8bb940;
+          }
+          .friend_cont img{
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+          }
+        `}
+        </style>
     </div>
   )
 }
@@ -170,11 +221,6 @@ const Friend = () => {
   const onView = useCallback(()=> {
     dispatch({ type: ON_VIEW_NAV, note: navView.FRIEND });
   });
-
-/*  const [list, setList] = useState([]);
-  useEffect(()=> {
-    setList(friend.items);
-  },[friend.items]);*/
 
   const [pop, setPop] = useState(false);
   const handleView = () => {
@@ -192,7 +238,7 @@ const Friend = () => {
         id="friend"
         onClick={handleView}
         style={
-          friend.view && friend.length > 0
+          !friend.view && friend.items.length > 0
             ? { background: "#fff", color: "#ff6c1a" }
             : { background: "transparent", color: "#fff" }
         }
@@ -202,7 +248,7 @@ const Friend = () => {
       </button>
       <span
         style={
-          friend.view && friend.length > 0
+          !friend.view && friend.items.length > 0
           ? { color: "#ff6c1a" }
           : { color: "#fff" }
         }
@@ -215,13 +261,47 @@ const Friend = () => {
               {
                 friend.items.map(item => (
                   <li key={uuid()}>
-                    {item.name}
+                    <MyLink id={item._id}>
+                      <div className="friend_cont">
+                        <img src={item.perfilImg} alt=""/>
+                        <p>{`${item.name} ${item.lastName}`}</p>
+                      </div>
+                    </MyLink>
                   </li>
                 ))
                 }
             </ul>
           </PopoverBody>
         </Popover>
+        <style jsx>{`
+          ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+          }
+          .friend_cont{
+            display: flex;
+            align-items: center;
+            transition: 250ms ease;
+          }
+          .friend_cont p {
+            margin: 0;
+            margin-left: .5rem;
+            text-transform: capitalize;
+          }
+          .friend_cont p:hover{
+            text-decoration: underline;
+            color: #8bb940;
+          }
+          .friend_cont img{
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+          }
+        `}
+        </style>
     </div>
   )
 }
@@ -229,6 +309,7 @@ const Friend = () => {
 const Option = () => {
   const [pop, setPop] = useState(false);
   const dispatch = useDispatch();
+  const id = useSelector(state => state.nav.notifications.id);
   const onLogout = useCallback(async ()=> {
     try{
       await axios.get('/user/logout');
@@ -247,7 +328,7 @@ const Option = () => {
       <Popover target="option" isOpen={pop} placement="bottom">
         <PopoverBody style={{ padding:0 }}>
           <ul className="option_list" onMouseLeave={()=> setPop(false)}>
-            <li><button>perfil</button></li>
+            <li><MyLink id={id}><p style={{ color: '#8bb940', margin:0 }}>Perfil</p></MyLink></li>
             <li><button onClick={onLogout}>salir</button></li>
           </ul>
         </PopoverBody>
@@ -308,12 +389,9 @@ const Header = () => {
     const socket = io();
     socket.open();
     socket.on(`nav:${nav.notifications.id}`, (payload) => {
-      let items = nav.notifications[payload.note].items;
-      console.log(items);
-      items = [payload.user, ...nav.notifications[payload.note].items];
-      console.log(items);
-      const reduxPayload = { note: payload.action, items }
-      dispatch({ type: 'ON_NOTE', payload: reduxPayload });
+      console.log(payload);
+      dispatch({ type: 'ON_NOTE', payload });
+      dispatch({ type: ON_FLOAT, payload });
     });
     return () => socket.close();
   },[nav.notifications]);

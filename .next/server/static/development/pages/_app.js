@@ -2084,7 +2084,7 @@ class Greenlink extends next_app__WEBPACK_IMPORTED_MODULE_3___default.a {
 /*!**************************!*\
   !*** ./store/actions.js ***!
   \**************************/
-/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, ON_WALLET, navView, ON_USER, ON_UPDATE, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, ON_GREENPOST, onStore */
+/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, ON_WALLET, navView, ON_USER, ON_UPDATE, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, ON_GREENPOST, ON_GREEN_LIKE, OFF_GREEN_LIKE, ON_GREEN_WISH_FOUND, ON_GREEN_COMMENT, onStore, ON_FLOAT, OFF_FLOAT, ON_VAULT, ON_VAULT_HOME, ON_VAULT_PRODUCT, ON_SPACE_HOME, ON_SPACE_WALL, ON_SPACE_CHAT, ON_SPACE_FRIENDS, ON_SPACE_EVENTS, ON_WALL_TOP, ON_WALL_POSTS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2106,7 +2106,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREENINFO", function() { return ON_GREENINFO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREEN_CREATOR", function() { return ON_GREEN_CREATOR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREENPOST", function() { return ON_GREENPOST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREEN_LIKE", function() { return ON_GREEN_LIKE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OFF_GREEN_LIKE", function() { return OFF_GREEN_LIKE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREEN_WISH_FOUND", function() { return ON_GREEN_WISH_FOUND; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREEN_COMMENT", function() { return ON_GREEN_COMMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onStore", function() { return onStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_FLOAT", function() { return ON_FLOAT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OFF_FLOAT", function() { return OFF_FLOAT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_VAULT", function() { return ON_VAULT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_VAULT_HOME", function() { return ON_VAULT_HOME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_VAULT_PRODUCT", function() { return ON_VAULT_PRODUCT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_SPACE_HOME", function() { return ON_SPACE_HOME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_SPACE_WALL", function() { return ON_SPACE_WALL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_SPACE_CHAT", function() { return ON_SPACE_CHAT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_SPACE_FRIENDS", function() { return ON_SPACE_FRIENDS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_SPACE_EVENTS", function() { return ON_SPACE_EVENTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_WALL_TOP", function() { return ON_WALL_TOP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_WALL_POSTS", function() { return ON_WALL_POSTS; });
 /***********************
 NAV
 ************************/
@@ -2156,7 +2172,39 @@ GREENPOST
 const ON_GREENINFO = 'ON_GREENINFO';
 const ON_GREEN_CREATOR = 'ON_GREEN_CREATOR';
 const ON_GREENPOST = 'ON_GREENPOST';
+const ON_GREEN_LIKE = 'ON_GREEN_LIKE';
+const OFF_GREEN_LIKE = 'OFF_GREEN_LIKE';
+const ON_GREEN_WISH_FOUND = 'ON_GREEN_WISH_FOUND';
+const ON_GREEN_COMMENT = 'ON_GREEN_COMMENT';
 const onStore = () => null;
+/****************************
+FLOATING NOTES
+*****************************/
+
+const ON_FLOAT = 'ON_FLOAT';
+const OFF_FLOAT = 'OFF_FLOAT';
+/****************************
+VAULT
+*****************************/
+
+const ON_VAULT = 'ON_VAULT';
+const ON_VAULT_HOME = 'ON_VAULT_HOME';
+const ON_VAULT_PRODUCT = 'ON_VAULT_PRODUCT';
+/****************************
+SPACE
+*****************************/
+
+const ON_SPACE_HOME = 'ON_SPACE_HOME';
+const ON_SPACE_WALL = 'ON_SPACE_WALL';
+const ON_SPACE_CHAT = 'ON_SPACE_CHAT';
+const ON_SPACE_FRIENDS = 'ON_SPACE_FRIENDS';
+const ON_SPACE_EVENTS = 'ON_SPACE_EVENTS';
+/****************************
+SPACE - WALL
+*****************************/
+
+const ON_WALL_TOP = 'ON_WALL_TOP';
+const ON_WALL_POSTS = 'ON_WALL_POSTS';
 
 /***/ }),
 
@@ -2212,7 +2260,9 @@ const initialState = {
     name: '',
     lastName: '',
     birthday: '',
-    greenPost: [],
+    greenPost: [{
+      _id: ''
+    }],
     perfilImg: '',
     originCity: '',
     actualCity: '',
@@ -2243,6 +2293,7 @@ const initialState = {
     friends: []
   },
   greenpost: {
+    _id: '',
     info: false,
     creator: false,
     current: {
@@ -2256,7 +2307,7 @@ const initialState = {
     current: {},
     home: false,
     product: false,
-    music: true,
+    music: false,
     ebook: false,
     toy: false,
     tv: false,
@@ -2264,7 +2315,26 @@ const initialState = {
     candy: false,
     items: []
   },
-  postregister: false
+  vault: {
+    visible: false,
+    home: true,
+    product: false,
+    current: {},
+    items: []
+  },
+  postregister: false,
+  floatingnotes: [],
+  space: {
+    home: true,
+    wall: false,
+    chat: false,
+    friends: false,
+    envents: false
+  },
+  wall: {
+    top: [],
+    posts: []
+  }
 };
 
 const nav = (state = initialState.nav, action) => {
@@ -2292,7 +2362,7 @@ const nav = (state = initialState.nav, action) => {
     case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_WALLET"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
         notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.notifications, {
-          wallet: state.wallet + action.coin
+          wallet: state.notifications.wallet + action.coin
         })
       });
 
@@ -2328,12 +2398,18 @@ const nav = (state = initialState.nav, action) => {
       }
 
     case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_NOTE"]:
+      const {
+        gifts,
+        notes,
+        friendReq
+      } = state.notifications;
+
       if (action.payload.note === _actions__WEBPACK_IMPORTED_MODULE_3__["navView"].GIFT) {
         return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
           notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.notifications, {
             gifts: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.notifications.gifts, {
               view: false,
-              items: action.payload.items
+              items: [action.payload.user, ...gifts.items]
             })
           })
         });
@@ -2344,7 +2420,7 @@ const nav = (state = initialState.nav, action) => {
           notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.notifications, {
             notes: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.notifications.notes, {
               view: false,
-              items: action.payload.items
+              items: [action.payload.user, ...notes.items]
             })
           })
         });
@@ -2355,7 +2431,7 @@ const nav = (state = initialState.nav, action) => {
           notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.notifications, {
             friendReq: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.notifications.friendReq, {
               view: false,
-              items: action.payload.items
+              items: [action.payload.user, ...friendReq.items]
             })
           })
         });
@@ -2383,7 +2459,7 @@ const greenpost = (state = initialState.greenpost, action) => {
   switch (action.type) {
     case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_GREENINFO"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
-        info: !state.info
+        info: action.option
       });
 
     case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_GREEN_CREATOR"]:
@@ -2394,6 +2470,37 @@ const greenpost = (state = initialState.greenpost, action) => {
     case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_GREENPOST"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
         current: action.greenpost
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_GREEN_LIKE"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        current: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.current, {
+          likes: [action.like, ...state.current.likes]
+        })
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["OFF_GREEN_LIKE"]:
+      const nextState = state.current.likes.filter(like => like._id !== action.uid);
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        current: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.current, {
+          likes: nextState
+        })
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_GREEN_WISH_FOUND"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        current: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.current, {
+          wish: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.current.wish, {
+            found: state.current.wish.found + action.found
+          })
+        })
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_GREEN_COMMENT"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        current: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state.current, {
+          comments: [...state.current.comments, action.comment]
+        })
       });
 
     default:
@@ -2535,12 +2642,123 @@ const postregister = (state = initialState.postregister, action) => {
   return state;
 };
 
+const floatingnotes = (state = initialState.floatingnotes, action) => {
+  if (action.type === _actions__WEBPACK_IMPORTED_MODULE_3__["ON_FLOAT"]) {
+    return [...state, action.payload];
+  }
+
+  if (action.type === _actions__WEBPACK_IMPORTED_MODULE_3__["OFF_FLOAT"]) {
+    const nextState = state.filter(note => note.id !== action.id);
+    return nextState;
+  }
+
+  return state;
+};
+
+const vault = (state = initialState.vault, action) => {
+  switch (action.type) {
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_VAULT"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        visible: !state.visible
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_VAULT_HOME"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        home: true,
+        product: false
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_VAULT_PRODUCT"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        home: false,
+        product: true,
+        current: action.product
+      });
+
+    default:
+      return state;
+  }
+};
+
+const space = (state = initialState.space, action) => {
+  switch (action.type) {
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_SPACE_HOME"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        home: true,
+        wall: false,
+        chat: false,
+        friends: false,
+        events: false
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_SPACE_WALL"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        home: false,
+        wall: true,
+        chat: false,
+        friends: false,
+        events: false
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_SPACE_CHAT"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        home: false,
+        wall: false,
+        chat: true,
+        friends: false,
+        events: false
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_SPACE_FRIENDS"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        home: false,
+        wall: false,
+        chat: false,
+        friends: true,
+        events: false
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_SPACE_EVENTS"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        home: false,
+        wall: false,
+        chat: false,
+        friends: false,
+        events: true
+      });
+
+    default:
+      return state;
+  }
+};
+
+const wall = (state = initialState.wall, action) => {
+  switch (action.type) {
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_WALL_TOP"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        top: action.posts
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_3__["ON_WALL_POSTS"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_1___default()({}, state, {
+        posts: action.posts
+      });
+
+    default:
+      return state;
+  }
+};
+
 const store = Object(redux__WEBPACK_IMPORTED_MODULE_2__["combineReducers"])({
   nav,
   user,
   greenpost,
   greenstore,
-  postregister
+  postregister,
+  floatingnotes,
+  vault,
+  space,
+  wall
 });
 
 /***/ }),

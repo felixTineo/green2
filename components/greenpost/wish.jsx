@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ON_WALLET, ON_GREEN_WISH_FOUND } from '../../store/actions';
 import { ON_STORE } from '../../store/actions';
 import './wish.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,9 +10,9 @@ import axios from 'axios';
 const Wish = () => {
   const wish = useSelector(state => state.greenpost.current.wish);
   const user = useSelector(state => state.user);
+  const pid = useSelector(state => state.greenpost.current._id);
   const [tip, setTip] = useState(0);
   const dispatch = useDispatch();
-  wish.found = 10;
   const [found, setFound] = useState(wish.found);
   const inputTip = useRef();
 
@@ -19,13 +20,11 @@ const Wish = () => {
   const onSubmit = async(e) => {
     try{
       e.preventDefault();
-      const data = {
-        tip,
-        targetId: user._id,
-      }
-        setFound(wish.found + parseInt(tip, 10));
-      //const res = await axios.post('/greenpost/tip', data);
-      //console.log(res.data);
+      setFound(wish.found + parseInt(tip, 10));
+      const res = await axios.get(`/green/tip/${pid}/${tip}`);
+      const parseTip = parseInt(tip, 10);
+      dispatch({ type: ON_WALLET, coin: -parseTip });
+      dispatch({ type: ON_GREEN_WISH_FOUND, found: parseTip });
     }catch(err){
       console.log(err);
     }

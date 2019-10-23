@@ -1,0 +1,17 @@
+@import '../../layout/variables';
+@import '../../layout/mixins';
+
+.footer_wall_post{
+  button{
+    font-size: 30px;
+    border: 2px solid $light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border-radius: 50%;
+  }
+  button svg{
+    width: 30px;
+  }
+}

@@ -21,7 +21,9 @@ const MyLink = ({ id, children }) => {
       dispatch({ type: ON_LOADER, loader: 100 });
       clearInterval(interval);
       res.data.greenPost = JSON.stringify(res.data.greenPost);
-      Router.push({pathname: `/perfil`, query: res.data}, `/perfil/${id}`, { shallow: true });
+      res.data.posts = JSON.stringify(res.data.posts);
+      res.data.friends = JSON.stringify(res.data.friends);
+      Router.replace({pathname: `/perfil`, query: res.data}, `/perfil/${id}`);
     }catch(err){
       console.log(err);
       clearInterval(interval);

@@ -42,7 +42,7 @@
       border: 2px solid $light;
       transition: 250ms ease;
       &:hover{
-        background: $prim;
+        background: $prim !important;
       }
     }
   }

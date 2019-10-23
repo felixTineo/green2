@@ -17,6 +17,7 @@ const GreenPostSchema = new Schema({
         tag: 'gol', price: 100,
         description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, cumque atque, dolore qui, tempora delectus provident saepe dicta minus iusto iste autem? Aut, ipsum. Ipsam illo perspiciatis optio architecto cumque!',
         found: 0,
+        sender: {},
       }
     },
 });

@@ -23,6 +23,9 @@
         transition: 250ms ease;
         width: 100%;
       }
+      button{
+        color: $light;
+      }
     }
   }
   button{
@@ -32,14 +35,20 @@
     font-size: $font-sm;
     transition: 250ms ease;
     font-weight: 550;
-    &:hover{
-      color: $light;
-    }
   }
   .line{
     height: 2px;
     background: $light;
     transition: 250ms ease;
     width: 0px;
+  }
+}
+
+.space_btn_active{
+  .line{
+    width: 100% !important;
+  }
+  button{
+    color: $light !important;
   }
 }
