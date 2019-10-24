@@ -3,6 +3,8 @@ const upload = require('../midlewares/upload');
 const PostSchema = require('../models/post');
 const UserSchema = require('../models/user');
 const ResumeUser = require('../classes/resume-user');
+const uuid = require('uuid/v1');
+const io = require('../midlewares/io');
 
 router.get('/autolikes', async(req, res) => {
   try{
@@ -66,7 +68,14 @@ router.post('/comment/:pid', async(req, res) => {
       date: Date.now(),
       comment,
     };
-    await PostSchema.findByIdAndUpdate(pid, { $push:{ comments: newComment } });
+    const payload = {
+      id: uuid(),
+      type: 'COMMENT',
+      note: 'NOTES',
+      user,
+    }
+    const post = await PostSchema.findByIdAndUpdate(pid, { $push:{ comments: newComment } });
+    io.emit(`nav:${post.author}`, payload);
     res.status(200).send(newComment);
   }catch(err){
     console.log(err);
