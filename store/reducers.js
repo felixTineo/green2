@@ -34,6 +34,7 @@ import {
   spaceSections,
   ON_WALL_TOP,
   ON_WALL_POSTS,
+  ON_CONFIRM,
 } from './actions';
 
 export const initialState = {
@@ -140,6 +141,9 @@ export const initialState = {
   wall:{
     top:[],
     posts:[],
+  },
+  dialogs:{
+    confirm: false,
   }
 };
 
@@ -420,6 +424,15 @@ const wall = (state = initialState.wall, action) => {
       return state;
   }
 }
+const dialogs = (state = initialState.dialogs, action) => {
+  switch (action.type) {
+    const { confirm } = state;
+    case ON_CONFIRM:
+      return Object.assign({}, state, { confirm: !confirm });
+    default:
+      return state;
+  }
+}
 
 export const store = combineReducers({
   nav,
@@ -431,4 +444,5 @@ export const store = combineReducers({
   vault,
   space,
   wall,
+  dialogs,
 });

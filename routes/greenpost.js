@@ -18,14 +18,16 @@ router.get('/rest', async(req, res) => {
   res.sendStatus(200);
 });
 
-router.get('/add', upload.single('img'), async(req, res) => {
+router.post('/add', upload.single('img'), async(req, res) => {
   try{
-    const img = req.file.path;
+    const img = `/${req.file.path}`;
     const author = req.session.user._id;
-    const { history } = req.body;
+    const { title, subTitle, history } = req.body;
     const data = {
       author,
       img,
+      title,
+      subTitle,
       history,
       date: Date.now(),
     };

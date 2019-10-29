@@ -109,8 +109,6 @@ const onImg = (e) => {
     }
   }
   reader.readAsDataURL(img);
-  console.log(perfilImg);
-  console.log(img);
 }
 
   const [section, setSection] = useReducer((state, next) => ({ ...state, ...next }), {

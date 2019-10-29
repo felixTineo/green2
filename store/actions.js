@@ -78,3 +78,8 @@ SPACE - WALL
 *****************************/
 export const ON_WALL_TOP = 'ON_WALL_TOP';
 export const ON_WALL_POSTS = 'ON_WALL_POSTS';
+
+/****************************
+DIALOGS
+*****************************/
+export const ON_CONFIRM = 'ON_CONFIRM';
