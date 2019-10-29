@@ -20,9 +20,9 @@ router.get('/rest', async(req, res) => {
 
 router.get('/add', upload.single('img'), async(req, res) => {
   try{
-    const img = req.file.location;
+    const img = req.file.path;
     const author = req.session.user._id;
-    const { history, targetId } = req.body;
+    const { history } = req.body;
     const data = {
       author,
       img,

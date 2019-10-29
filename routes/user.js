@@ -19,15 +19,14 @@ router.post('/register', async(req, res) => {
     newUser.greenPost = newPost.id;
     await newUser.save();
     await newPost.save();
-    req.session.user = {};
-    delete req.session.user;
     req.session.user = newUser;
     if(name){
       const user = new ResumeUser(newUser);
       await client.lpushAsync('users', JSON.stringify(user));
     }
     newUser.owner = true;
-    res.status(200).json(newUser);
+    console.log(newUser);
+    res.status(200).send(newUser.id);
   }catch(err){
     console.log(err);
     res.sendStatus(500);
@@ -47,7 +46,7 @@ router.post('/postregister', upload.single('perfilImg') ,async(req, res) => {
     const id = req.session.user._id;
     const updated = await UserSchema.findByIdAndUpdate(id, update, { new: true });
     const user = new ResumeUser(updated);
-    await client.lpushAsync('users', JSON.stringify(user));
+    if(req.session.user.name === 'User') await client.lpushAsync('users', JSON.stringify(user));
     res.status(200).json(update);
   }catch(err){
     res.status(200).send(err);
@@ -60,12 +59,13 @@ router.post('/login', async(req, res) => {
     const user = await UserSchema.findOne({ mail }).populate('posts').populate('greenPost');
     if(!user) return res.status(200).send('mail');
     if(user.pass !== pass) res.status(200).send('pass');
-    req.session.user = {};
-    delete req.session.user;
+    //req.session.user = {};
+    //delete req.session.user;
     delete user.pass;
     user.owner = true;
     req.session.user = user;
-    setTimeout(()=> res.status(200).json(user), 10000);
+    res.redirect(`/perfil/${user.id}`);
+    //res.status(200).send(user.id);
   }catch(err){
     console.log(err);
     res.sendStatus(501);
