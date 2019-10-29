@@ -4,6 +4,24 @@ import { ON_GREEN_CREATOR } from '../store/actions';
 import { Modal } from 'reactstrap';
 import { color } from '../layout/var';
 import '../node_modules/bootstrap/scss/bootstrap.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCamera, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
+
+/*
+const onImg = (e) => {
+  const img = e.target.files[0];
+  const reader = new FileReader();
+  reader.onloadend = ()=> {
+    if(reader.result){
+      setImg(reader.result);
+      setHistoryVisible(true);
+    } else {
+      setImg('/static/random/r16.jpg');
+    }
+  };
+  reader.readAsDataURL(img);
+};
+*/
 
 const Creator = () => {
   const visible = useSelector(state => state.greenpost.creator);
