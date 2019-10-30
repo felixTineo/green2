@@ -32,9 +32,11 @@ import {
   ON_SPACE_FRIENDS,
   ON_SPACE_EVENTS,
   spaceSections,
+  ON_POST,
   ON_WALL_TOP,
   ON_WALL_POSTS,
   ON_CONFIRM,
+  ON_WISH,
 } from './actions';
 
 export const initialState = {
@@ -142,8 +144,9 @@ export const initialState = {
     top:[],
     posts:[],
   },
-  dialogs:{
-    confirm: false,
+  confirm:{
+    visible: false,
+    current:{},
   }
 };
 
@@ -244,6 +247,10 @@ const greenpost = (state = initialState.greenpost, action) => {
       return Object.assign({}, state, {
         current: Object.assign({}, state.current, { likes: [action.like, ...state.current.likes] })
       });
+    case ON_WISH:
+      return Object.assign({}, state, {
+        current: Object.assign({}, state.current, { wish: action.wish })
+      })
     case OFF_GREEN_LIKE:
       const nextState = state.current.likes.filter(like => like._id !== action.uid);
       return Object.assign({}, state, {
@@ -416,6 +423,8 @@ const space = (state = initialState.space, action) => {
 };
 const wall = (state = initialState.wall, action) => {
   switch (action.type) {
+    case ON_POST:
+      return Object.assign({}, state, { posts: [action.post, ...state.posts] });
     case ON_WALL_TOP:
       return Object.assign({}, state, { top: action.posts });
     case ON_WALL_POSTS:
@@ -423,12 +432,12 @@ const wall = (state = initialState.wall, action) => {
     default:
       return state;
   }
-}
-const dialogs = (state = initialState.dialogs, action) => {
+};
+
+const confirm = (state = initialState.confirm, action) => {
   switch (action.type) {
-    const { confirm } = state;
     case ON_CONFIRM:
-      return Object.assign({}, state, { confirm: !confirm });
+      return Object.assign({}, state, { visible: !state.visible, current: action.current });
     default:
       return state;
   }
@@ -444,5 +453,5 @@ export const store = combineReducers({
   vault,
   space,
   wall,
-  dialogs,
+  confirm,
 });

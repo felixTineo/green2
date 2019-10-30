@@ -51,6 +51,7 @@ export const OFF_GREEN_LIKE = 'OFF_GREEN_LIKE';
 export const ON_GREEN_WISH_FOUND = 'ON_GREEN_WISH_FOUND';
 export const ON_GREEN_COMMENT = 'ON_GREEN_COMMENT';
 export const onStore = () => null;
+export const ON_WISH = 'ON_WISH';
 
 /****************************
 FLOATING NOTES
@@ -76,10 +77,10 @@ export const ON_SPACE_EVENTS = 'ON_SPACE_EVENTS';
 /****************************
 SPACE - WALL
 *****************************/
+export const ON_POST = 'ON_POST';
 export const ON_WALL_TOP = 'ON_WALL_TOP';
 export const ON_WALL_POSTS = 'ON_WALL_POSTS';
-
 /****************************
-DIALOGS
+DIALOG - CONFIRM
 *****************************/
 export const ON_CONFIRM = 'ON_CONFIRM';

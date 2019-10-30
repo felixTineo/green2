@@ -6,6 +6,8 @@ const PostSchema = new Schema({
     author: Object,
     date: { type: Date, default: Date.now() },
     img: { type: String, default: '' },
+    title: String,
+    subTitle: String,
     history: { type: String, default: '' },
     comments: Array,
     likes: Array,

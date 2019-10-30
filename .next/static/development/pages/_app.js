@@ -12351,7 +12351,7 @@ function (_App) {
 /*!**************************!*\
   !*** ./store/actions.js ***!
   \**************************/
-/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, ON_WALLET, navView, ON_USER, ON_UPDATE, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, ON_GREENPOST, ON_GREEN_LIKE, OFF_GREEN_LIKE, ON_GREEN_WISH_FOUND, ON_GREEN_COMMENT, onStore, ON_FLOAT, OFF_FLOAT, ON_VAULT, ON_VAULT_HOME, ON_VAULT_PRODUCT, ON_SPACE_HOME, ON_SPACE_WALL, ON_SPACE_CHAT, ON_SPACE_FRIENDS, ON_SPACE_EVENTS, ON_WALL_TOP, ON_WALL_POSTS */
+/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, ON_WALLET, navView, ON_USER, ON_UPDATE, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, ON_GREENPOST, ON_GREEN_LIKE, OFF_GREEN_LIKE, ON_GREEN_WISH_FOUND, ON_GREEN_COMMENT, onStore, ON_WISH, ON_FLOAT, OFF_FLOAT, ON_VAULT, ON_VAULT_HOME, ON_VAULT_PRODUCT, ON_SPACE_HOME, ON_SPACE_WALL, ON_SPACE_CHAT, ON_SPACE_FRIENDS, ON_SPACE_EVENTS, ON_POST, ON_WALL_TOP, ON_WALL_POSTS, ON_CONFIRM */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12378,6 +12378,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREEN_WISH_FOUND", function() { return ON_GREEN_WISH_FOUND; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_GREEN_COMMENT", function() { return ON_GREEN_COMMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onStore", function() { return onStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_WISH", function() { return ON_WISH; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_FLOAT", function() { return ON_FLOAT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OFF_FLOAT", function() { return OFF_FLOAT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_VAULT", function() { return ON_VAULT; });
@@ -12388,8 +12389,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_SPACE_CHAT", function() { return ON_SPACE_CHAT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_SPACE_FRIENDS", function() { return ON_SPACE_FRIENDS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_SPACE_EVENTS", function() { return ON_SPACE_EVENTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_POST", function() { return ON_POST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_WALL_TOP", function() { return ON_WALL_TOP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_WALL_POSTS", function() { return ON_WALL_POSTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_CONFIRM", function() { return ON_CONFIRM; });
 /***********************
 NAV
 ************************/
@@ -12446,6 +12449,7 @@ var ON_GREEN_COMMENT = 'ON_GREEN_COMMENT';
 var onStore = function onStore() {
   return null;
 };
+var ON_WISH = 'ON_WISH';
 /****************************
 FLOATING NOTES
 *****************************/
@@ -12472,8 +12476,14 @@ var ON_SPACE_EVENTS = 'ON_SPACE_EVENTS';
 SPACE - WALL
 *****************************/
 
+var ON_POST = 'ON_POST';
 var ON_WALL_TOP = 'ON_WALL_TOP';
 var ON_WALL_POSTS = 'ON_WALL_POSTS';
+/****************************
+DIALOG - CONFIRM
+*****************************/
+
+var ON_CONFIRM = 'ON_CONFIRM';
 
 /***/ }),
 
@@ -12604,6 +12614,10 @@ var initialState = {
   wall: {
     top: [],
     posts: []
+  },
+  confirm: {
+    visible: false,
+    current: {}
   }
 };
 
@@ -12754,6 +12768,13 @@ var greenpost = function greenpost() {
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         current: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.current, {
           likes: [action.like].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(state.current.likes))
+        })
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_4__["ON_WISH"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        current: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.current, {
+          wish: action.wish
         })
       });
 
@@ -13031,6 +13052,11 @@ var wall = function wall() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case _actions__WEBPACK_IMPORTED_MODULE_4__["ON_POST"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        posts: [action.post].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(state.posts))
+      });
+
     case _actions__WEBPACK_IMPORTED_MODULE_4__["ON_WALL_TOP"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         top: action.posts
@@ -13039,6 +13065,22 @@ var wall = function wall() {
     case _actions__WEBPACK_IMPORTED_MODULE_4__["ON_WALL_POSTS"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         posts: action.posts
+      });
+
+    default:
+      return state;
+  }
+};
+
+var confirm = function confirm() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState.confirm;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions__WEBPACK_IMPORTED_MODULE_4__["ON_CONFIRM"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        visible: !state.visible,
+        current: action.current
       });
 
     default:
@@ -13055,7 +13097,8 @@ var store = Object(redux__WEBPACK_IMPORTED_MODULE_3__["combineReducers"])({
   floatingnotes: floatingnotes,
   vault: vault,
   space: space,
-  wall: wall
+  wall: wall,
+  confirm: confirm
 });
 
 /***/ }),

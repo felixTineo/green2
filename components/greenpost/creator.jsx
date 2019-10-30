@@ -1,15 +1,17 @@
 import React, { useState, useReducer } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ON_GREEN_CREATOR, ON_STORE, ON_GREENPOST } from '../../store/actions';
+import { ON_GREEN_CREATOR, ON_STORE, ON_GREENPOST, ON_CONFIRM, ON_POST } from '../../store/actions';
 import { Modal } from 'reactstrap';
 import { color } from '../../layout/var';
 import { Spinner } from 'reactstrap';
+import Confirm from '../dialogs/confirm';
 import axios from 'axios';
 
-const Creator = () => {
+const Creator = ({ common }) => {
   const visible = useSelector(state => state.greenpost.creator);
   const [image, setImage] = useState('/static/random/r16.jpg');
   const [loader, setLoader] = useState(false);
+  const [confirm, setConfirm] = useState(false);
   const [values, setValues] = useReducer((state, next) => ({ ...state, ...next }),{
     img: '',
     title: '',
@@ -32,7 +34,29 @@ const Creator = () => {
     reader.readAsDataURL(img);
   };
 
-  const onSubmit = async(e) =>{
+  const onPost = async(e) =>{
+    try{
+      if(e.keyCode === 13 && !e.shiftKey || e.type === "submit"){
+        e.preventDefault();
+        setLoader(true);
+        const { img, title, subTitle, history } = values;
+        const data = new FormData();
+        data.append('img', img);
+        data.append('title', title);
+        data.append('subTitle', subTitle);
+        data.append('history', history);
+        const res = await axios.post('/post/add', data);
+        dispatch({ type: ON_POST, post: res.data });
+        setLoader(false);
+        setImage('/static/random/r16.jpg');
+        setValues({ img: '', title: '', subTitle: '', history: '' });
+      }
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  const onGreen = async(e) =>{
     try{
       if(e.keyCode === 13 && !e.shiftKey || e.type === "submit"){
         e.preventDefault();
@@ -45,8 +69,16 @@ const Creator = () => {
         data.append('history', history);
         const res = await axios.post('/green/add', data);
         dispatch({ type: ON_GREENPOST, greenpost: res.data });
+        setLoader(false);
+        setImage('/static/random/r16.jpg');
+        setValues({ img: '', title: '', subTitle: '', history: '' });
         dispatch({ type: ON_GREEN_CREATOR });
-        dispatch({ type: ON_STORE });
+        const current = {
+          onConfirm: () => dispatch({ type: ON_STORE }),
+          msg1: "Felicidades, Tu post se creo exitosamente!",
+          msg2: "¿quieres agregar un deseo?",
+        }
+        dispatch({ type: ON_CONFIRM, current })
       };
 
     }catch(err){
@@ -54,7 +86,6 @@ const Creator = () => {
     }
   }
   return(
-    <Modal style={{ minWidth: '80%' }} isOpen={visible}>
       <div className="main">
         <div className="img">
           <img src={image} alt=""/>
@@ -67,145 +98,144 @@ const Creator = () => {
           </label>
         </div>
         <div className="history">
-          <form onSubmit={onSubmit}>
+          <form onSubmit={common ? onPost : onGreen}>
             <input id="title" value={values.title} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Titulo" type="text" className="title"/>
             <input id="subTitle" value={values.subTitle} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Sub-titulo opcional" type="text" className="sub-title"/>
-            <textarea onKeyDown={onSubmit} id="history" value={values.history} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Cuentanos tu historia!" />
+            <textarea onKeyDown={common ? onPost : onGreen} id="history" value={values.history} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Cuentanos tu historia!" />
             <button title="Crear post" disabled={loader} type="submit">Crear</button>
           </form>
         </div>
-        <button disabled={loader} onClick={()=>dispatch({ type: ON_GREEN_CREATOR })} title="Cancelar" className="btn_close" type="button">X</button>
-      </div>
-      <style jsx>{`
-        .main{
-          height: 60vh;
-          display: flex;
-          position: relative;
-        }
-        .img{
-          width: 60%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: relative;
-        }
-        .img img{
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-positon: center;
-          filter: ${loader ? 'blur(3px)' : 'none'};
-        }
-        label{
-          width: 50px;
-          height: 50px;
-          position: absolute;
-          top: calc(50% - 50px);
-          left: calc(50% - 50px);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        label svg{
-          fill: ${color.light};
-          transition: 250ms ease;
-        }
-        input[type="file"]{
-          width:0;
-          position: absolute;
-          height:0;
-          top: 0;
-          left: 0;
-        }
-        label svg{
-          width: 50px;
-          height: 50px;
-        }
-        label svg:hover{
-          cursor: pointer;
-          fill: ${color.prim}
-        }
-        .history{
-          width: 40%;
-          height: 100%;
-          padding: 1rem .5rem 0;
-          color: ${color.prim};
-          display: flex;
-          flex-direction: column;
-          position: relative;
-        }
-        form{
-          color: ${color.dark};
-          flex-grow: 1;
-          margin-top: 1.5rem;
-        }
-        form input{
-          width: 100%;
-          padding: 0;
-          line-height: 0;
-          border: none;
-        }
-        input:focus, textarea:focus{
-          outline: none;
-        }
-        input:disabled, textarea:disabled{
-          color: rgba(0, 0, 0, .5);
-          background: #fff;
-        }
-        .title{
-          font-size: 2rem;
-        }
-        .sub-title{
-          font-size: 1.2rem;
-        }
-        textarea{
-          margin-top: 1rem;
-          resize: none;
-          width: 100%;
-          border: none;
-          font-size: .8rem;
-          height: 70%;
-        }
-        form button{
-          position: absolute;
-          bottom: .5rem;
-          right: .5rem;
-          transition: 250ms ease;
-          background: ${loader ? color.prim : 'transparent'};
-          border: 1px solid ${color.prim};
-          color: ${loader ? color.light : color.prim};
-        }
-        from button:focus{
-          outline: none;
-        }
-        form button:hover{
-          background: ${color.prim};
-          color: ${color.light}
-        }
-        .btn_close{
-          position: absolute;
-          top: .5rem;
-          right: .5rem;
-          background: transparent;
-          border: none;
-          transition: 250ms ease;
-          border: 1px solid ${color.dark};
-          border-radius: 50%;
-          width: 30px;
-          height: 30px;
-        }
-        .btn_close:focus{
-          outline: none;
-        }
-        .btn_close:hover{
-          color: ${color.light};
-          background: ${color.prim};
-          border-color: ${color.light};
-        }
+        { !common && <button disabled={loader} onClick={()=>dispatch({ type: ON_GREEN_CREATOR })} title="Cancelar" className="btn_close" type="button">X</button> }
+          <style jsx>{`
+            .main{
+              height: 60vh;
+              display: flex;
+              position: relative;
+            }
+            .img{
+              width: 60%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: relative;
+            }
+            .img img{
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-positon: center;
+              filter: ${loader ? 'blur(3px)' : 'none'};
+            }
+            label{
+              width: 50px;
+              height: 50px;
+              position: absolute;
+              top: calc(50% - 50px);
+              left: calc(50% - 50px);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            label svg{
+              fill: ${color.light};
+              transition: 250ms ease;
+            }
+            input[type="file"]{
+              width:0;
+              position: absolute;
+              height:0;
+              top: 0;
+              left: 0;
+            }
+            label svg{
+              width: 50px;
+              height: 50px;
+            }
+            label svg:hover{
+              cursor: pointer;
+              fill: ${color.prim}
+            }
+            .history{
+              width: 40%;
+              height: 100%;
+              padding: 1rem .5rem 0;
+              color: ${color.prim};
+              display: flex;
+              flex-direction: column;
+              position: relative;
+            }
+            form{
+              color: ${color.dark};
+              flex-grow: 1;
+              margin-top: 1.5rem;
+            }
+            form input{
+              width: 100%;
+              padding: 0;
+              line-height: 0;
+              border: none;
+            }
+            input:focus, textarea:focus{
+              outline: none;
+            }
+            input:disabled, textarea:disabled{
+              color: rgba(0, 0, 0, .5);
+              background: #fff;
+            }
+            .title{
+              font-size: 2rem;
+            }
+            .sub-title{
+              font-size: 1.2rem;
+            }
+            textarea{
+              margin-top: 1rem;
+              resize: none;
+              width: 100%;
+              border: none;
+              font-size: .8rem;
+              height: 70%;
+            }
+            form button{
+              position: absolute;
+              bottom: .5rem;
+              right: .5rem;
+              transition: 250ms ease;
+              background: ${loader ? color.prim : 'transparent'};
+              border: 1px solid ${color.prim};
+              color: ${loader ? color.light : color.prim};
+            }
+            from button:focus{
+              outline: none;
+            }
+            form button:hover{
+              background: ${color.prim};
+              color: ${color.light}
+            }
+            .btn_close{
+              position: absolute;
+              top: .5rem;
+              right: .5rem;
+              background: transparent;
+              border: none;
+              transition: 250ms ease;
+              border: 1px solid ${color.dark};
+              border-radius: 50%;
+              width: 30px;
+              height: 30px;
+            }
+            .btn_close:focus{
+              outline: none;
+            }
+            .btn_close:hover{
+              color: ${color.light};
+              background: ${color.prim};
+              border-color: ${color.light};
+            }
 
-      `}
-      </style>
-    </Modal>
+          `}
+          </style>
+      </div>
   )
 };
 

@@ -7,6 +7,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare, faHome, faHeart, faGift, faComment,faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons';
 //import './wall.scss';
+import Creator from '../greenpost/creator';
 
 const TopPost = ({ img, author, date, likes, comments, gifts })  => {
 
@@ -421,6 +422,12 @@ const Wall = () => {
   console.log(wall)
   return(
     <div className="main">
+      <h1>
+        <p><span>Nuevo</span> Post</p>
+      </h1>
+      <div className="shadow">
+        <Creator common />
+      </div>
       <h1>
         <p><span>publicasiones</span> top</p>
       </h1>

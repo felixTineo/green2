@@ -24,6 +24,7 @@ import Wish from './wish';
 import Comment from './comment';
 import Creator from './creator';
 import axios from 'axios';
+import { Modal } from 'reactstrap';
 
 const GreenNav = ({ setVisible }) => {
   const uid = useSelector(state => state.nav.notifications.id);
@@ -126,10 +127,13 @@ const BtnInfo = () => {
 
 const GreenPost = () => {
   const green = useSelector(state => state.greenpost.current);
+  const greenCreator = useSelector(state => state.greenpost.creator);
   const img = green.img;
   return(
     <div style={{ backgroundImage: `url(${img})` }} className="greenpost_main_cont">
-      <Creator />
+      <Modal style={{ minWidth: '80%' }} isOpen={greenCreator}>
+        <Creator />
+      </Modal>
       <GreenInfo />
       <BtnInfo />
     </div>

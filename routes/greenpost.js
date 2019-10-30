@@ -6,11 +6,6 @@ const ResumeUser = require('../classes/resume-user');
 const io = require('../midlewares/io');
 const uuid = require('uuid/v1');
 
-router.get('/found', async(req, res) => {
-  await UserSchema.findByIdAndUpdate('5da5f669f51d4c6d7c4812c9', { $inc: { wallet: 500 } });
-  res.sendStatus(200);
-});
-
 router.get('/rest', async(req, res) => {
   const greenpost = await UserSchema.findById(req.session.user._id, "greenPost");
   await UserSchema.findByIdAndUpdate(greenpost._id, { gifts: [] });
@@ -117,6 +112,25 @@ router.post('/comment/add', async(req, res) =>{
   }catch(err){
     console.log(err);
     res.status(501).send(err);
+  }
+});
+
+router.post('/wish', async(req, res) => {
+  try{
+    const { product } = req.body;
+    const wish = {
+      ...product,
+      found:0,
+      sender:{},
+    };
+    const user = await UserSchema.findById(req.session.user._id, 'greenPost');
+    const gpid = user.greenPost[0];
+    const added = await GreenPostSchema.findByIdAndUpdate(gpid, { wish }, { new: true });
+    console.log(added);
+    res.status(200).json(added.wish);
+  }catch(err){
+    console.log(err);
+    res.sendStatus(500);
   }
 });
 
