@@ -3,6 +3,7 @@ const UserSchema = require('../models/user');
 const GreenPostSchema = require('../models/greenpost');
 const PostSchema = require('../models/post');
 const app = require('../midlewares/app');
+const persons = require('../test/persons');
 
 router.get('/perfil/:id', async(req, res) => {
   try{

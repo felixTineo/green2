@@ -12351,7 +12351,7 @@ function (_App) {
 /*!**************************!*\
   !*** ./store/actions.js ***!
   \**************************/
-/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, ON_WALLET, navView, ON_USER, ON_UPDATE, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, ON_GREENPOST, ON_GREEN_LIKE, OFF_GREEN_LIKE, ON_GREEN_WISH_FOUND, ON_GREEN_COMMENT, onStore, ON_WISH, ON_FLOAT, OFF_FLOAT, ON_VAULT, ON_VAULT_HOME, ON_VAULT_PRODUCT, ON_SPACE_HOME, ON_SPACE_WALL, ON_SPACE_CHAT, ON_SPACE_FRIENDS, ON_SPACE_EVENTS, ON_POST, ON_WALL_TOP, ON_WALL_POSTS, ON_CONFIRM */
+/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, ON_WALLET, navView, ON_USER, ON_UPDATE, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, ON_GREENPOST, ON_GREEN_LIKE, OFF_GREEN_LIKE, ON_GREEN_WISH_FOUND, ON_GREEN_COMMENT, onStore, ON_WISH, ON_FLOAT, OFF_FLOAT, ON_VAULT, ON_VAULT_HOME, ON_VAULT_PRODUCT, ON_SPACE_HOME, ON_SPACE_WALL, ON_SPACE_CHAT, ON_SPACE_FRIENDS, ON_SPACE_EVENTS, ON_POST, ON_WALL_TOP, ON_WALL_POSTS, ON_CONFIRM, ON_CHAT_FRIEND, ON_CHAT_PRIVATE, ON_CHAT_CLOSE, ON_CHAT_MINIMIZE, ON_CHAT_MSG, ON_CHAT_ALERT */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12393,6 +12393,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_WALL_TOP", function() { return ON_WALL_TOP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_WALL_POSTS", function() { return ON_WALL_POSTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_CONFIRM", function() { return ON_CONFIRM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_CHAT_FRIEND", function() { return ON_CHAT_FRIEND; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_CHAT_PRIVATE", function() { return ON_CHAT_PRIVATE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_CHAT_CLOSE", function() { return ON_CHAT_CLOSE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_CHAT_MINIMIZE", function() { return ON_CHAT_MINIMIZE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_CHAT_MSG", function() { return ON_CHAT_MSG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_CHAT_ALERT", function() { return ON_CHAT_ALERT; });
 /***********************
 NAV
 ************************/
@@ -12484,6 +12490,16 @@ DIALOG - CONFIRM
 *****************************/
 
 var ON_CONFIRM = 'ON_CONFIRM';
+/****************************
+CHAT
+*****************************/
+
+var ON_CHAT_FRIEND = 'ON_CHAT_FRIEND';
+var ON_CHAT_PRIVATE = 'ON_CHAT_PRIVATE';
+var ON_CHAT_CLOSE = 'ON_CHAT_CLOSE';
+var ON_CHAT_MINIMIZE = 'ON_CHAT_MINIMIZE';
+var ON_CHAT_MSG = 'ON_CHAT_MSG';
+var ON_CHAT_ALERT = 'ON_CHAT_ALERT';
 
 /***/ }),
 
@@ -12618,6 +12634,11 @@ var initialState = {
   confirm: {
     visible: false,
     current: {}
+  },
+  chat: {
+    friends: [],
+    privates: [],
+    current: ''
   }
 };
 
@@ -13088,6 +13109,58 @@ var confirm = function confirm() {
   }
 };
 
+var chat = function chat() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState.chat;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  var privates = state.privates;
+
+  switch (action.type) {
+    case _actions__WEBPACK_IMPORTED_MODULE_4__["ON_CHAT_PRIVATE"]:
+      var nextArr = privates.length === 4 ? privates.slice(0, 3) : privates;
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        privates: [action.user].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(nextArr))
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_4__["ON_CHAT_CLOSE"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        privates: privates.filter(function (user) {
+          return user._id !== action._id;
+        })
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_4__["ON_CHAT_MINIMIZE"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        privates: privates.map(function (user) {
+          return user._id !== action._id ? user : _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, user, {
+            minimize: action.option
+          });
+        })
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_4__["ON_CHAT_MSG"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        privates: privates.map(function (user) {
+          return user._id !== action._id ? user : _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, user, {
+            history: [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(user.history), [action.msg])
+          });
+        }),
+        current: action._id
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_4__["ON_CHAT_ALERT"]:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        privates: privates.map(function (user) {
+          return user._id !== action._id ? user : _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, user, {
+            anAlert: action.option
+          });
+        })
+      });
+
+    default:
+      return state;
+  }
+};
+
 var store = Object(redux__WEBPACK_IMPORTED_MODULE_3__["combineReducers"])({
   nav: nav,
   user: user,
@@ -13098,7 +13171,8 @@ var store = Object(redux__WEBPACK_IMPORTED_MODULE_3__["combineReducers"])({
   vault: vault,
   space: space,
   wall: wall,
-  confirm: confirm
+  confirm: confirm,
+  chat: chat
 });
 
 /***/ }),

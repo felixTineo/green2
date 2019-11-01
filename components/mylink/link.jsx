@@ -4,7 +4,7 @@ import { ON_LOADER } from '../../store/actions';
 import Router from 'next/router';
 import axios from 'axios';
 
-const MyLink = ({ id, children }) => {
+const MyLink = ({ url, children, cb }) => {
   const dispatch = useDispatch();
   const onLink = async() => {
     let loader = 0;
@@ -17,13 +17,10 @@ const MyLink = ({ id, children }) => {
       clearInterval(interval);
     }
     try{
-      const res = await axios.get(`/user/perfil/${id}`);
-      dispatch({ type: ON_LOADER, loader: 100 });
       clearInterval(interval);
-      res.data.greenPost = JSON.stringify(res.data.greenPost);
-      res.data.posts = JSON.stringify(res.data.posts);
-      res.data.friends = JSON.stringify(res.data.friends);
-      Router.replace({pathname: `/perfil`, query: res.data}, `/perfil/${id}`);
+      callbback();
+      Router.replace(url);
+      dispatch({ type: ON_LOADER, loader: 100 });
     }catch(err){
       console.log(err);
       clearInterval(interval);

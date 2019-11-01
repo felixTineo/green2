@@ -36,7 +36,7 @@ const Note = ({ note }) => {
           </p>
           <button onClick={()=> dispatch({ type: OFF_FLOAT, id: note.id })} >x</button>
         </header>
-        <MyLink id={user._id}>
+        <MyLink id={user.url}>
           <div className="body">
             <img src={note.type === 'GIFT' ? user.img : user.perfilImg} alt=""/>
             <div className="info">

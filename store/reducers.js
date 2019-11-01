@@ -37,6 +37,12 @@ import {
   ON_WALL_POSTS,
   ON_CONFIRM,
   ON_WISH,
+  ON_CHAT_FRIEND,
+  ON_CHAT_PRIVATE,
+  ON_CHAT_CLOSE,
+  ON_CHAT_MINIMIZE,
+  ON_CHAT_MSG,
+  ON_CHAT_ALERT,
 } from './actions';
 
 export const initialState = {
@@ -147,6 +153,11 @@ export const initialState = {
   confirm:{
     visible: false,
     current:{},
+  },
+  chat:{
+    friends:[],
+    privates:[],
+    current:'',
   }
 };
 
@@ -443,6 +454,25 @@ const confirm = (state = initialState.confirm, action) => {
   }
 }
 
+const chat = (state = initialState.chat, action) => {
+  const { privates } = state;
+  switch (action.type) {
+    case ON_CHAT_PRIVATE:
+      //const nextArr = privates.length === 4 ?  privates.slice(0, 3) : privates;
+      return Object.assign({}, state, { privates: [action.user, ...privates.slice(3)] });
+    case ON_CHAT_CLOSE:
+      return Object.assign({}, state, { privates: privates.filter(user => user._id !== action._id) });
+    case ON_CHAT_MINIMIZE:
+      return Object.assign({}, state, { privates: privates.map(user => user._id !== action._id ? user : Object.assign({}, user, { minimize: action.option })) });
+    case ON_CHAT_MSG:
+      return Object.assign({}, state, { privates: privates.map(user => user._id !== action._id ? user : Object.assign({}, user, { history: [ ...user.history, action.msg ] })), current: action._id });
+    case ON_CHAT_ALERT:
+      return Object.assign({}, state, { privates: privates.map(user => user._id !== action._id ? user : Object.assign({}, user, { anAlert: action.option })) });
+    default:
+      return state;
+  }
+}
+
 export const store = combineReducers({
   nav,
   user,
@@ -454,4 +484,5 @@ export const store = combineReducers({
   space,
   wall,
   confirm,
+  chat,
 });

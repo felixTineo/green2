@@ -132,7 +132,7 @@ const GreenPost = () => {
   return(
     <div style={{ backgroundImage: `url(${img})` }} className="greenpost_main_cont">
       <Modal style={{ minWidth: '80%' }} isOpen={greenCreator}>
-        <Creator />
+        <Creator green />
       </Modal>
       <GreenInfo />
       <BtnInfo />

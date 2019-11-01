@@ -162,10 +162,12 @@ const User = () => {
   const user = useSelector(state => state.user);
   return(
     <div className="user_main_cont">
-      <Info />
-      <ExtraInfo />
-      <svg id="arrow_right" className="arrow_user d-none d-md-block" viewBox="0 0 60 70" width="60" height="70">
-        <polyline strokeWidth="3px" stroke="#8bb940" fill="transparent" points="20,0 50,35 20,70" />
+      <div id="user_space" className="shadow-sm rounded">
+        <Info />
+        <ExtraInfo />
+      </div>
+      <svg id="arrow_right" className="arrow_user d-none d-md-block" viewBox="0 0 45 70" width="45" height="70">
+        <polyline strokeWidth="2px" stroke="#8bb940" fill="transparent" points="5,0 20,35 5,70" />
       </svg>
     </div>
   )

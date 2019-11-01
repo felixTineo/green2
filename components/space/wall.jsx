@@ -7,7 +7,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare, faHome, faHeart, faGift, faComment,faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons';
 //import './wall.scss';
-import Creator from '../greenpost/creator';
+import Creator from './creator';
 
 const TopPost = ({ img, author, date, likes, comments, gifts })  => {
 
@@ -23,7 +23,7 @@ const TopPost = ({ img, author, date, likes, comments, gifts })  => {
           <p>{author.fullName}</p>
           <footer id="top_post_footer">
             <FontAwesomeIcon width="30px" icon={faHeart} />
-            <smal> +{likes.length}</smal>
+            <small> +{likes.length}</small>
           </footer>
         </div>
       </div>
@@ -240,15 +240,15 @@ const RecentPost = ({ img, author, likes, comments, gifts, date, history, _id })
             <ul>
               <li>
                 <p><FontAwesomeIcon width="20" icon={faHeart} /></p>
-                <smal> +{likes.length}</smal>
+                <small> +{likes.length}</small>
               </li>
               <li>
                 <p><FontAwesomeIcon width="20" icon={faComment} /></p>
-                <smal> +{comments.length}</smal>
+                <small> +{comments.length}</small>
               </li>
               <li>
                 <p><FontAwesomeIcon width="20" icon={faGift} /></p>
-                <smal> +{0}</smal>
+                <small> +{0}</small>
               </li>
             </ul>
           </div>
@@ -419,14 +419,13 @@ const Wall = () => {
   /**********************************************************************************************
   Extraño comportamiento del sort, el segundo useEffect es una especie de fix hecho por mi mismo.
   **********************************************************************************************/
-  console.log(wall)
   return(
     <div className="main">
       <h1>
         <p><span>Nuevo</span> Post</p>
       </h1>
       <div className="shadow">
-        <Creator common />
+        <Creator />
       </div>
       <h1>
         <p><span>publicasiones</span> top</p>

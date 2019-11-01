@@ -9,6 +9,7 @@ import Store from '../store/store';
 import FloatingNotes from '../floating-notes/floating-notes';
 import Vault from '../vault/vault';
 import Confirm from '../dialogs/confirm';
+import Private from '../chat/private'
 
 const Layout = ({ children }) => {
 
@@ -24,7 +25,19 @@ const Layout = ({ children }) => {
       <Vault />
       <Confirm />
       {children}
-      <div style={{ height: 0 }} />
+      <footer className="col-10 p-0">
+        <Private />
+      </footer>
+      <style jsx>{`
+        footer{
+          position: fixed;
+          width: 100%;
+          bottom: -28px;
+          background: #8bb940;
+          height: 28px;
+        }
+      `}
+      </style>
     </div>
   );
 };

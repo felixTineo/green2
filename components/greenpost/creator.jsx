@@ -7,7 +7,7 @@ import { Spinner } from 'reactstrap';
 import Confirm from '../dialogs/confirm';
 import axios from 'axios';
 
-const Creator = ({ common }) => {
+const Creator = () => {
   const visible = useSelector(state => state.greenpost.creator);
   const [image, setImage] = useState('/static/random/r16.jpg');
   const [loader, setLoader] = useState(false);
@@ -34,29 +34,7 @@ const Creator = ({ common }) => {
     reader.readAsDataURL(img);
   };
 
-  const onPost = async(e) =>{
-    try{
-      if(e.keyCode === 13 && !e.shiftKey || e.type === "submit"){
-        e.preventDefault();
-        setLoader(true);
-        const { img, title, subTitle, history } = values;
-        const data = new FormData();
-        data.append('img', img);
-        data.append('title', title);
-        data.append('subTitle', subTitle);
-        data.append('history', history);
-        const res = await axios.post('/post/add', data);
-        dispatch({ type: ON_POST, post: res.data });
-        setLoader(false);
-        setImage('/static/random/r16.jpg');
-        setValues({ img: '', title: '', subTitle: '', history: '' });
-      }
-    }catch(err){
-      console.log(err);
-    }
-  }
-
-  const onGreen = async(e) =>{
+  const onSubmit = async(e) =>{
     try{
       if(e.keyCode === 13 && !e.shiftKey || e.type === "submit"){
         e.preventDefault();
@@ -89,23 +67,23 @@ const Creator = ({ common }) => {
       <div className="main">
         <div className="img">
           <img src={image} alt=""/>
-          <label title="Subir una foto" htmlFor="img">
+          <label title="Subir una foto" htmlFor="imgGreen">
             { loader && <Spinner color="success" /> }
             {
               !loader && <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z" /></svg>
             }
-            <input onChange={onImg} id="img" name="img" type="file"/>
+            <input onChange={onImg} id="imgGreen" name="img" type="file"/>
           </label>
         </div>
         <div className="history">
-          <form onSubmit={common ? onPost : onGreen}>
+          <form onSubmit={onSubmit}>
             <input id="title" value={values.title} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Titulo" type="text" className="title"/>
             <input id="subTitle" value={values.subTitle} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Sub-titulo opcional" type="text" className="sub-title"/>
-            <textarea onKeyDown={common ? onPost : onGreen} id="history" value={values.history} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Cuentanos tu historia!" />
+            <textarea onKeyDown={onSubmit} id="history" value={values.history} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Cuentanos tu historia!" />
             <button title="Crear post" disabled={loader} type="submit">Crear</button>
           </form>
         </div>
-        { !common && <button disabled={loader} onClick={()=>dispatch({ type: ON_GREEN_CREATOR })} title="Cancelar" className="btn_close" type="button">X</button> }
+        <button disabled={loader} onClick={()=>dispatch({ type: ON_GREEN_CREATOR })} title="Cancelar" className="btn_close" type="button">X</button>
           <style jsx>{`
             .main{
               height: 60vh;

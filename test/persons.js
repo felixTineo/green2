@@ -1,11 +1,25 @@
 const uuid = require('uuid/v1');
 
-const person1 = {
-  mail: String,
-  pass: String,
-  name: { type: String, default: 'Green' },
-  lastName: { type: String, default: 'User' },
-  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
-  greenPost: [{ type: Schema.Types.ObjectId, ref: 'GreenPost' }],
-  perfilImg: { type: String, default: `/static/random/r${Math.floor((Math.random() * 16) +1)}.jpg` },
-}
+const names = ['james', 'johm', 'jenna', 'patrice', 'thera', 'rowan', 'star'];
+const lastNames = ['doe', 'doe', 'fire', 'wind', 'earth', 'fire', 'green'];
+
+const persons = (num) => {
+  const persons = [];
+  for(let i = 0; i < num; i++){
+    const _id = uuid();
+    const person = {
+      _id,
+      mail: `foo${i + 1}@mail.com`,
+      name: names[i],
+      lastName: lastNames[i],
+      fullName: `${names[i]} ${lastNames[i]}`,
+      perfilImg: `/static/persons/person-${i + 1}.jpg`,
+      status:0,
+      url: `/perfil/${_id}`,
+    }
+    persons.push(person);
+  }
+  return persons;
+};
+
+module.exports = persons;

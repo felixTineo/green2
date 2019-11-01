@@ -84,3 +84,12 @@ export const ON_WALL_POSTS = 'ON_WALL_POSTS';
 DIALOG - CONFIRM
 *****************************/
 export const ON_CONFIRM = 'ON_CONFIRM';
+/****************************
+CHAT
+*****************************/
+export const ON_CHAT_FRIEND = 'ON_CHAT_FRIEND';
+export const ON_CHAT_PRIVATE = 'ON_CHAT_PRIVATE';
+export const ON_CHAT_CLOSE = 'ON_CHAT_CLOSE';
+export const ON_CHAT_MINIMIZE = 'ON_CHAT_MINIMIZE'
+export const ON_CHAT_MSG = 'ON_CHAT_MSG';
+export const ON_CHAT_ALERT = 'ON_CHAT_ALERT';

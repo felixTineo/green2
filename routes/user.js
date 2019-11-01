@@ -47,6 +47,7 @@ router.post('/postregister', upload.single('perfilImg') ,async(req, res) => {
     const updated = await UserSchema.findByIdAndUpdate(id, update, { new: true });
     const user = new ResumeUser(updated);
     if(req.session.user.name === 'User') await client.lpushAsync('users', JSON.stringify(user));
+    req.session.user = updated;
     res.status(200).json(update);
   }catch(err){
     res.status(200).send(err);
@@ -58,14 +59,16 @@ router.post('/login', async(req, res) => {
     const { mail, pass } = req.body;
     const user = await UserSchema.findOne({ mail }).populate('posts').populate('greenPost');
     if(!user) return res.status(200).send('mail');
-    if(user.pass !== pass) res.status(200).send('pass');
-    //req.session.user = {};
-    //delete req.session.user;
+    if(user.pass !== pass) return res.status(200).send('pass');
     delete user.pass;
     user.owner = true;
     req.session.user = user;
-    res.redirect(`/perfil/${user.id}`);
-    //res.status(200).send(user.id);
+    await UserSchema.findByIdAndUpdate(user.id, { online: true });
+
+    for(let payload of user.friends){
+      io.emit(`chat:${payload._id}`, payload)
+    }
+    return res.status(200).send(user.id);
   }catch(err){
     console.log(err);
     res.sendStatus(501);
@@ -156,9 +159,10 @@ router.post('/update', async(req, res) => {
 router.get('/logout', async(req, res) => {
   try{
     //await client.delAsync(`sess:${req.sessionId}`);
-    return req.session.destroy((err) => {
+    await UserSchema.findByIdAndUpdate(req.session.user._id, { online: false });
+    return req.session.destroy(async(err) => {
       if(err) console.log(err);
-      res.redirect('/');
+      res.sendStatus(200);
     })
   }catch(err){
     console.log(err);
