@@ -21,15 +21,14 @@ router.get('/autolikes', async(req, res) => {
 
 router.post('/add', upload.single('img'), async(req, res) => {
   try{
-    const { targetId, history } = req.body;
+    const { targetId, history, title, subTitle } = req.body;
     console.log(req.file);
-    //const img = req.file ? req.file.location : null;
     const img = req.file ? `/${req.file.path}` : null;
     const author = new ResumeUser(req.session.user);
-    const newPost = PostSchema({ history, targetId, author, img, date: Date.now() });
-    const saved = await newPost.save();
-    await UserSchema.findByIdAndUpdate(targetId, { $push: { posts: { $each:[saved._id], $position:0 } } });
-    return res.sendStatus(200);
+    const newPost = PostSchema({ history, targetId, author, img, date: Date.now(), title, subTitle });
+    await newPost.save();
+    await UserSchema.findByIdAndUpdate(targetId, { $push: { posts: { $each:[newPost._id], $position:0 } } });
+    return res.status(200).json(newPost);
   }catch(err){
     console.log(err);
     res.status(200).send(err);

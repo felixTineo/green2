@@ -25,6 +25,8 @@ const UserSchema = new Schema({
   friends: Array,
   notes: Array,
   gifts: Array,
+  online: { type: Boolean, default: true },
+  chatHistory: Array,
 });
 
 module.exports = mongoose.model('User', UserSchema);

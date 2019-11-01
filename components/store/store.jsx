@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { storeSections, ON_PRODUCTS, ON_WALLET, ON_STORE } from '../../store/actions';
+import { storeSections, ON_PRODUCTS, ON_WALLET, ON_STORE, ON_WISH } from '../../store/actions';
 import './store.scss';
 import products from '../../test/products';
 import axios from 'axios';
@@ -80,7 +80,7 @@ const Product = () => {
   const owner = useSelector(state => state.user.owner);
   const [disable, setDisable] = useState(false);
   const [note, setNote] = useState();
-  const onSubmit = async(e) => {
+  const onGift = async(e) => {
     try{
       e.preventDefault();
       setDisable(true);
@@ -88,6 +88,19 @@ const Product = () => {
       await axios.post('/user/gift', data);
       const parseCoin = parseInt(product.price, 10);
       dispatch({ type: ON_WALLET, coin: -parseCoin });
+      setDisable(false);
+      dispatch({ type: ON_STORE });
+    }catch(err){
+      console.log(err);
+    }
+  }
+  const onWish = async(e) => {
+    try{
+      e.preventDefault();
+      setDisable(true);
+      const res = await axios.post('/green/wish', { product });
+      console.log(res.data);
+      dispatch({ type: ON_WISH, wish: res.data });
       setDisable(false);
       dispatch({ type: ON_STORE });
     }catch(err){
@@ -108,8 +121,8 @@ const Product = () => {
             <p>precio: ${product.price}</p>
             <p>{product.description}</p>
           </div>
-          <form onSubmit={onSubmit}>
-            <textarea value={note} onChange={(e)=> setNote(e.currentTarget.value)} />
+          <form onSubmit={owner ? onWish : onGift}>
+            { !owner && <textarea value={note} onChange={(e)=> setNote(e.currentTarget.value)} /> }
             <footer>
               <button onClick={()=> dispatch({ type: product.tag })}>atrás</button>
               <button disabled={disable} type="submit">{ owner ? 'agregar' : 'enviar' }</button>

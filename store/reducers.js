@@ -9,6 +9,7 @@ import {
   ON_USER,
   ON_GIFT,
   ON_GREENINFO,
+  ON_GREENPOST,
   ON_GREEN_CREATOR,
   ON_GREEN_LIKE,
   OFF_GREEN_LIKE,
@@ -20,7 +21,6 @@ import {
   ON_POST_REGISTER,
   ON_WALLET,
   ON_UPDATE,
-  ON_GREENPOST,
   ON_FLOAT,
   OFF_FLOAT,
   ON_VAULT,
@@ -32,8 +32,17 @@ import {
   ON_SPACE_FRIENDS,
   ON_SPACE_EVENTS,
   spaceSections,
+  ON_POST,
   ON_WALL_TOP,
   ON_WALL_POSTS,
+  ON_CONFIRM,
+  ON_WISH,
+  ON_CHAT_FRIEND,
+  ON_CHAT_PRIVATE,
+  ON_CHAT_CLOSE,
+  ON_CHAT_MINIMIZE,
+  ON_CHAT_MSG,
+  ON_CHAT_ALERT,
 } from './actions';
 
 export const initialState = {
@@ -140,6 +149,15 @@ export const initialState = {
   wall:{
     top:[],
     posts:[],
+  },
+  confirm:{
+    visible: false,
+    current:{},
+  },
+  chat:{
+    friends:[],
+    privates:[],
+    current:'',
   }
 };
 
@@ -240,6 +258,10 @@ const greenpost = (state = initialState.greenpost, action) => {
       return Object.assign({}, state, {
         current: Object.assign({}, state.current, { likes: [action.like, ...state.current.likes] })
       });
+    case ON_WISH:
+      return Object.assign({}, state, {
+        current: Object.assign({}, state.current, { wish: action.wish })
+      })
     case OFF_GREEN_LIKE:
       const nextState = state.current.likes.filter(like => like._id !== action.uid);
       return Object.assign({}, state, {
@@ -412,10 +434,40 @@ const space = (state = initialState.space, action) => {
 };
 const wall = (state = initialState.wall, action) => {
   switch (action.type) {
+    case ON_POST:
+      return Object.assign({}, state, { posts: [action.post, ...state.posts] });
     case ON_WALL_TOP:
       return Object.assign({}, state, { top: action.posts });
     case ON_WALL_POSTS:
       return Object.assign({}, state, { posts: action.posts });
+    default:
+      return state;
+  }
+};
+
+const confirm = (state = initialState.confirm, action) => {
+  switch (action.type) {
+    case ON_CONFIRM:
+      return Object.assign({}, state, { visible: !state.visible, current: action.current });
+    default:
+      return state;
+  }
+}
+
+const chat = (state = initialState.chat, action) => {
+  const { privates } = state;
+  switch (action.type) {
+    case ON_CHAT_PRIVATE:
+      //const nextArr = privates.length === 4 ?  privates.slice(0, 3) : privates;
+      return Object.assign({}, state, { privates: [action.user, ...privates.slice(3)] });
+    case ON_CHAT_CLOSE:
+      return Object.assign({}, state, { privates: privates.filter(user => user._id !== action._id) });
+    case ON_CHAT_MINIMIZE:
+      return Object.assign({}, state, { privates: privates.map(user => user._id !== action._id ? user : Object.assign({}, user, { minimize: action.option })) });
+    case ON_CHAT_MSG:
+      return Object.assign({}, state, { privates: privates.map(user => user._id !== action._id ? user : Object.assign({}, user, { history: [ ...user.history, action.msg ] })), current: action._id });
+    case ON_CHAT_ALERT:
+      return Object.assign({}, state, { privates: privates.map(user => user._id !== action._id ? user : Object.assign({}, user, { anAlert: action.option })) });
     default:
       return state;
   }
@@ -431,4 +483,6 @@ export const store = combineReducers({
   vault,
   space,
   wall,
+  confirm,
+  chat,
 });

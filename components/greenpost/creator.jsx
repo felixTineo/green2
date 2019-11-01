@@ -1,96 +1,220 @@
 import React, { useState, useReducer } from 'react';
-import './creator.scss';
-import { Modal } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { ON_GREEN_CREATOR } from '../../store/actions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCamera, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import Store from '../store/store';
+import { ON_GREEN_CREATOR, ON_STORE, ON_GREENPOST, ON_CONFIRM, ON_POST } from '../../store/actions';
+import { Modal } from 'reactstrap';
+import { color } from '../../layout/var';
+import { Spinner } from 'reactstrap';
+import Confirm from '../dialogs/confirm';
 import axios from 'axios';
-
-const GreenPost = ({ img, setImg, onImg, historyVisible, setHistoryVisible, onSubmit, history, setHistory }) => {
-  return(
-    <div style={{ backgroundImage: `url(${img})`}} className="creator_greenpost_main">
-      <label htmlFor="green">
-        <input id="green" name="green" onChange={onImg} type="file"/>
-        <FontAwesomeIcon icon={faCamera} />
-      </label>
-      <div className="history_main_cont" style={{ transform: historyVisible ? 'translateX(0)' : 'translateX(100%)' }}>
-        <div className="body">
-          <header><h2>Agrega una historia</h2></header>
-          <textarea onChange={(e)=> setHistory(e.currentTarget.value)} value={history} />
-        </div>
-        <footer>
-          <button onClick={onSubmit}>crear</button>
-        </footer>
-      </div>
-      <button onClick={()=> setHistoryVisible(!historyVisible)} title="Agregar historia" style={{ transform: historyVisible ? 'rotate(180deg)' : null }} className="arrow_history">
-        <FontAwesomeIcon icon={faArrowCircleLeft} />
-      </button>
-    </div>
-  )
-}
 
 const Creator = () => {
   const visible = useSelector(state => state.greenpost.creator);
+  const [image, setImage] = useState('/static/random/r16.jpg');
+  const [loader, setLoader] = useState(false);
+  const [confirm, setConfirm] = useState(false);
+  const [values, setValues] = useReducer((state, next) => ({ ...state, ...next }),{
+    img: '',
+    title: '',
+    subTitle: '',
+    history: '',
+  })
   const dispatch = useDispatch();
-  const [section, setSection] = useReducer((state, next) => ({ ...state, ...next }),{ green: true, store: false });
-  const [historyVisible, setHistoryVisible] = useState(true);
-  const [store, setStore] = useState(false);
-  const [img, setImg]   = useState('/static/random/r16.jpg');
-  const [history, setHistory] = useState('');
 
   const onImg = (e) => {
     const img = e.target.files[0];
     const reader = new FileReader();
     reader.onloadend = ()=> {
       if(reader.result){
-        setImg(reader.result);
-        setHistoryVisible(true);
+        setImage(reader.result);
+        setValues({ img });
       } else {
-        setImg('/static/random/r16.jpg');
+        setImage('/static/random/r16.jpg');
       }
     };
     reader.readAsDataURL(img);
   };
 
-  const onSubmit = async() => {
+  const onSubmit = async(e) =>{
     try{
-      const data = {
-        history,
-        img,
-      }
-      await axios.post('/post/greenpost', data);
+      if(e.keyCode === 13 && !e.shiftKey || e.type === "submit"){
+        e.preventDefault();
+        setLoader(true);
+        const { img, title, subTitle, history } = values;
+        const data = new FormData();
+        data.append('img', img);
+        data.append('title', title);
+        data.append('subTitle', subTitle);
+        data.append('history', history);
+        const res = await axios.post('/green/add', data);
+        dispatch({ type: ON_GREENPOST, greenpost: res.data });
+        setLoader(false);
+        setImage('/static/random/r16.jpg');
+        setValues({ img: '', title: '', subTitle: '', history: '' });
+        dispatch({ type: ON_GREEN_CREATOR });
+        const current = {
+          onConfirm: () => dispatch({ type: ON_STORE }),
+          msg1: "Felicidades, Tu post se creo exitosamente!",
+          msg2: "¿quieres agregar un deseo?",
+        }
+        dispatch({ type: ON_CONFIRM, current })
+      };
+
     }catch(err){
       console.log(err);
     }
   }
-
   return(
-    <Modal isOpen={visible} style={{ maxWidth: '90vw' }}>
-      <div className="creator_main_cont">
-        <header>
-          <p>GreenPost</p>
-          <button onClick={()=> dispatch({ type: ON_GREEN_CREATOR })}>X</button>
-        </header>
-        <div className="body">
-          { section.green && (
-            <GreenPost
-              onImg={onImg}
-              img={img}
-              setImg={setImg}
-              historyVisible={historyVisible}
-              setHistoryVisible={setHistoryVisible}
-              history={history}
-              setHistory={setHistory}
-              />
-            )
-          }
-          { section.store && <Store /> }
+      <div className="main">
+        <div className="img">
+          <img src={image} alt=""/>
+          <label title="Subir una foto" htmlFor="imgGreen">
+            { loader && <Spinner color="success" /> }
+            {
+              !loader && <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z" /></svg>
+            }
+            <input onChange={onImg} id="imgGreen" name="img" type="file"/>
+          </label>
         </div>
+        <div className="history">
+          <form onSubmit={onSubmit}>
+            <input id="title" value={values.title} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Titulo" type="text" className="title"/>
+            <input id="subTitle" value={values.subTitle} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Sub-titulo opcional" type="text" className="sub-title"/>
+            <textarea onKeyDown={onSubmit} id="history" value={values.history} onChange={(e) => setValues({ [e.currentTarget.id]: e.currentTarget.value })} disabled={loader} placeholder="Cuentanos tu historia!" />
+            <button title="Crear post" disabled={loader} type="submit">Crear</button>
+          </form>
+        </div>
+        <button disabled={loader} onClick={()=>dispatch({ type: ON_GREEN_CREATOR })} title="Cancelar" className="btn_close" type="button">X</button>
+          <style jsx>{`
+            .main{
+              height: 60vh;
+              display: flex;
+              position: relative;
+            }
+            .img{
+              width: 60%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: relative;
+            }
+            .img img{
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-positon: center;
+              filter: ${loader ? 'blur(3px)' : 'none'};
+            }
+            label{
+              width: 50px;
+              height: 50px;
+              position: absolute;
+              top: calc(50% - 50px);
+              left: calc(50% - 50px);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            label svg{
+              fill: ${color.light};
+              transition: 250ms ease;
+            }
+            input[type="file"]{
+              width:0;
+              position: absolute;
+              height:0;
+              top: 0;
+              left: 0;
+            }
+            label svg{
+              width: 50px;
+              height: 50px;
+            }
+            label svg:hover{
+              cursor: pointer;
+              fill: ${color.prim}
+            }
+            .history{
+              width: 40%;
+              height: 100%;
+              padding: 1rem .5rem 0;
+              color: ${color.prim};
+              display: flex;
+              flex-direction: column;
+              position: relative;
+            }
+            form{
+              color: ${color.dark};
+              flex-grow: 1;
+              margin-top: 1.5rem;
+            }
+            form input{
+              width: 100%;
+              padding: 0;
+              line-height: 0;
+              border: none;
+            }
+            input:focus, textarea:focus{
+              outline: none;
+            }
+            input:disabled, textarea:disabled{
+              color: rgba(0, 0, 0, .5);
+              background: #fff;
+            }
+            .title{
+              font-size: 2rem;
+            }
+            .sub-title{
+              font-size: 1.2rem;
+            }
+            textarea{
+              margin-top: 1rem;
+              resize: none;
+              width: 100%;
+              border: none;
+              font-size: .8rem;
+              height: 70%;
+            }
+            form button{
+              position: absolute;
+              bottom: .5rem;
+              right: .5rem;
+              transition: 250ms ease;
+              background: ${loader ? color.prim : 'transparent'};
+              border: 1px solid ${color.prim};
+              color: ${loader ? color.light : color.prim};
+            }
+            from button:focus{
+              outline: none;
+            }
+            form button:hover{
+              background: ${color.prim};
+              color: ${color.light}
+            }
+            .btn_close{
+              position: absolute;
+              top: .5rem;
+              right: .5rem;
+              background: transparent;
+              border: none;
+              transition: 250ms ease;
+              border: 1px solid ${color.dark};
+              border-radius: 50%;
+              width: 30px;
+              height: 30px;
+            }
+            .btn_close:focus{
+              outline: none;
+            }
+            .btn_close:hover{
+              color: ${color.light};
+              background: ${color.prim};
+              border-color: ${color.light};
+            }
+
+          `}
+          </style>
       </div>
-    </Modal>
   )
-}
+};
 
 export default Creator;

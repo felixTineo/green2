@@ -11,13 +11,13 @@ const Perfil = () => {
   const dispatch = useDispatch();
   const user = router.query;
   useEffect(()=> {
-    if(typeof(user.posts) === 'string') user.posts = JSON.parse(user.posts);
+    /*if(typeof(user.posts) === 'string') user.posts = JSON.parse(user.posts);
     if(typeof(user.greenPost) === 'string') user.greenPost = JSON.parse(user.greenPost);
     if(typeof(user.friends) === 'string') user.friends = JSON.parse(user.friends);
     if(typeof(user.firstTime) === 'string') user.firstTime = JSON.parse(user.firstTime);
-    if(typeof(user.owner) === 'string') user.owner = JSON.parse(user.owner);
-    //if(user.firstTime && user.owner) dispatch({ type: ON_POST_REGISTER });
-    dispatch({ type: ON_LOADER, loader: 0 });
+    if(typeof(user.owner) === 'string') user.owner = JSON.parse(user.owner);*/
+    if(user.firstTime && user.owner) dispatch({ type: ON_POST_REGISTER });
+    //dispatch({ type: ON_LOADER, loader: 0 });
     dispatch({ type: ON_USER, user });
     dispatch({ type: ON_LOGIN, option: true });
     dispatch({ type: ON_GREENPOST, greenpost: user.greenPost[0] });

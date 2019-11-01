@@ -47,6 +47,7 @@ const DownBar = () => {
 
 const SearchBar = () => {
   const [suggest, setSuggest] = useState([]);
+  const [visible, setVisible] = useState(false);
 
   const onSuggest = async (e) => {
     const value = e.target.value;
@@ -65,20 +66,24 @@ const SearchBar = () => {
         <input onChange={onSuggest} type="text"/>
         <p><FontAwesomeIcon icon={faSearch} /></p>
       </div>
-      <ul style={{ padding: suggest.length > 0 ? '.2rem' : '0' }} className="sugesstlist">
-        {
-          suggest.map(item => (
-            <li key={uuid()}>
-              <MyLink id={item._id}>
-                <div className="user_search_cont">
-                  <img src={item.perfilImg} alt=""/>
-                  <p>{item.fullName}</p>
-                </div>
-              </MyLink>
-            </li>
-          ))
-        }
-      </ul>
+      {
+        visible && (
+          <ul style={{ padding: suggest.length > 0 ? '.2rem' : '0' }} className="sugesstlist">
+            {
+              suggest.map(item => (
+                <li key={uuid()}>
+                  <MyLink url={item.url} callback={setVisible}>
+                    <div className="user_search_cont">
+                      <img src={item.perfilImg} alt=""/>
+                      <p>{item.fullName}</p>
+                    </div>
+                  </MyLink>
+                </li>
+              ))
+            }
+          </ul>
+        )
+      }
     </div>
   )
 };
@@ -162,7 +167,7 @@ const Note = () => {
               {
                 notes.items.map(item => (
                   <li key={uuid()}>
-                    <MyLink id={item._id}>
+                    <MyLink url={item.url}>
                       <div className="friend_cont">
                         <img src={item.perfilImg} alt=""/>
                         <p>
@@ -261,7 +266,7 @@ const Friend = () => {
               {
                 friend.items.map(item => (
                   <li key={uuid()}>
-                    <MyLink id={item._id}>
+                    <MyLink url={item.url}>
                       <div className="friend_cont">
                         <img src={item.perfilImg} alt=""/>
                         <p>{`${item.name} ${item.lastName}`}</p>
@@ -328,7 +333,7 @@ const Option = () => {
       <Popover target="option" isOpen={pop} placement="bottom">
         <PopoverBody style={{ padding:0 }}>
           <ul className="option_list" onMouseLeave={()=> setPop(false)}>
-            <li><MyLink id={id}><p style={{ color: '#8bb940', margin:0 }}>Perfil</p></MyLink></li>
+            <li><MyLink url={`/perfil/${id}`}><p style={{ color: '#8bb940', margin:0 }}>Perfil</p></MyLink></li>
             <li><button onClick={onLogout}>salir</button></li>
           </ul>
         </PopoverBody>

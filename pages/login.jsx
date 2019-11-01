@@ -47,10 +47,7 @@ const LoginForm = ({ setLogin }) => {
         return setPopPass(true);
       }
       dispatch({ type: ON_LOADER, loader: 100 });
-      res.data.posts = JSON.stringify(res.data.posts);
-      res.data.greenPost = JSON.stringify(res.data.greenPost);
-      res.data.friends = JSON.stringify(res.data.friends);
-      Router.replace({ pathname: `/perfil`, query: res.data }, `/perfil/${res.data._id}`, {shallow: true});
+      Router.push(`/perfil/${res.data}`);
       dispatch({ type: ON_LOADER, loader: 100 });
     }catch(err){
       console.log(err);
@@ -127,7 +124,8 @@ const RegisterForm = ({ setLogin }) => {
         setMailPop(true);
       } else {
         dispatch({ type: ON_LOADER, loader: 100 });
-        Router.push({ pathname: `/perfil?id=${res.data.id}`, query: res.data }, `/perfil/${res.data._id}`);
+        console.log(res.data);
+        Router.push(`/perfil/${res.data}`);
       }
     }catch(err){
       console.log(err);
