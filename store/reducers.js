@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { themeGreen, themeRed, themeBlue } from '../layout/wall';
 import {
   ON_DOWN, ON_VIEW_NAV,
   navView,
@@ -43,6 +44,8 @@ import {
   ON_CHAT_MINIMIZE,
   ON_CHAT_MSG,
   ON_CHAT_ALERT,
+  ON_MAIN_NAV,
+  ON_MAIN_THEME,
 } from './actions';
 
 export const initialState = {
@@ -158,6 +161,12 @@ export const initialState = {
     friends:[],
     privates:[],
     current:'',
+  },
+  main:{
+    nav:{
+      visible: true,
+    },
+    theme: themeGreen,
   }
 };
 
@@ -468,6 +477,20 @@ const chat = (state = initialState.chat, action) => {
       return Object.assign({}, state, { privates: privates.map(user => user._id !== action._id ? user : Object.assign({}, user, { history: [ ...user.history, action.msg ] })), current: action._id });
     case ON_CHAT_ALERT:
       return Object.assign({}, state, { privates: privates.map(user => user._id !== action._id ? user : Object.assign({}, user, { anAlert: action.option })) });
+    default:
+      return state;
+  }
+}
+
+const main = (state = initialState.main, action) => {
+  switch (action.type) {
+    case ON_MAIN_NAV:
+      const { visible } = state.nav;
+      return Object.assign({}, state, { nav: Object.assign({}, state.nav, { visible: !visible }) });
+    case ON_MAIN_THEME:
+      if(action.index === 1) return Object.assign({}, state, { theme: themeGreen });
+      if(action.index === 2) return Object.assign({}, state, { theme: themeRed });
+      if(action.index === 3) return Object.assign({}, state, { theme: themeBlue });
     default:
       return state;
   }

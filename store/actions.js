@@ -93,3 +93,8 @@ export const ON_CHAT_CLOSE = 'ON_CHAT_CLOSE';
 export const ON_CHAT_MINIMIZE = 'ON_CHAT_MINIMIZE'
 export const ON_CHAT_MSG = 'ON_CHAT_MSG';
 export const ON_CHAT_ALERT = 'ON_CHAT_ALERT';
+/***********************
+MAIN
+************************/
+export const ON_MAIN_NAV = 'ON_MAIN_NAV';
+export const ON_MAIN_THEME = 'ON_MAIN_THEME';

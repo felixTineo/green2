@@ -42,7 +42,7 @@ const DownBar = () => {
     }
   },[])
 
-  return <div className="down_bar" style={{ height: down || sm ? 40 : 0 }} />
+  return <div className="down_bar" style={{ height: 40/*down || sm ? 40 : 0*/ }} />
 };
 
 const SearchBar = () => {
