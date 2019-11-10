@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import { themeGreen, themeRed, themeBlue } from '../layout/wall';
+import { themeGreen, themeRed, themeBlue } from '../layout/main';
+const themes = [themeGreen, themeRed, themeBlue];
 import {
   ON_DOWN, ON_VIEW_NAV,
   navView,
@@ -164,9 +165,9 @@ export const initialState = {
   },
   main:{
     nav:{
-      visible: true,
+      visible: false,
     },
-    theme: themeGreen,
+    theme: 0,
   }
 };
 
@@ -488,9 +489,7 @@ const main = (state = initialState.main, action) => {
       const { visible } = state.nav;
       return Object.assign({}, state, { nav: Object.assign({}, state.nav, { visible: !visible }) });
     case ON_MAIN_THEME:
-      if(action.index === 1) return Object.assign({}, state, { theme: themeGreen });
-      if(action.index === 2) return Object.assign({}, state, { theme: themeRed });
-      if(action.index === 3) return Object.assign({}, state, { theme: themeBlue });
+      return Object.assign({}, state, { theme: action.index });
     default:
       return state;
   }
@@ -508,4 +507,5 @@ export const store = combineReducers({
   wall,
   confirm,
   chat,
+  main,
 });
