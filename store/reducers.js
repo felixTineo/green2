@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { themeGreen, themeRed, themeBlue } from '../layout/wall';
+import { themeGreen, themeRed, themeBlue } from '../layout/main';
 import {
   ON_DOWN, ON_VIEW_NAV,
   navView,
