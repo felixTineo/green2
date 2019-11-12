@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
     <div className="lauout_main_cont" style={{ position: 'relative' }}>
       <Head>
         <link rel="stylesheet" href="/static/animate.min.css"/>
-        //<link href="https://fonts.googleapis.com/css?family=Archivo+Black|Open+Sans|Pacifico&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Open+Sans|Pacifico&display=swap" rel="stylesheet"/>
       </Head>
       <Header />
       <PostRegister />

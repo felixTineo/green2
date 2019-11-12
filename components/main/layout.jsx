@@ -34,6 +34,7 @@ const Layout = ({ children }) => {
       <Head>
         <link rel="stylesheet" href="/static/animate.min.css"/>
         <link rel="stylesheet" href="/static/aos.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Archivo+Black|Open+Sans|Pacifico&display=swap" rel="stylesheet"/>
       </Head>
       <main>
         <Header />
