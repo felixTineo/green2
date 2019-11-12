@@ -4,6 +4,7 @@ import { ON_MAIN_THEME } from '../../store/actions';
 import { color, font } from '../../layout/main';
 import { TweenMax } from 'gsap';
 import { themeGreen, themeRed, themeBlue } from '../../layout/main';
+import Link from 'next/link';
 
 const Nav = ({ prim, sec, img, index, onStop }) => {
   const dispatch = useDispatch();
@@ -66,7 +67,6 @@ const Nav = ({ prim, sec, img, index, onStop }) => {
           background: transparent;
           color: #fff;
           transition: 250ms ease;
-          cursor: none;
         }
         button:nth-child(1){
           background: ${index === 1 ? '#fff' : 'transparent'};
@@ -213,7 +213,9 @@ const Hero = ({ theme, menu, onStop }) => {
             { !menu && (
               <>
                 <Text title={textLeft.title} subTitle={textLeft.subTitle} left />
-                <button className="d-none d-md-block">¿Quieres Saber Más?</button>
+                <Link href='/landing'>
+                  <button className="d-none d-md-block">¿Quieres Saber Más?</button>
+                </Link>
               </>
             ) }
           </div>
@@ -246,6 +248,7 @@ const Hero = ({ theme, menu, onStop }) => {
           color: #fff;
           position: relative;
           user-select: none;
+          overflow: hidden;
         }
         main{
           flex-grow: 1;
@@ -275,7 +278,6 @@ const Hero = ({ theme, menu, onStop }) => {
           color: #fff;
           padding: .5rem;
           transition: 250ms ease;
-          cursor: none;
         }
         button:focus{
           outline: none;
@@ -443,16 +445,16 @@ const Main = () => {
     TweenMax.to('#cursor', 0.1, { left: e.clientX, top: e.clientY });
   }
   return(
-    <div onMouseMove={onCursor}>
+    <div>
       <Nav onStop={setPause} {...themes[index]}/>
       {index === 0 && <Hero onStop={setPause} theme={themeGreen} menu={menu} />}
       {index === 1 && <Hero onStop={setPause} theme={themeRed} menu={menu} />}
       {index === 2 && <Hero onStop={setPause} theme={themeBlue} menu={menu} />}
-      <div id="cursor"></div>
+      {/*<div id="cursor" />*/}
       <style jsx>{`
         div{
           position: relative;
-          cursor: none !important;
+          //cursor: none !important;
         }
         #cursor{
           width: 25px;

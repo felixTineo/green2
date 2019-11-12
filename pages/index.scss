@@ -1,3 +1,13 @@
 h1{
-  color: green;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 };
+
+@keyframes my{
+  from{
+    transform: translateX(0px);
+  }
+  to{
+    transform: translateX(100px);
+  }
+}

@@ -33,6 +33,7 @@ const Layout = ({ children }) => {
     <div>
       <Head>
         <link rel="stylesheet" href="/static/animate.min.css"/>
+        <link rel="stylesheet" href="/static/aos.css"/>
       </Head>
       <main>
         <Header />
@@ -43,7 +44,7 @@ const Layout = ({ children }) => {
       <style jsx>{`
         div{
           display: flex;
-          width: 100vw;
+          width: 100%;
           position: relative;
         }
         main{

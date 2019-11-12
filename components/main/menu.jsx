@@ -40,6 +40,10 @@ const Menu = () => {
           position: relative;
           z-index: 160;
           flex: 2 0 1;
+          position: sticky;
+          top: 0;
+          //top: 0;
+          //right: 0;
         }
         header{
           display: flex;
