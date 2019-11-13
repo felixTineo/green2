@@ -14,6 +14,8 @@ const Title = ({ word }) => {
       <style jsx >{`
         div{
           background: #fff;
+          border-top: 3px solid ${color.prim};
+          border-bottom: 3px solid ${color.prim};
         }
         ul{
           margin: 0;
