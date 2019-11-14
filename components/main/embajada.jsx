@@ -4,6 +4,7 @@ import Title from './title';
 import AOS from 'aos';
 import persons from '../../test/persons';
 import Link from 'next/link';
+import uuid from 'uuid/v1';
 
 const Embajadores = () => {
 
@@ -14,7 +15,7 @@ const Embajadores = () => {
         <p>Participa en nuestros eventos, auspicia negocios locales, recibe regalos especiales. Se uno de nuestros embajadores como:</p>
         <ul>
           {
-            persons(4).map(person => <li><button><img src={person.perfilImg} alt=""/><p>{`${person.fullName}`}</p></button></li>)
+            persons(4).map(person => <li key={uuid()}><button><img src={person.perfilImg} alt=""/><p>{`${person.fullName}`}</p></button></li>)
           }
         </ul>
       </div>
@@ -32,8 +33,10 @@ const Embajadores = () => {
     <style jsx>{`
       .main{
         display: flex;
+        flex-direction: column;
+        padding-top: 2rem;
         width: 100%;
-        height: 60vh;
+        //height: 60vh;
         background: linear-gradient(rgba(0, 0, 0, .1), #fff);
         position: relative;
       }
@@ -64,8 +67,8 @@ const Embajadores = () => {
         height: 30vh;
       }
       .info{
-        flex-grow: 1;
-        //border: 1px solid red;
+        width: 100%;
+        //flex-grow: 1;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -76,15 +79,20 @@ const Embajadores = () => {
         text-transform: uppercase;
         font-family: ${font.title};
         margin: 0;
-        font-size: 5rem;
-        width: 60%;
+        //font-size: 5rem;
+        font-size: 3.5rem;
+        //width: 60%;
+        text-align: center;
+        width: 100%;
         color: ${color.dark};
         background: url(/static/cusco.jpg)center center no-repeat;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       .info p{
-        width: 60%;
+        //width: 60%;
+        width: 100%;
+        text-align: center;
       }
       img{
         width: 100%;
@@ -93,7 +101,8 @@ const Embajadores = () => {
         object-position: left center;
       }
       .woman{
-        width: 50%;
+        //width: 50%;
+        width: 100%;
         justify-content: flex-end;
         position: relative;
       }
@@ -117,10 +126,13 @@ const Embajadores = () => {
       }
       .info ul{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
+        //justify-content: space-between;
         list-style: none;
         margin: 0;
+        margin-bottom: 2rem;
         padding: 0;
+        width: 100%;
       }
       .info ul button{
         background: transparent;
@@ -133,15 +145,31 @@ const Embajadores = () => {
       }
 
       .info ul button img{
-        width: 70px;
-        height: 70px;
+        //width: 70px;
+        //height: 70px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         object-fit: cover;
         object-position: center;
       }
       .info ul button p{
         margin: 0;
-        width: 100px;
+        //width: 100px;
+        font-size: 11px;
+      }
+      @media(min-width: 768px){
+        .main{
+          flex-direction: row;
+          height: 60vh;
+          padding-top: 0;
+        }
+      }
+      @media(min-width: 992px){
+        .info ul button img{
+          width: 70px;
+          height: 70px;
+        }
       }
     `}
     </style>

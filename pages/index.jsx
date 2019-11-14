@@ -4,14 +4,16 @@ import Hero from '../components/main/hero';
 import GreenPost from '../components/main/greenpost';
 //import MainSection from '../components/main/main';
 //import Embajadores from '../components/main/embajador';
-import Embajada from '../components/main/embajada';
 //      <Embajada />
+import Embajada from '../components/main/embajada';
+import Events from '../components/main/events';
 const Main = () => {
 
   return(
     <Layout>
       <Hero />
       <Embajada />
+      <Events />
       <GreenPost />
     </Layout>
   )
