@@ -25,26 +25,27 @@ const Chat = ({ fullName, perfilImg, _id, minimize, chatHistory, privates, anAle
     }
   }
   useEffect(()=> {
+    onChat();
+  },[]);
+  useEffect(()=> {
     chatRef.current.scrollTo(0, chatRef.current.scrollHeight);
     inputRef.current.focus();
   },[chat])
 
   useEffect(()=> {
     const socket = io();
-    onChat();
     try{
       socket.open();
       socket.on(`private:${cuid}`, (payload) => {
         setChat([...chat, payload.msg]);
+        chatRef.current.scrollTo(0, chatRef.current.scrollHeight);
+        inputRef.current.focus();
       });
     } catch(e){
       console.log(e);
     }
-    console.log('hola');
-    return ()=> {
-      socket.close()
-    };
-  },[]);
+    return ()=> socket.close();
+  },[chat]);
 
   const onMinimize = () => {
     const isMin = privates.find(user => user._id === _id);
@@ -78,6 +79,7 @@ const Chat = ({ fullName, perfilImg, _id, minimize, chatHistory, privates, anAle
   }
   return(
     <li className="main shadow">
+      {console.log(chat)}
       <header>
         <button onClick={onMinimize} className="name" >
           <img src={perfilImg} alt=""/>

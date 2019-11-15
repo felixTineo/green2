@@ -4,7 +4,7 @@ import { ON_LOADER } from '../../store/actions';
 import Router from 'next/router';
 import axios from 'axios';
 
-const MyLink = ({ url, children, cb }) => {
+const MyLink = ({ url, children, callback }) => {
   const dispatch = useDispatch();
   const onLink = async() => {
     let loader = 0;
@@ -18,8 +18,8 @@ const MyLink = ({ url, children, cb }) => {
     }
     try{
       clearInterval(interval);
-      callbback();
-      Router.replace(url);
+      callback();
+      Router.push(url);
       dispatch({ type: ON_LOADER, loader: 100 });
     }catch(err){
       console.log(err);

@@ -28,14 +28,14 @@ const Friend = ({ perfilImg, fullName, _id, url, chatHistory  }) => {
     socket.open();
     socket.on(`notification:${cuid}`, (_id) =>{
       const isOpen = privates.find(user => user._id === _id);
-      console.log(_id);
       if(isOpen && isOpen.minimize ){
         dispatch({ type: ON_CHAT_ALERT, _id, option: true });
-      } else{
+      } else if(!isOpen){
         dispatch({ type: ON_CHAT_PRIVATE, user  });
       }
     });
-  },[])
+    return ()=> socket.close();
+  },[privates])
 
   const onPrivate = () => {
     try{
@@ -112,7 +112,7 @@ const Friend = ({ perfilImg, fullName, _id, url, chatHistory  }) => {
 
 const Friends = () => {
   const [friends, setFriends] = useState([]);
-
+  const id = useSelector(state => state.nav.notifications.id);
   const all = async() => {
     try {
       const res = await axios.get('/chat/all');
@@ -122,8 +122,12 @@ const Friends = () => {
     }
   }
   useEffect(() => {
+    const socket = io();
+    socket.open();
+    socket.on(`chat:${id}`, payload => all());
     all();
-  },[])
+    return ()=> socket.close();
+  },[id])
   return(
     <div className="main">
       <header>chat</header>

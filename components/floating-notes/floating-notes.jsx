@@ -22,6 +22,8 @@ const Note = ({ note }) => {
             {
               (()=> {
                 switch (note.type) {
+                  case 'ACCEPT':
+                    return 'Nuevo Amigo'
                   case 'REACTION':
                     return 'Reaccion';
                   case 'FRIEND':
@@ -45,6 +47,8 @@ const Note = ({ note }) => {
                 {
                   (()=> {
                     switch (note.type) {
+                      case 'ACCEPT':
+                        return 'Acepto tu solicitud de amistad';
                       case 'REACTION':
                         return 'Reacciono a uno de tus posts';
                       case 'FRIEND':

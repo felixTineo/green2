@@ -20,10 +20,6 @@ router.post('/register', async(req, res) => {
     await newUser.save();
     await newPost.save();
     req.session.user = newUser;
-    if(name){
-      const user = new ResumeUser(newUser);
-      await client.lpushAsync('users', JSON.stringify(user));
-    }
     newUser.owner = true;
     console.log(newUser);
     res.status(200).send(newUser.id);
@@ -46,7 +42,7 @@ router.post('/postregister', upload.single('perfilImg') ,async(req, res) => {
     const id = req.session.user._id;
     const updated = await UserSchema.findByIdAndUpdate(id, update, { new: true });
     const user = new ResumeUser(updated);
-    if(req.session.user.name === 'User') await client.lpushAsync('users', JSON.stringify(user));
+    await client.lpushAsync('users', JSON.stringify(user));
     req.session.user = updated;
     res.status(200).json(update);
   }catch(err){

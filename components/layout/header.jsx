@@ -54,8 +54,13 @@ const SearchBar = () => {
     if(value){
       value.toLocaleLowerCase();
       const res = await axios.get(`/user/search/${value}`);
-      setSuggest(res.data);
+      if(res.data){
+        console.log(res.data);
+        setVisible(true);
+        setSuggest(res.data);
+      }
     } else{
+      setVisible(false);
       setSuggest([]);
     }
   }
@@ -173,7 +178,7 @@ const Note = () => {
                         <p>
                           <strong>{`${item.name} ${item.lastName}`}</strong>
                           <small>
-                            {item.action === 'LIKE' ? 'le gusta uno de tus posts' : 'comento uno de tus posts'}
+                            {item.action === 'LIKE' ? 'le gusta uno de tus posts' : item.action === 'ACCEPT' ? 'Acepto tu solicitud de amistad' : 'comento uno de tus posts'}
                           </small>
                         </p>
                       </div>
@@ -266,7 +271,7 @@ const Friend = () => {
               {
                 friend.items.map(item => (
                   <li key={uuid()}>
-                    <MyLink url={item.url}>
+                    <MyLink url={item.url} callback={()=>null}>
                       <div className="friend_cont">
                         <img src={item.perfilImg} alt=""/>
                         <p>{`${item.name} ${item.lastName}`}</p>
@@ -394,7 +399,6 @@ const Header = () => {
     const socket = io();
     socket.open();
     socket.on(`nav:${nav.notifications.id}`, (payload) => {
-      console.log(payload);
       dispatch({ type: 'ON_NOTE', payload });
       dispatch({ type: ON_FLOAT, payload });
     });

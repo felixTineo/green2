@@ -44,6 +44,15 @@ router.get('/accept/:id', async (req, res) => {
     await UserSchema.updateOne({ '_id': id, 'friends._id': req.session.user._id },{
       $set:{'friends.$.status': 0}
     });
+    const user = new ResumeUser(req.session.user);
+    user.action = 'ACCEPT';
+    const payload = {
+      id: uuid(),
+      type: 'ACCEPT',
+      note: 'NOTES',
+      user,
+    }
+    io.emit(`nav:${id}`, payload);
     res.sendStatus(200);
   }catch(err){
     console.log(err);

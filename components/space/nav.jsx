@@ -27,10 +27,6 @@ const Nav = () => {
           <button id={ON_SPACE_WALL} onClick={(e)=>onSection(e.currentTarget.id)}>muro</button>
           <div className="line" />
         </li>
-        <li className={classnames({ space_btn_active: space.chat })}>
-          <button id={ON_SPACE_CHAT} onClick={(e)=>onSection(e.currentTarget.id)}>chat</button>
-          <div className="line" />
-        </li>
         <li className={classnames({ space_btn_active: space.friends })}>
           <button id={ON_SPACE_FRIENDS} onClick={(e)=>onSection(e.currentTarget.id)}>amigos</button>
           <div className="line" />

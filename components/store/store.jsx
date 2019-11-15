@@ -34,7 +34,7 @@ const Home = () => {
           <span>ebook's</span>
         </button>
         <button onClick={()=> dispatch({ type: storeSections.TV })} className="four" id="tv">
-          <img src="static/store/tv.jpg" alt=""/>
+          <img src="/static/store/tv.jpg" alt=""/>
           <span>tv's</span>
         </button>
       </div>
