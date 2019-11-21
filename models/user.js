@@ -20,6 +20,8 @@ const UserSchema = new Schema({
   university: String,
   job: String,
   interest: Array,
+  history: { type: String, default: 'Aun no, nos a contado su historia' },
+  wish: Array,
   events: Array,
   wallet: { type: Number, default: 0 },
   friends: Array,

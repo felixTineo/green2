@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Layout from '../components/main/layout';
 import Hero from '../components/main/hero';
 import GreenPost from '../components/main/greenpost';
@@ -7,14 +8,17 @@ import GreenPost from '../components/main/greenpost';
 //      <Embajada />
 import Embajada from '../components/main/embajada';
 import Events from '../components/main/events';
-const Main = () => {
+import Post from '../components/layout/post';
 
+const Main = () => {
+  const postVisible = useSelector(state => state.post.visible);
   return(
     <Layout>
       <Hero />
       <Embajada />
       <Events />
       <GreenPost />
+      { postVisible && <Post /> }
     </Layout>
   )
 }

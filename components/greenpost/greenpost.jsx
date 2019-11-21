@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ON_GREENINFO, ON_GREEN_CREATOR, ON_GREEN_LIKE, OFF_GREEN_LIKE } from '../../store/actions';
 import classnames from 'classnames';
 import {
+  faUserCheck,
+  faUserClock,
   faExpandArrowsAlt,
   faArrowCircleLeft,
   faUserPlus,
@@ -78,6 +80,56 @@ const GreenNav = ({ setVisible }) => {
   )
 }
 
+const BtnFriend = () => {
+  const user = useSelector(state => state.user);
+  const id = useSelector(state => state.nav.notifications.id);
+  const [status, setStatus] = useState(0);
+
+  const sendFriend = async() => {
+    try{
+      await axios.get(`/friend/send/${user._id}`);
+      setStatus(1);
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  const acceptFriend = async() => {
+    try{
+      await axios.get(`/friend/accept/${user._id}`)
+      setStatus(0);
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  const cancelFriend = async() => {
+    try{
+      await axios.get(`/friend/cancel/${user._id}`)
+      setStatus(null);
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  useEffect(()=> {
+    const friend = user.friends.find(friend => friend._id === id);
+    const status = friend ? friend.status : null;
+    setStatus(status);
+  },[id]);
+
+  switch (status) {
+    case 0:
+      return <button onClick={cancelFriend} type="button" title="Eliminar amigo">Eliminar Amigo</button>
+    case 1:
+      return <button onClick={cancelFriend} type="button" title="Cancelar solicitud de amistad">Esparando Confirmacion</button>
+    case 2:
+      return <button onClick={acceptFriend} type="button" title="Aceptar solicitud de amistad">Aceptar</button>
+    default:
+      return <button onClick={sendFriend} type="button" title="Enviar solicitud de amistad">Agregar Amigo</button>
+  }
+}
+
 const GreenInfo = () => {
   const info = useSelector(state => state.greenpost.info);
   const dispatch = useDispatch();
@@ -86,6 +138,7 @@ const GreenInfo = () => {
     wish: false,
     comments: false,
   })
+  const user = useSelector(state => state.user);
 
   return(
     <div className={classnames({
@@ -98,7 +151,8 @@ const GreenInfo = () => {
         { visible.comments && <Comment /> }
       </div>
       <footer>
-        <button onClick={()=> dispatch({ type: ON_GREEN_CREATOR })} title="Crear Post">GreenPost</button>
+        { user.owner && <button onClick={()=> dispatch({ type: ON_GREEN_CREATOR })} title="Crear Post">GreenPost</button> }
+        { !user.owner && <BtnFriend /> }
         <GreenNav
           setVisible={setVisible}
         />

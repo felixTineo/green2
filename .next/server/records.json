@@ -1,0 +1,55 @@
+{
+  "modules": {
+    "byIdentifier": {
+      "multi private-next-pages/_app.js": 0,
+      "multi private-next-pages/index.jsx": 1,
+      "multi private-next-pages/lab.jsx": 2,
+      "multi private-next-pages/landing.jsx": 3,
+      "multi private-next-pages/login.jsx": 4,
+      "multi private-next-pages/old-index.jsx": 5,
+      "multi private-next-pages/old-perfil.jsx": 6,
+      "multi private-next-pages/perfil.jsx": 7,
+      "multi next/dist/pages/_error": 8,
+      "multi next/dist/pages/_document": 9
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8,
+      "9": 9
+    }
+  },
+  "chunks": {
+    "byName": {
+      "static/1y7QgX_uJr4pUFEekusVa/pages/_app.js": 0,
+      "static/1y7QgX_uJr4pUFEekusVa/pages/_document.js": 1,
+      "static/1y7QgX_uJr4pUFEekusVa/pages/_error.js": 2,
+      "static/1y7QgX_uJr4pUFEekusVa/pages/index.js": 3,
+      "static/1y7QgX_uJr4pUFEekusVa/pages/lab.js": 4,
+      "static/1y7QgX_uJr4pUFEekusVa/pages/landing.js": 5,
+      "static/1y7QgX_uJr4pUFEekusVa/pages/login.js": 6,
+      "static/1y7QgX_uJr4pUFEekusVa/pages/old-index.js": 7,
+      "static/1y7QgX_uJr4pUFEekusVa/pages/old-perfil.js": 8,
+      "static/1y7QgX_uJr4pUFEekusVa/pages/perfil.js": 9
+    },
+    "bySource": {},
+    "usedIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+}

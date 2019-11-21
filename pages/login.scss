@@ -131,17 +131,21 @@ footer.login_register_cont{
     padding: 1rem 2rem;
     margin: 0 .5rem;
     text-transform: capitalize;
-    border: 2px solid $light;
+    border: 2px solid $prim;
+    transition: 250ms ease;
   }
   .btn_active{
-    color: $prim;
-    font-weight: 900;
-  }
-  .btn_inactive{
     @include gradient(180);
     color: $light;
+    font-weight: 900;
+    transition: 250ms ease;
+  }
+  .btn_inactive{
+    color: $prim;
+    transition: 250ms ease;
     &:hover{
-      border-color: $prim;
+      @include gradient(180);
+      color: $light;
     }
   }
 }

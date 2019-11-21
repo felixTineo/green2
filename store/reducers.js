@@ -47,6 +47,7 @@ import {
   ON_CHAT_ALERT,
   ON_MAIN_NAV,
   ON_MAIN_THEME,
+  ON_POST_VIEW,
 } from './actions';
 
 export const initialState = {
@@ -168,6 +169,10 @@ export const initialState = {
       visible: false,
     },
     theme: 0,
+  },
+  post: {
+    visible: false,
+    current: {},
   }
 };
 
@@ -495,6 +500,15 @@ const main = (state = initialState.main, action) => {
   }
 }
 
+const post = (state = initialState.post, action) => {
+  switch (action.type) {
+    case ON_POST_VIEW:
+      return Object.assign({}, state, { current: action.post, visible: !state.visible });
+    default:
+      return state;
+  }
+}
+
 export const store = combineReducers({
   nav,
   user,
@@ -508,4 +522,5 @@ export const store = combineReducers({
   confirm,
   chat,
   main,
+  post,
 });

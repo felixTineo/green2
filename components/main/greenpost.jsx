@@ -7,15 +7,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight, faHeart, faGift, faComment } from '@fortawesome/free-solid-svg-icons';
 import AOS from 'aos';
 import '../../node_modules/aos/src/sass/aos.scss';
+import BtnPost from '../layout/btn-post';
 
-const Post = ({ img, title, subTitle, date, history, author, index }) => {
+const Post = ({ post }) => {
+  const { img, title, subTitle, date, history, author, index } = post;
   const { name, lastName, perfilImg, url, } = author;
-  useEffect(()=> {
+  /*useEffect(()=> {
     AOS.init();
     return AOS.refresh();
-  },[])
+  },[])*/
   return(
-    <div data-aos="flip-left" className="main shadow">
+    <BtnPost post={post}>
+    <div className="main shadow">
       <header>
         <div className="user">
           <img src={perfilImg} alt=""/>
@@ -128,6 +131,7 @@ const Post = ({ img, title, subTitle, date, history, author, index }) => {
       `}
       </style>
     </div>
+    </BtnPost>
   )
 }
 
@@ -138,7 +142,7 @@ const Main = ()=> {
       <Title word="top greenpost's" />
       <ul className="body">
         {
-          posts.map((post, index) => <li><Post index={index} key={uuid()} {...post}/></li>)
+          posts.map((post, index) => <li><Post index={index} key={uuid()} post={post}/></li>)
         }
       </ul>
       <style jsx>{`

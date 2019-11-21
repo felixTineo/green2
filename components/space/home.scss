@@ -32,6 +32,7 @@
     padding: 0;
     display: flex;
     flex-wrap: wrap;
+
   }
   button{
     @include btnFormat();

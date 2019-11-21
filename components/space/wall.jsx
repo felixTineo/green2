@@ -7,11 +7,13 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShare, faHome, faHeart, faGift, faComment,faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons';
 //import './wall.scss';
+import BtnPost from '../layout/btn-post';
 import Creator from './creator';
 
-const TopPost = ({ img, author, date, likes, comments, gifts })  => {
-
+const TopPost = ({ post })  => {
+  const { img, author, date, likes, comments, gifts }  = post;
   return(
+    <BtnPost post={post}>
     <button title="Abrir">
       <div className="main">
         <header>
@@ -80,6 +82,7 @@ const TopPost = ({ img, author, date, likes, comments, gifts })  => {
       `}
       </style>
     </button>
+    </BtnPost>
   )
 };
 
@@ -132,7 +135,6 @@ const CommentList = ({ comment, perfilImg, fullName }) => {
 
 const Comments = ({ pid, pComments }) => {
   const [comments, setComments] = useState(pComments);
-  console.log(pComments);
   const [comment, setComment] = useState('');
   const commentRef = useRef(null);
   const commentsRef = useRef(null);
@@ -215,11 +217,12 @@ const Comments = ({ pid, pComments }) => {
   )
 }
 
-const RecentPost = ({ img, author, likes, comments, gifts, date, history, _id }) => {
+const RecentPost = ({ post }) => {
   const [section, setSection] = useReducer((state, next) => ({ ...state, ...next }), {
     home: true,
     comments: false,
   });
+  const { img, author, likes, comments, gifts, date, history, _id } = post;
   return(
     <div className="main_cont">
       <div className="main">
@@ -275,7 +278,7 @@ const RecentPost = ({ img, author, likes, comments, gifts, date, history, _id })
               <button><FontAwesomeIcon icon={faShare} /></button>
             </li>
             <li>
-              <button><FontAwesomeIcon icon={faExpandArrowsAlt} /></button>
+              <BtnPost post={post}><button><FontAwesomeIcon icon={faExpandArrowsAlt} /></button></BtnPost>
             </li>
           </ul>
         </footer>
@@ -402,6 +405,9 @@ const Wall = () => {
   const wall = useSelector(state => state.wall);
   const space = useSelector(state => state.space);
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
+  const cid = useSelector(state => state.nav.notifications.id);
+  const isFriend = user.friends.find(friend => friend._id === cid);
 
   const getPosts = async() => {
     try{
@@ -421,19 +427,25 @@ const Wall = () => {
   **********************************************************************************************/
   return(
     <div className="main">
-      <h1>
-        <p><span>Nuevo</span> Post</p>
-      </h1>
-      <div className="shadow">
-        <Creator />
-      </div>
+      {
+        isFriend || user.owner && (
+          <>
+            <h1>
+              <p><span>Nuevo</span> Post</p>
+            </h1>
+            <div className="shadow">
+              <Creator />
+            </div>
+          </>
+        )
+      }
       <h1>
         <p><span>publicasiones</span> top</p>
       </h1>
       <div className="top">
         <ul>
           {
-            wall.posts.sort((a, b) => { a = a.likes.length; b = b.likes.length; return a > b ? -1 : a < b ? 1 : 0 }).slice(0, 3).map(post => <li key={uuid()}><TopPost {...post} /></li>)
+            wall.posts.sort((a, b) => { a = a.likes.length; b = b.likes.length; return a > b ? -1 : a < b ? 1 : 0 }).slice(0, 3).map(post => <li key={uuid()}><TopPost post={post} /></li>)
           }
         </ul>
       </div>
@@ -443,11 +455,14 @@ const Wall = () => {
         </h1>
         <ul>
           {
-            wall.posts.sort((a, b) => { a = a.date; b = b.date; return a > b ? -1 : a < b ? 1 : 0 }).map(post => <li key={uuid()}><RecentPost {...post} /></li>)
+            wall.posts.sort((a, b) => { a = a.date; b = b.date; return a > b ? -1 : a < b ? 1 : 0 }).map(post => <li key={uuid()}><RecentPost post={post} /></li>)
           }
         </ul>
       </div>
       <style jsx>{`
+        .main{
+          min-height: 90vh;
+        }
         h1{
           padding: .5rem;
           color: rgba(0, 0, 0, 0.2);

@@ -15,8 +15,6 @@ const Wish = () => {
   const dispatch = useDispatch();
   const [found, setFound] = useState(wish.found);
   const inputTip = useRef();
-
-  user.owner = true;
   const onSubmit = async(e) => {
     try{
       e.preventDefault();
@@ -31,9 +29,8 @@ const Wish = () => {
   }
   return(
     <div className="wish_main_cont animated fadeIn">
-      {console.log(found)}
       {
-        Object.keys(wish).length < 0 && (
+        !wish.name && (
           <div className="nowish_main_cont">
             <button onClick={()=> dispatch({ type: ON_STORE })} disabled={!user.owner}>
               <FontAwesomeIcon icon={faGift} />
@@ -47,7 +44,7 @@ const Wish = () => {
         )
       }
       {
-        Object.keys(wish).length > 0 && (
+        wish.name && (
           <div className="wish_cont shadow">
             <img src={wish.img} alt=""/>
             {

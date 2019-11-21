@@ -10,9 +10,10 @@ import FloatingNotes from '../floating-notes/floating-notes';
 import Vault from '../vault/vault';
 import Confirm from '../dialogs/confirm';
 import Private from '../chat/private'
+import Post from './post';
 
 const Layout = ({ children }) => {
-
+  const post = useSelector(state => state.post);
   return(
     <div className="lauout_main_cont" style={{ position: 'relative' }}>
       <Head>
@@ -25,6 +26,7 @@ const Layout = ({ children }) => {
       <FloatingNotes />
       <Vault />
       <Confirm />
+      { post.visible && <Post /> }
       {children}
       <footer className="col-10 p-0">
         <Private />

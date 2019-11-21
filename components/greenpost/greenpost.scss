@@ -37,7 +37,7 @@
     padding: .5rem;
     button{
       @include btnFormat();
-      flex: 0 0 0px;
+      flex: 0 0px 0px;
       color: $light;
       border: 2px solid $light;
       transition: 250ms ease;

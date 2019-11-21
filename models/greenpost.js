@@ -10,18 +10,19 @@ const GreenPostSchema = new Schema({
   history: { type: String, default: '' },
   comments: Array,
   likes: Array,
-    wish: {
-      type: Object,
-      default: {
-        id: '123456789',
-        name: 'Oreo',
-        img: '/static/store/products/gol-1.jpg',
-        tag: 'gol', price: 100,
-        description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, cumque atque, dolore qui, tempora delectus provident saepe dicta minus iusto iste autem? Aut, ipsum. Ipsam illo perspiciatis optio architecto cumque!',
-        found: 0,
-        sender: {},
-      }
-    },
+  wish: {
+    type: Object,
+    default: {
+      id: '',
+      name: '',
+      img: '',
+      tag: '',
+      price: 0,
+      description:'',
+      found: 0,
+      sender: {},
+    }
+  },
 });
 
 module.exports = mongoose.model('GreenPost', GreenPostSchema);
