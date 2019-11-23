@@ -123,6 +123,7 @@ export const initialState = {
     },
   },
   store:{
+    postType: '',
     visible: false,
     current: {},
     home: false,
@@ -303,7 +304,7 @@ const greenstore = (state = initialState.store, action) => {
   const { HOME, PRODUCT, MUSIC, TV, EBOOK, CANDY, TOY, JEWEL } = storeSections;
   switch(action.type){
     case ON_STORE:
-      return Object.assign({}, state, { visible: !state.visible, home: true });
+      return Object.assign({}, state, { visible: !state.visible, home: true, postType: action.payload || '', });
     case ON_PRODUCTS:
       return Object.assign({}, state, { items: action.products });
     case PRODUCT:

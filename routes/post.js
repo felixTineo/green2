@@ -56,11 +56,9 @@ router.get('/posts/:index', async(req, res) => {
   }
 });
 
-router.post('/comment/:pid', async(req, res) => {
+router.post('/comment/add', async(req, res) =>{
   try{
-    const { pid } = req.params;
-    const { comment } = req.body;
-    console.log(pid, comment);
+    const { comment, pid, targetId } = req.body;
     const user = new ResumeUser(req.session.user);
     const newComment = {
       ...user,
@@ -74,12 +72,38 @@ router.post('/comment/:pid', async(req, res) => {
       user,
     }
     const post = await PostSchema.findByIdAndUpdate(pid, { $push:{ comments: newComment } });
-    io.emit(`nav:${post.author}`, payload);
+    if(req.session.user._id !== targetId) io.emit(`nav:${targetId}`, payload);
     res.status(200).send(newComment);
+  }catch(err){
+    console.log(err);
+    res.status(501).send(err);
+  }
+});
+
+router.get('/like/:pid/:targetId', async(req, res) => {
+  try{
+    const { pid, targetId } = req.params;
+    const post = await PostSchema.findById(pid, "likes");
+    const checkLike = post.likes.find(like => like._id === req.session.user._id);
+    if(checkLike){
+      const like = await PostSchema.findByIdAndUpdate(pid, { $pull:{ likes: { _id: req.session.user._id } } });
+      return res.status(200).send('dislike');
+    }
+    const user = new ResumeUser(req.session.user);
+    const like = await PostSchema.findByIdAndUpdate(pid, { $push:{ likes: { $each:[user], $position: 0 } } });
+    user.action = 'LIKE';
+    const payload = {
+      id: uuid(),
+      type: 'REACTION',
+      note: 'NOTES',
+      user,
+    }
+    if(req.session.user._id !== targetId) io.emit(`nav:${targetId}`, payload);
+    res.status(200).send(user);
   }catch(err){
     console.log(err);
     res.status(500).send(err);
   }
-})
+});
 
 module.exports = router;

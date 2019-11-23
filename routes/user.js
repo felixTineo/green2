@@ -38,7 +38,6 @@ router.post('/postregister', upload.single('perfilImg') ,async(req, res) => {
       perfilImg: `/${req.file.path}`,
       wallet: 50,
     };
-    console.log(update);
     const id = req.session.user._id;
     const updated = await UserSchema.findByIdAndUpdate(id, update, { new: true });
     const user = new ResumeUser(updated);
@@ -94,7 +93,7 @@ router.get('/perfil/:_id', async(req, res) => {
 
 router.post('/gift', async(req, res) => {
   try{
-    const { gift, uid, note } = req.body;
+    const { gift, uid, note, postType } = req.body;
     const user = await UserSchema.findById(req.session.user._id, 'wallet');
     gift.price = parseInt(gift.price, 10);
     if(user.wallet < gift.price) return res.status(200).send('credit');
@@ -104,18 +103,23 @@ router.post('/gift', async(req, res) => {
       sender,
       ...gift,
     };
-    console.log(newGift);
-    await UserSchema.findByIdAndUpdate(uid, { $push:{ gifts: newGift } });
     const payload = {
       type: "GIFT",
       note: "GIFT",
       user: newGift,
     };
+    await UserSchema.findByIdAndUpdate(uid, { $push:{ gifts: newGift } });
+    if(postType.type === 'common'){
+      await PostSchema.findByIdAndUpdate(postType.pid, { $inc: { gifts: 1 } });
+    }
+    if(postType.type === 'green') {
+      await GreenPostSchema.findByIdAndUpdate(postType.pid, { $inc: { gifts: 1 } });
+    }
     io.emit(`nav:${uid}`, payload);
-    res.sendStatus(200);
+    return res.sendStatus(200);
   }catch(err){
     console.log(err);
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 })
 

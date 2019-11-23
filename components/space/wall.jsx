@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useReducer, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ON_WALL_TOP, ON_WALL_POSTS } from '../../store/actions';
+import { ON_WALL_TOP, ON_WALL_POSTS, ON_STORE } from '../../store/actions';
 import { color, font, size } from '../../layout/var';
 import uuid from 'uuid/v1';
 import axios from 'axios';
@@ -133,36 +133,23 @@ const CommentList = ({ comment, perfilImg, fullName }) => {
   );
 }
 
-const Comments = ({ pid, pComments }) => {
-  const [comments, setComments] = useState(pComments);
-  const [comment, setComment] = useState('');
+const Comments = ({ pComments, onSubmit, onChange, comment }) => {
   const commentRef = useRef(null);
   const commentsRef = useRef(null);
-  const onSubmit = async(e) => {
-    try{
-      if(e.keyCode === 13 && e.shiftKey === false){
-        e.preventDefault();
-        const res = await axios.post(`/post/comment/${pid}`, { comment });
-        setComment('');
-        setComments([...comments, res.data]);
-      }
-    }catch(err){
-      console.log(err);
-    }
-  }
   useEffect(() => {
     commentRef.current.focus();
     commentsRef.current.scrollTo(0, commentsRef.current.scrollHeight);
   })
+
   return(
     <div className="animated fadeIn">
       <ul ref={commentsRef}>
         {
-          comments.map(comment => <CommentList key={uuid()} {...comment} />)
+          pComments.map(comment => <CommentList key={uuid()} {...comment} />)
         }
       </ul>
       <form onSubmit={onSubmit}>
-        <textarea onKeyDown={onSubmit} ref={commentRef} value={comment} onChange={(e) => setComment(e.currentTarget.value)} />
+        <textarea onKeyDown={onSubmit} ref={commentRef} value={comment} onChange={(e) => onChange(e.currentTarget.value)} />
         <button type="submit">enviar</button>
       </form>
       <style jsx>{`
@@ -170,6 +157,7 @@ const Comments = ({ pid, pComments }) => {
           height: 100%;
           display: flex;
           flex-direction: column;
+          width: 100%;
         }
         ul{
           list-style: none;
@@ -222,7 +210,42 @@ const RecentPost = ({ post }) => {
     home: true,
     comments: false,
   });
-  const { img, author, likes, comments, gifts, date, history, _id } = post;
+
+  const dispatch = useDispatch();
+
+  const { img, title, subTitle, author, likes, comments, gifts, date, history, _id, } = post;
+  const cid = useSelector(state => state.nav.notifications.id);
+  const targetId = useSelector(state => state.user._id);
+
+  const [pComments, setPcomments] = useState(comments);
+  const [comment, setComment] = useState('');
+  const onComment = async(e) => {
+    try{
+      if(e.keyCode === 13 && e.shiftKey === false){
+        e.preventDefault();
+        const res = await axios.post(`/post/comment/add`, { comment, pid: _id, targetId  });
+        setComment('');
+        setPcomments([...pComments, res.data]);
+      }
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  const [like, setLike] = useState(likes);
+  const onLike = async() => {
+    try{
+      const res = await axios.get(`/post/like/${_id}/${targetId}`);
+      if(res.data === 'dislike'){
+        setLike(likes.filter(like => likes._id === cid));
+      } else {
+        setLike([...like, res.data]);
+      }
+    }catch(e){
+      console.log(e);
+    }
+  }
+
   return(
     <div className="main_cont">
       <div className="main">
@@ -243,7 +266,7 @@ const RecentPost = ({ post }) => {
             <ul>
               <li>
                 <p><FontAwesomeIcon width="20" icon={faHeart} /></p>
-                <small> +{likes.length}</small>
+                <small> +{like.length}</small>
               </li>
               <li>
                 <p><FontAwesomeIcon width="20" icon={faComment} /></p>
@@ -251,34 +274,37 @@ const RecentPost = ({ post }) => {
               </li>
               <li>
                 <p><FontAwesomeIcon width="20" icon={faGift} /></p>
-                <small> +{0}</small>
+                <small> +{gifts || 0}</small>
               </li>
             </ul>
           </div>
         </header>
         <div className="body">
-          { section.home && <p className="animated fadeIn">{history}</p> }
-          { section.comments && <Comments pid={_id} pComments={comments} /> }
+          { section.home && (
+            <div>
+              <h1>{title}</h1>
+              <small>{subTitle}</small>
+              <p>{history}</p>
+            </div>
+          ) }
+          { section.comments && <Comments comment={comment} onChange={setComment} onSubmit={onComment} pComments={pComments} /> }
         </div>
         <footer className="footer_wall_post">
           <ul>
             <li>
-              <button onClick={()=> setSection({ home: true, comments: false })}><FontAwesomeIcon icon={faHome} /></button>
+              <button title="Publicasion" onClick={()=> setSection({ home: true, comments: false })}><FontAwesomeIcon icon={faHome} /></button>
             </li>
             <li>
-              <button><FontAwesomeIcon icon={faHeart} /></button>
+              <button title="Reacionar" id="like" onClick={onLike}><FontAwesomeIcon icon={faHeart} /></button>
             </li>
             <li>
-              <button onClick={()=> setSection({ home: false, comments: true })}><FontAwesomeIcon icon={faComment} /></button>
+              <button title="Comentar" onClick={()=> setSection({ home: false, comments: true })}><FontAwesomeIcon icon={faComment} /></button>
             </li>
             <li>
-              <button><FontAwesomeIcon icon={faGift} /></button>
+              <button onClick={()=> dispatch({ type: ON_STORE, payload:{ type:'common', pid:_id } })}><FontAwesomeIcon icon={faGift} /></button>
             </li>
             <li>
-              <button><FontAwesomeIcon icon={faShare} /></button>
-            </li>
-            <li>
-              <BtnPost post={post}><button><FontAwesomeIcon icon={faExpandArrowsAlt} /></button></BtnPost>
+              <BtnPost post={post}><button title="Abrir Publicación"><FontAwesomeIcon icon={faExpandArrowsAlt} /></button></BtnPost>
             </li>
           </ul>
         </footer>
@@ -353,19 +379,27 @@ const RecentPost = ({ post }) => {
         }
         .body{
           flex-grow: 1;
-          overflow: hidden;
-        }
-        .body p {
-          height: 100%;
-          margin: 0;
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
-          user-select: none;
+          overflow: hidden;
+        }
+        .body div{
+          max-width: 75%;
+        }
+        .body h1{
+          margin: 0;
+          font-family: ${font.text};
+          font-wright: 550;
+        }
+        .body p{
+          margin: .5rem 0;
         }
         footer{
           padding: .5rem;
           background: ${color.dark};
+          width: 100%;
         }
         footer ul{
           width: 100%;
@@ -392,8 +426,12 @@ const RecentPost = ({ post }) => {
           outline: none;
         }
         footer ul button:hover{
-          background: ${color.light};
-          color: ${color.prim};
+          background: ${color.light} !important;
+          color: ${color.prim} !important;
+        }
+        #like{
+          background: ${like.find(like => like._id === cid) ? color.light: 'transparent'};
+          color: ${like.find(like => like._id === cid) ? color.prim: color.light};
         }
       `}
       </style>

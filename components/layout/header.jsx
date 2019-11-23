@@ -338,7 +338,7 @@ const Option = () => {
       <Popover target="option" isOpen={pop} placement="bottom">
         <PopoverBody style={{ padding:0 }}>
           <ul className="option_list" onMouseLeave={()=> setPop(false)}>
-            <li><MyLink url={`/perfil/${id}`}><p style={{ color: '#8bb940', margin:0 }}>Perfil</p></MyLink></li>
+            <li><MyLink url={`/perfil/${id}`} callback={()=> null}><p style={{ color: '#8bb940', margin:0 }}>Perfil</p></MyLink></li>
             <li><button onClick={onLogout}>salir</button></li>
           </ul>
         </PopoverBody>

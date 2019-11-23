@@ -5,6 +5,23 @@ const GreenPostSchema = require('../models/greenpost');
 const ResumeUser = require('../classes/resume-user');
 const io = require('../midlewares/io');
 const uuid = require('uuid/v1');
+//const posts = require('../test/posts').greenposts;
+
+/*router.get('/generate', async(req, res) => {
+  try{
+    for(post of posts){
+      const data = {
+        ...post,
+        author: '5dd6770370f29a1b39000c3c',
+      }
+      await new GreenPostSchema(data).save();
+    }
+    res.status(200).send('done');
+  }catch(e){
+    console.log(e);
+    rtes.status(500).send(e);
+  }
+})*/
 
 router.get('/rest', async(req, res) => {
   const greenpost = await UserSchema.findById(req.session.user._id, "greenPost");
@@ -12,6 +29,19 @@ router.get('/rest', async(req, res) => {
   await GreenPostSchema.findByIdAndUpdate(greenpost.greenPost[0], { "wish.found": 0 });
   res.sendStatus(200);
 });
+
+router.get('/all', async(req, res) => {
+  try{
+    //const data = await GreenPostSchema.find({}, null, { limit: 3, sort: { 'likes.$.length': -1 } });
+    const data  = await GreenPostSchema.aggregate([{$unwind: "$likes"},{$group: {_id:"$_id", likes: {$push:"$likes"}, size: {$sum:1}}}, {$sort:{size: -1}}]).limit(50);
+    const pids = data.map(post => post._id);
+    const posts = await GreenPostSchema.find({ '_id': { $in: pids } }).populate('author');
+    res.status(200).json(posts);
+  }catch(e){
+    console.log(e)
+    res.status(500).send(e);
+  }
+})
 
 router.post('/add', upload.single('img'), async(req, res) => {
   try{

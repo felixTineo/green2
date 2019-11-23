@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { color, font, greenGradient, greenBackground } from '../../layout/main';
 import uuid from 'uuid/v1';
 import Title from './title';
-import { posts as myPosts } from '../../test/posts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight, faHeart, faGift, faComment } from '@fortawesome/free-solid-svg-icons';
 import AOS from 'aos';
 import '../../node_modules/aos/src/sass/aos.scss';
 import BtnPost from '../layout/btn-post';
+import axios from 'axios';
 
 const Post = ({ post }) => {
   const { img, title, subTitle, date, history, author, index } = post;
@@ -136,7 +136,22 @@ const Post = ({ post }) => {
 }
 
 const Main = ()=> {
-  const [posts, setPosts] = useState(myPosts);
+  const [posts, setPosts] = useState([]);
+  const onPosts = async()=> {
+    try{
+      const res = await axios.get('/green/all');
+      setPosts(res.data);
+    }catch(e){
+      console.log(e)
+    }
+  }
+  useEffect(()=> {
+    onPosts();
+    const interval = setInterval(function () {
+      onPosts();
+    }, 60000);
+    return ()=> clearInterval(interval);
+  },[]);
   return(
     <div className="main">
       <Title word="top greenpost's" />

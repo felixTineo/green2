@@ -10,6 +10,7 @@ const GreenPostSchema = new Schema({
   history: { type: String, default: '' },
   comments: Array,
   likes: Array,
+  gifts: Number,
   wish: {
     type: Object,
     default: {

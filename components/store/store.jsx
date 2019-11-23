@@ -75,6 +75,7 @@ const Category = ({ tag }) => {
 
 const Product = () => {
   const product = useSelector(state => state.greenstore.current);
+  const postType = useSelector(state => state.greenstore.postType);
   const uid = useSelector(state => state.user._id);
   const dispatch = useDispatch();
   const owner = useSelector(state => state.user.owner);
@@ -84,7 +85,7 @@ const Product = () => {
     try{
       e.preventDefault();
       setDisable(true);
-      const data = { gift: product, uid, note };
+      const data = { gift: product, uid, note, postType };
       await axios.post('/user/gift', data);
       const parseCoin = parseInt(product.price, 10);
       dispatch({ type: ON_WALLET, coin: -parseCoin });
@@ -121,11 +122,11 @@ const Product = () => {
             <p>precio: ${product.price}</p>
             <p>{product.description}</p>
           </div>
-          <form onSubmit={owner ? onWish : onGift}>
-            { !owner && <textarea value={note} onChange={(e)=> setNote(e.currentTarget.value)} /> }
+          <form onSubmit={!owner || postType.type ? onGift : onWish}>
+            { !owner || postType.type && <textarea value={note} onChange={(e)=> setNote(e.currentTarget.value)} /> }
             <footer>
               <button onClick={()=> dispatch({ type: product.tag })}>atrás</button>
-              <button disabled={disable} type="submit">{ owner ? 'agregar' : 'enviar' }</button>
+              <button disabled={disable} type="submit">{ !owner || postType.type ? 'enviar' : 'agregar' }</button>
             </footer>
           </form>
         </div>
