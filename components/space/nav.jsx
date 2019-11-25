@@ -11,6 +11,7 @@ import {
 import './nav.scss';
 
 const Nav = () => {
+  const owner = useSelector(state => state.user.owner);
   const dispatch = useDispatch();
   const space = useSelector(state => state.space);
   const onSection = useCallback((section)=> {
@@ -23,10 +24,14 @@ const Nav = () => {
           <button id={ON_SPACE_HOME} onClick={(e)=>onSection(e.currentTarget.id)}>inicio</button>
           <div className="line" />
         </li>
-        <li className={classnames({ space_btn_active: space.wall })}>
-          <button id={ON_SPACE_WALL} onClick={(e)=>onSection(e.currentTarget.id)}>muro</button>
-          <div className="line" />
-        </li>
+        {
+          owner && (
+            <li className={classnames({ space_btn_active: space.wall })}>
+              <button id={ON_SPACE_WALL} onClick={(e)=>onSection(e.currentTarget.id)}>muro</button>
+              <div className="line" />
+            </li>
+          )
+        }
         <li className={classnames({ space_btn_active: space.friends })}>
           <button id={ON_SPACE_FRIENDS} onClick={(e)=>onSection(e.currentTarget.id)}>amigos</button>
           <div className="line" />

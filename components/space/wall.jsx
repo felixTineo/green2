@@ -9,6 +9,7 @@ import { faShare, faHome, faHeart, faGift, faComment,faExpandArrowsAlt } from '@
 //import './wall.scss';
 import BtnPost from '../layout/btn-post';
 import Creator from './creator';
+import MyLink from '../mylink/link';
 
 const TopPost = ({ post })  => {
   const { img, author, date, likes, comments, gifts }  = post;
@@ -439,6 +440,127 @@ const RecentPost = ({ post }) => {
   )
 }
 
+const Friend = ({ fullName, perfilImg, url, _id, onCancel }) => {
+  const onFriend = async() => {
+    try {
+      await axios.get(`/friend/send/${_id}`);
+      onCancel(_id);
+    } catch (e) {
+      console.log(e)  ;
+    }
+  }
+
+  return(
+    <li className="shadow-sm">
+      <header>
+        <MyLink url={url} callback={()=> null}>
+          <p style={{ color: "#fff" }}>{fullName}</p>
+        </MyLink>
+        <button id={_id} onClick={()=>onCancel(_id)} title="Eliminar">X</button>
+      </header>
+      <button onClick={onFriend} title="Enviar solicitud de amistad">Enviar</button>
+      <style jsx>{`
+        li{
+          background: url(${perfilImg})top center no-repeat;
+          background-size: cover;
+          height: 100%;
+          width: 30%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          flex-shrink: 0;
+          margin-left: .5rem;
+        }
+        header{
+          display: flex;
+          justify-content: space-between;
+          color: #fff;
+          align-items: center;
+          border: none;
+        }
+        header p {
+          margin: 0;
+          text-transform: capitalize;
+        }
+        header button{
+          width: 25px;
+          height: 25px;
+          background: transparent;
+          border: 1px solid #fff;
+          border-radius: 50%;
+          color: #fff;
+          transition: 250ms ease;
+        }
+        header button:hover{
+          background: #fff;
+          color: ${color.prim};
+        }
+        button:focus{
+          outline: none;
+        }
+        button{
+          align-self: flex-end;
+          background: transparent;
+          color: #fff;
+          border: 2px solid #fff;
+          margin: .5rem;
+          transition: 250ms ease;
+        }
+        button:hover{
+          background: #fff;
+          color: ${color.prim};
+        }
+      `}
+      </style>
+    </li>
+  )
+}
+
+const SuggestFriend = () => {
+  const [list, setList] = useState([]);
+  const onSuggest = async() => {
+    try {
+      const res = await axios.get('/friend/suggest');
+      console.log(res.data);
+      setList(res.data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(()=> {
+    onSuggest();
+  },[])
+
+  const onCancel = (_id) => {
+    const newList = list.filter(friend => friend._id !== _id);
+    setList(newList);
+  }
+
+  return(
+    <ul>
+      {
+        list.map(friend => <Friend key={uuid()} onCancel={onCancel} {...friend} />)
+      }
+      <style jsx>{`
+        ul{
+          list-style: none;
+          width: 100%;
+          height: 40vh;
+          display: flex;
+          margin: 0;
+          padding: 0;
+          padding-top: 1rem;
+          overflow: hidden;
+          flex-wrap: no-wrap;
+          transition: 250ms ease;
+        }
+      `}
+      </style>
+    </ul>
+  )
+}
+
 const Wall = () => {
   const wall = useSelector(state => state.wall);
   const space = useSelector(state => state.space);
@@ -465,7 +587,7 @@ const Wall = () => {
   **********************************************************************************************/
   return(
     <div className="main">
-      {
+      {/*
         isFriend || user.owner && (
           <>
             <h1>
@@ -476,7 +598,11 @@ const Wall = () => {
             </div>
           </>
         )
-      }
+      */}
+      <h1>
+        <p><span>Sugerencias de</span> Amistad</p>
+      </h1>
+      <SuggestFriend />      
       <h1>
         <p><span>publicasiones</span> top</p>
       </h1>
@@ -486,6 +612,12 @@ const Wall = () => {
             wall.posts.sort((a, b) => { a = a.likes.length; b = b.likes.length; return a > b ? -1 : a < b ? 1 : 0 }).slice(0, 3).map(post => <li key={uuid()}><TopPost post={post} /></li>)
           }
         </ul>
+      </div>
+      <h1>
+        <p><span>Nuevo</span> Post</p>
+      </h1>
+      <div className="shadow">
+          <Creator />
       </div>
       <div className="recent">
         <h1>

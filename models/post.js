@@ -10,7 +10,7 @@ const PostSchema = new Schema({
     subTitle: String,
     history: { type: String, default: '' },
     comments: Array,
-    gifts: Number,
+    gifts: { type: Number, default: 0 },
     likes: Array,
 });
 

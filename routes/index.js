@@ -6,7 +6,6 @@ const app = require('../midlewares/app');
 
 router.get('/perfil/:id', async(req, res) => {
   try{
-    console.log(req.params.id);
     const user = await UserSchema.findById(req.params.id).populate('posts').populate('greenPost');
     if(req.session.user._id === req.params.id) user.owner = true;
     return app.render(req, res, '/perfil', user);

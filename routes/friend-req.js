@@ -73,6 +73,19 @@ router.get('/cancel/:id', async(req, res) => {
   }
 })
 
+router.get('/suggest', async(req, res)=> {
+  try{
+    const userFriends = await UserSchema.findById(req.session.user._id, "friends");
+    const fids = userFriends.friends.map(friend => friend._id);
+    const users = await UserSchema.find({ _id:{ $nin: [...fids, req.session.user._id] } });
+    const suggest = users.map(user => new ResumeUser(user));
+    res.status(200).json(suggest);
+  }catch(e){
+    console.log(e);
+    res.sendStatus(500);
+  }
+})
+
 
 
 module.exports = router;

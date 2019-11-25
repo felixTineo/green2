@@ -22,7 +22,6 @@ router.get('/autolikes', async(req, res) => {
 router.post('/add', upload.single('img'), async(req, res) => {
   try{
     const { targetId, history, title, subTitle } = req.body;
-    console.log(req.file);
     const img = req.file ? `/${req.file.path}` : null;
     const author = new ResumeUser(req.session.user);
     const newPost = PostSchema({ history, targetId, author, img, date: Date.now(), title, subTitle });

@@ -5,23 +5,42 @@ import { ON_UPDATE } from '../../store/actions';
 import { color } from '../../layout/var';
 import axios from 'axios';
 import uuid from 'uuid/v1';
+import MyLink  from '../mylink/link';
+import BtnPost from '../layout/btn-post';
 
 const RecentPosts = () => {
   const posts = useSelector(state => state.user.posts);
-  //const recents = posts.slice(0, 5);
-  const foo = [1, 2, 3, 4, 5];
   return(
-    <div className="recenposts_main_cont">
-      <ul>
-        {
-          foo.map(post => (
-            <li key={uuid()}>
-              <button title="Abrir"><img src={`/static/random/r${Math.floor(Math.random() * 16 + 1)}.jpg`} alt=""/></button>
-            </li>
-          ))
+    <ul>
+      {console.log(posts)}
+      {
+        posts.slice(0, 10).map(post => <li><img src={post.img} alt=""/></li>)
+      }
+      <style jsx>{`
+        ul{
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          padding-top: 1rem;
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
         }
-      </ul>
-    </div>
+        li{
+          width: 25%;
+          height: 35%;
+        }
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      `}
+      </style>
+    </ul>
   )
 };
 
@@ -73,7 +92,6 @@ const History = () => {
   }
   return(
     <div className="main">
-    {console.log(history)}
       <textarea title={isCurrent && "Agrega tu historia"} onClick={isCurrent ? ()=> setDisable(false) : null} disable={disable} value={history} onChange={(e) => setHistory(e.currentTarget.value)} />
       {
         isCurrent && !disable && (
@@ -132,7 +150,7 @@ const History = () => {
 }
 
 const Home = () => {
-
+  const owner = useSelector(state => state.user.owner);
   return(
     <div className="spacehome_main_cont">
       <header><h1><span>publicasiones</span> recientes</h1></header>

@@ -9,6 +9,7 @@ import axios from 'axios';
 
 const Creator = () => {
   const visible = useSelector(state => state.greenpost.creator);
+  const targetId = useSelector(state => state.nav.notifications.id);
   const [image, setImage] = useState('/static/random/r16.jpg');
   const [loader, setLoader] = useState(false);
   const [confirm, setConfirm] = useState(false);
@@ -45,6 +46,7 @@ const Creator = () => {
         data.append('title', title);
         data.append('subTitle', subTitle);
         data.append('history', history);
+        data.append('targetId', targetId);
         const res = await axios.post('/post/add', data);
         dispatch({ type: ON_POST, post: res.data });
         setLoader(false);
