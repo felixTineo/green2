@@ -33,7 +33,7 @@
       }
     }
   ],
-  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/hero/hero.scss": [
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/about/about.scss": [
     {
       "modules": {
         "byIdentifier": {},
@@ -50,7 +50,7 @@
       }
     }
   ],
-  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/about/about.scss": [
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/hero/hero.scss": [
     {
       "modules": {
         "byIdentifier": {},
@@ -118,6 +118,23 @@
       }
     }
   ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/space/nav.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
   "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/space/home.scss": [
     {
       "modules": {
@@ -135,7 +152,7 @@
       }
     }
   ],
-  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/logo/logo.scss": [
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/greenpost/wish.scss": [
     {
       "modules": {
         "byIdentifier": {},
@@ -169,23 +186,6 @@
       }
     }
   ],
-  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/buttons/button.scss": [
-    {
-      "modules": {
-        "byIdentifier": {},
-        "usedIds": {}
-      },
-      "chunks": {
-        "byName": {
-          "mini-css-extract-plugin": 0
-        },
-        "bySource": {},
-        "usedIds": [
-          0
-        ]
-      }
-    }
-  ],
   "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/form/form.scss": [
     {
       "modules": {
@@ -203,7 +203,58 @@
       }
     }
   ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/logo/logo.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
   "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/loader/loader.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/buttons/button.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/greenpost/greenpost.scss": [
     {
       "modules": {
         "byIdentifier": {},
@@ -254,41 +305,7 @@
       }
     }
   ],
-  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/greenpost/greenpost.scss": [
-    {
-      "modules": {
-        "byIdentifier": {},
-        "usedIds": {}
-      },
-      "chunks": {
-        "byName": {
-          "mini-css-extract-plugin": 0
-        },
-        "bySource": {},
-        "usedIds": [
-          0
-        ]
-      }
-    }
-  ],
   "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/layout/logo.scss": [
-    {
-      "modules": {
-        "byIdentifier": {},
-        "usedIds": {}
-      },
-      "chunks": {
-        "byName": {
-          "mini-css-extract-plugin": 0
-        },
-        "bySource": {},
-        "usedIds": [
-          0
-        ]
-      }
-    }
-  ],
-  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!node_modules/aos/src/sass/aos.scss": [
     {
       "modules": {
         "byIdentifier": {},
@@ -322,24 +339,7 @@
       }
     }
   ],
-  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/space/nav.scss": [
-    {
-      "modules": {
-        "byIdentifier": {},
-        "usedIds": {}
-      },
-      "chunks": {
-        "byName": {
-          "mini-css-extract-plugin": 0
-        },
-        "bySource": {},
-        "usedIds": [
-          0
-        ]
-      }
-    }
-  ],
-  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!components/greenpost/wish.scss": [
+  "mini-css-extract-plugin node_modules/css-loader/index.js??ref--5-1!node_modules/sass-loader/lib/loader.js??ref--5-2!node_modules/aos/src/sass/aos.scss": [
     {
       "modules": {
         "byIdentifier": {},
@@ -525,16 +525,16 @@
       "commons": 0,
       "static/runtime/webpack.js": 1,
       "styles": 2,
-      "static/runtime/main.js": 3,
-      "static/wT_86q5r_exf9XOCTsJJS/pages/_app.js": 4,
-      "static/wT_86q5r_exf9XOCTsJJS/pages/_error.js": 5,
-      "static/wT_86q5r_exf9XOCTsJJS/pages/index.js": 6,
-      "static/wT_86q5r_exf9XOCTsJJS/pages/lab.js": 7,
-      "static/wT_86q5r_exf9XOCTsJJS/pages/landing.js": 8,
-      "static/wT_86q5r_exf9XOCTsJJS/pages/login.js": 9,
-      "static/wT_86q5r_exf9XOCTsJJS/pages/old-index.js": 10,
-      "static/wT_86q5r_exf9XOCTsJJS/pages/old-perfil.js": 11,
-      "static/wT_86q5r_exf9XOCTsJJS/pages/perfil.js": 12
+      "static/AOph2oT2poqdcT7wLI2Ux/pages/_app.js": 3,
+      "static/AOph2oT2poqdcT7wLI2Ux/pages/_error.js": 4,
+      "static/AOph2oT2poqdcT7wLI2Ux/pages/index.js": 5,
+      "static/AOph2oT2poqdcT7wLI2Ux/pages/lab.js": 6,
+      "static/AOph2oT2poqdcT7wLI2Ux/pages/landing.js": 7,
+      "static/AOph2oT2poqdcT7wLI2Ux/pages/login.js": 8,
+      "static/AOph2oT2poqdcT7wLI2Ux/pages/old-index.js": 9,
+      "static/AOph2oT2poqdcT7wLI2Ux/pages/old-perfil.js": 10,
+      "static/AOph2oT2poqdcT7wLI2Ux/pages/perfil.js": 11,
+      "static/runtime/main.js": 12
     },
     "bySource": {},
     "usedIds": [

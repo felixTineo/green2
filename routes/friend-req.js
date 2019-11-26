@@ -4,6 +4,25 @@ const ResumeUser = require('../classes/resume-user');
 const io = require('../midlewares/io');
 const uuid = require('uuid/v1');
 
+router.get('/commonFriends/:tid', async(req, res) => {
+  try {
+    const { tid } = req.params;
+    const targetUser = await UserSchema.findById(tid, 'friends');
+    const currentUser = await UserSchema.findById(req.session.user._id, 'friends');
+    const tFriends = targetUser.friends.filter(friend => friend.status === 0);
+    const cFriends = currentUser.friends.filter(friend => friend.status === 0);
+    const commonFriends = tFriends.filter((tFriend) => {
+      for(cFriend of cFriends){
+        return cFriend._id === tFriend._id
+      }
+    })
+    //res.status(200).json();
+    res.status(200).json(commonFriends);
+  } catch (e) {
+    console.log(e);
+  }
+})
+
 router.get('/foo', (req, res) => {
   const payload = 'hola'
   io.emit(`nav:${req.session.user._id}`, payload);

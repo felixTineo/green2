@@ -154,6 +154,7 @@ const Main = ()=> {
   },[]);
   return(
     <div className="main">
+      {console.log(posts)}
       <Title word="top greenpost's" />
       <ul className="body">
         {

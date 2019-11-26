@@ -13,7 +13,7 @@ const Main = ({ children, post }) => {
           border: none;
         }
         button:focus{
-          outline
+          outline: none;
         }
       `}
       </style>

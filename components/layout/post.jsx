@@ -198,6 +198,10 @@ const Main = () => {
   const post = useSelector(state => state.post);
   const dispatch = useDispatch();
   const [info, setInfo] = useState(false);
+  useEffect(()=> {
+    const timeout = setTimeout(()=> setInfo(true), 500);
+    return ()=> clearTimeout(timeout);
+  },[])
   return(
     <Modal isOpen={post.visible} style={{ maxWidth: '95vw' }}>
       <div className="main">
