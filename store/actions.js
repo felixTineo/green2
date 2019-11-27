@@ -98,7 +98,8 @@ MAIN
 ************************/
 export const ON_MAIN_NAV = 'ON_MAIN_NAV';
 export const ON_MAIN_THEME = 'ON_MAIN_THEME';
-
+export const ON_MAIN_LOGIN = 'ON_MAIN_LOGIN';
+export const ON_MAIN_REGISTER = 'ON_MAIN_REGISTER';
 /************************
 POST VIEW
 *************************/

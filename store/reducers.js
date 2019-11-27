@@ -47,6 +47,8 @@ import {
   ON_CHAT_ALERT,
   ON_MAIN_NAV,
   ON_MAIN_THEME,
+  ON_MAIN_LOGIN,
+  ON_MAIN_REGISTER,
   ON_POST_VIEW,
 } from './actions';
 
@@ -168,6 +170,8 @@ export const initialState = {
   main:{
     nav:{
       visible: false,
+      login: false,
+      register: false,
     },
     theme: 0,
   },
@@ -493,9 +497,17 @@ const main = (state = initialState.main, action) => {
   switch (action.type) {
     case ON_MAIN_NAV:
       const { visible } = state.nav;
-      return Object.assign({}, state, { nav: Object.assign({}, state.nav, { visible: !visible }) });
+      return Object.assign({}, state, { nav: Object.assign({}, state.nav, { visible: !visible, login: false, register: false }) });
     case ON_MAIN_THEME:
       return Object.assign({}, state, { theme: action.index });
+    case ON_MAIN_LOGIN:
+      return Object.assign({}, state, {
+        nav: Object.assign({}, state.nav, { register: false, login: true })
+      })
+    case ON_MAIN_REGISTER:
+      return Object.assign({}, state, {
+        nav: Object.assign({}, state.nav, { register: true, login: false })
+      })
     default:
       return state;
   }

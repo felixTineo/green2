@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ON_MAIN_NAV } from '../../store/actions';
+import { ON_MAIN_NAV, ON_MAIN_LOGIN, ON_MAIN_REGISTER } from '../../store/actions';
 import { color, font } from '../../layout/main';
+import axios from 'axios';
+import Link from 'next/link';
 
 const Menu = () => {
   const dispatch = useDispatch();
   const visible = useSelector(state => state.main.nav.visible);
+  const perfil = false;
+  /*const [perfil, setPerfil] = useState('');
+  const onTest = async()=> {
+    try{
+      const res = await axios.get('/user/testLogin');
+      setPerfil(res.data);
+    }catch(e){
+      console.log(e);
+    }
+  }
+  useEffect(()=> {
+    onTest();
+  },[])*/
   return(
     <nav>
       <header>
@@ -14,13 +29,15 @@ const Menu = () => {
       </header>
       <ul>
         <li>
-          <button>option</button>
+          {
+            perfil ? <Link href={`/perfil/${perfil}`}><a href={`/perfil/${perfil}`}>Perfil</a></Link> : <button onClick={()=> dispatch({ type: ON_MAIN_LOGIN })}>Login</button>
+          }
         </li>
         <li>
-          <button>option</button>
+          <button onClick={()=> dispatch({ type: ON_MAIN_REGISTER })}>Registro</button>
         </li>
         <li>
-          <button>option</button>
+          <Link href='/landing'><a href="/landing">¿Que es GreenLink?</a></Link>
         </li>
         <li>
           <button>option</button>
@@ -76,7 +93,7 @@ const Menu = () => {
           padding: 0;
           border-bottom: 1px solid #E6EAEA;
         }
-        li button{
+        li button, a{
           width: 100%;
           border-top: 1px solid #E6EAEA;
           height: 70px;
@@ -84,8 +101,12 @@ const Menu = () => {
           font-size: 1.4rem;
           padding-left: 2rem;
           transition: 250ms ease;
+          text-decoration: none;
+          color: #333;
+          display: flex;
+          align-items: center;
         }
-        li button:hover{
+        li button:hover, a:hover{
           background: ${color.light};
         }
         @media(max-width: 576px){

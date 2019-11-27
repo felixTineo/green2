@@ -9,6 +9,11 @@ const ResumeUser = require('../classes/resume-user');
 const search = require('../functions/search');
 const io = require('../midlewares/io');
 
+router.get('/testLogin', (req, res) => {
+  if(req.session.user) return res.status(200).send(req.session.user._id);
+  return res.sendStatus(400);
+});
+
 router.post('/register', async(req, res) => {
   try{
     const { mail, name } = req.body;
