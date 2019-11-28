@@ -17,6 +17,7 @@ const friendRoutes = require('./routes/friend-req');
 const postRoutes = require('./routes/post');
 const greenRoutes = require('./routes/greenpost');
 const chatRoutes = require('./routes/chat');
+const machineRoutes = require('./routes/machine');
 
 app.prepare().then(()=> {
 
@@ -29,6 +30,7 @@ app.prepare().then(()=> {
   server.use('/post', postRoutes);
   server.use('/green', greenRoutes);
   server.use('/chat', chatRoutes);
+  server.use('/machine', machineRoutes);
   server.use('/', indexRoutes);
   server.get('*', handler);
   http.listen(3000, ()=> console.log('server on port 3000'));

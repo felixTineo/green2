@@ -14,6 +14,7 @@ import {
   ON_FLOAT,
   ON_GREEN_LIKE,
   ON_VAULT,
+  ON_WALLET,
 } from '../../store/actions';
 import axios from 'axios';
 import Link from 'next/link';
@@ -178,7 +179,7 @@ const Note = () => {
                         <p>
                           <strong>{`${item.name} ${item.lastName}`}</strong>
                           <small>
-                            {item.action === 'LIKE' ? 'le gusta uno de tus posts' : item.action === 'ACCEPT' ? 'Acepto tu solicitud de amistad' : 'comento uno de tus posts'}
+                            {item.action === 'LIKE' ? 'le gusta uno de tus posts' : item.action === 'ACCEPT' ? 'Acepto tu solicitud de amistad' : item.action === 'TRANSACTION' ? 'Has realizado una transaccion' : 'comento uno de tus posts'}
                           </small>
                         </p>
                       </div>
@@ -399,11 +400,22 @@ const Header = () => {
     const socket = io();
     socket.open();
     socket.on(`nav:${nav.notifications.id}`, (payload) => {
+      if(payload.type === 'TRANSACTION') dispatch({ type: ON_WALLET, coin: parseInt(payload.tip, 10) });
       dispatch({ type: 'ON_NOTE', payload });
       dispatch({ type: ON_FLOAT, payload });
     });
     return () => socket.close();
   },[nav.notifications]);
+
+  /*useEffect(()=> {
+    const socket = io();
+    socket.open();
+    socket.on(`machine:${nav.notifications.id}`, (payload) => {
+      console.log(payload);
+      dispatch({ type: ON_WALLET, coin: parseInt(payload, 10) });
+    });
+    return ()=> socket.close();
+  },[nav.notifications])*/
 
   useEffect(()=> {
     onNotifications();

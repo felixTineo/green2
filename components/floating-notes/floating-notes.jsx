@@ -32,6 +32,8 @@ const Note = ({ note }) => {
                     return 'Comentario'
                   case 'GIFT':
                     return 'Regalo'
+                  case 'TRANSACTION':
+                    return 'Transacción'
                 }
               })()
             }
@@ -57,6 +59,8 @@ const Note = ({ note }) => {
                         return 'Comento uno de tus posts'
                       case 'GIFT':
                         return 'Has recibido un regalo'
+                      case 'TRANSACTION':
+                        return 'Has realizado una transaccion'
                     }
                   })()
                 }
