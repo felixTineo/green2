@@ -10,7 +10,7 @@ const search = require('../functions/search');
 const io = require('../midlewares/io');
 
 router.get('/testLogin', (req, res) => {
-  if(req.session.user) return res.status(200).send(req.session.user._id);
+  if(req.session.user) return res.status(200).send(new ResumeUser(req.session.user));
   return res.sendStatus(400);
 });
 

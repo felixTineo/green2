@@ -1,5 +1,44 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/_app.js"],{
 
+/***/ "./events/dog.js":
+/*!***********************!*\
+  !*** ./events/dog.js ***!
+  \***********************/
+/*! exports provided: tree, cold, dog */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tree", function() { return tree; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cold", function() { return cold; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dog", function() { return dog; });
+var tree = {
+  prim: "#8bb940",
+  sec: "#478407",
+  img: "/static/arbol-2.jpg",
+  title: "siembra",
+  subTitle: "Regalale vida al planeta.",
+  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor eos obcaecati cupiditate esse vero veniam reiciendis recusandae dolore assumenda ipsam doloribus distinctio rerum, voluptate, veritatis saepe hic. Doloribus nisi, mollitia!"
+};
+var cold = {
+  prim: "#f03103",
+  sec: "#a43112",
+  img: "/static/calido.jpg",
+  title: "ayuda",
+  subTitle: "Las zonas andinas necesitan un corazon calido.",
+  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor eos obcaecati cupiditate esse vero veniam reiciendis recusandae dolore assumenda ipsam doloribus distinctio rerum, voluptate, veritatis saepe hic. Doloribus nisi, mollitia!"
+};
+var dog = {
+  prim: "#03a7f0",
+  sec: "#1251a4",
+  img: "/static/angel.jpg",
+  title: "apoya",
+  subTitle: "Un angel llega en cualquier forma.",
+  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor eos obcaecati cupiditate esse vero veniam reiciendis recusandae dolore assumenda ipsam doloribus distinctio rerum, voluptate, veritatis saepe hic. Doloribus nisi, mollitia!"
+};
+
+/***/ }),
+
 /***/ "./layout/main.js":
 /*!************************!*\
   !*** ./layout/main.js ***!
@@ -12432,7 +12471,7 @@ function (_App) {
 /*!**************************!*\
   !*** ./store/actions.js ***!
   \**************************/
-/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, ON_WALLET, navView, ON_USER, ON_UPDATE, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, ON_GREENPOST, ON_GREEN_LIKE, OFF_GREEN_LIKE, ON_GREEN_WISH_FOUND, ON_GREEN_COMMENT, onStore, ON_WISH, ON_FLOAT, OFF_FLOAT, ON_VAULT, ON_VAULT_HOME, ON_VAULT_PRODUCT, ON_SPACE_HOME, ON_SPACE_WALL, ON_SPACE_CHAT, ON_SPACE_FRIENDS, ON_SPACE_EVENTS, ON_POST, ON_WALL_TOP, ON_WALL_POSTS, ON_CONFIRM, ON_CHAT_FRIEND, ON_CHAT_PRIVATE, ON_CHAT_CLOSE, ON_CHAT_MINIMIZE, ON_CHAT_MSG, ON_CHAT_ALERT, ON_MAIN_NAV, ON_MAIN_THEME, ON_MAIN_LOGIN, ON_MAIN_REGISTER, ON_POST_VIEW */
+/*! exports provided: ON_DOWN, ON_NOTIFICATIONS, ON_VIEW_NAV, ON_NOTE, ON_LOADER, ON_LOGIN, ON_WALLET, navView, ON_USER, ON_UPDATE, ON_STORE, ON_PRODUCTS, storeSections, ON_POST_REGISTER, ON_GREENINFO, ON_GREEN_CREATOR, ON_GREENPOST, ON_GREEN_LIKE, OFF_GREEN_LIKE, ON_GREEN_WISH_FOUND, ON_GREEN_COMMENT, onStore, ON_WISH, ON_FLOAT, OFF_FLOAT, ON_VAULT, ON_VAULT_HOME, ON_VAULT_PRODUCT, ON_SPACE_HOME, ON_SPACE_WALL, ON_SPACE_CHAT, ON_SPACE_FRIENDS, ON_SPACE_EVENTS, ON_POST, ON_WALL_TOP, ON_WALL_POSTS, ON_CONFIRM, ON_CHAT_FRIEND, ON_CHAT_PRIVATE, ON_CHAT_CLOSE, ON_CHAT_MINIMIZE, ON_CHAT_MSG, ON_CHAT_ALERT, ON_MAIN_NAV, ON_MAIN_THEME, ON_MAIN_LOGIN, ON_MAIN_REGISTER, ON_POST_VIEW, ON_EVENT, eventType */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12485,6 +12524,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_MAIN_LOGIN", function() { return ON_MAIN_LOGIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_MAIN_REGISTER", function() { return ON_MAIN_REGISTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_POST_VIEW", function() { return ON_POST_VIEW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ON_EVENT", function() { return ON_EVENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventType", function() { return eventType; });
 /***********************
 NAV
 ************************/
@@ -12599,6 +12640,16 @@ POST VIEW
 *************************/
 
 var ON_POST_VIEW = 'ON_POST_VIEW';
+/************************
+EVENTS
+*************************/
+
+var ON_EVENT = 'ON_EVENT';
+var eventType = {
+  DOG: 'DOG',
+  TREE: 'TREE',
+  COLD: 'COLD'
+};
 
 /***/ }),
 
@@ -12619,7 +12670,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _layout_main__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../layout/main */ "./layout/main.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions */ "./store/actions.js");
+/* harmony import */ var _events_dog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../events/dog */ "./events/dog.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions */ "./store/actions.js");
+
 
 
 
@@ -12754,6 +12807,10 @@ var initialState = {
   post: {
     visible: false,
     current: {}
+  },
+  events: {
+    visible: false,
+    current: {}
   }
 };
 
@@ -12762,35 +12819,35 @@ var nav = function nav() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_DOWN"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_DOWN"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         down: action.option
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_NOTIFICATIONS"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_NOTIFICATIONS"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         notifications: action.notifications
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_LOADER"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_LOADER"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         loader: action.loader
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_LOGIN"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_LOGIN"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         login: action.option
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_WALLET"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_WALLET"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications, {
           wallet: state.notifications.wallet + action.coin
         })
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_VIEW_NAV"]:
-      if (action.note === _actions__WEBPACK_IMPORTED_MODULE_5__["navView"].GIFT) {
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_VIEW_NAV"]:
+      if (action.note === _actions__WEBPACK_IMPORTED_MODULE_6__["navView"].GIFT) {
         return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
           notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications, {
             gifts: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications.gifts, {
@@ -12800,7 +12857,7 @@ var nav = function nav() {
         });
       }
 
-      if (action.note === _actions__WEBPACK_IMPORTED_MODULE_5__["navView"].NOTES) {
+      if (action.note === _actions__WEBPACK_IMPORTED_MODULE_6__["navView"].NOTES) {
         return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
           notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications, {
             notes: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications.notes, {
@@ -12810,7 +12867,7 @@ var nav = function nav() {
         });
       }
 
-      if (action.note === _actions__WEBPACK_IMPORTED_MODULE_5__["navView"].FRIEND) {
+      if (action.note === _actions__WEBPACK_IMPORTED_MODULE_6__["navView"].FRIEND) {
         return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
           notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications, {
             friendReq: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications.friendReq, {
@@ -12820,13 +12877,13 @@ var nav = function nav() {
         });
       }
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_NOTE"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_NOTE"]:
       var _state$notifications = state.notifications,
           gifts = _state$notifications.gifts,
           notes = _state$notifications.notes,
           friendReq = _state$notifications.friendReq;
 
-      if (action.payload.note === _actions__WEBPACK_IMPORTED_MODULE_5__["navView"].GIFT) {
+      if (action.payload.note === _actions__WEBPACK_IMPORTED_MODULE_6__["navView"].GIFT) {
         return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
           notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications, {
             gifts: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications.gifts, {
@@ -12837,7 +12894,7 @@ var nav = function nav() {
         });
       }
 
-      if (action.payload.note === _actions__WEBPACK_IMPORTED_MODULE_5__["navView"].NOTES) {
+      if (action.payload.note === _actions__WEBPACK_IMPORTED_MODULE_6__["navView"].NOTES) {
         return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
           notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications, {
             notes: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications.notes, {
@@ -12848,7 +12905,7 @@ var nav = function nav() {
         });
       }
 
-      if (action.payload.note === _actions__WEBPACK_IMPORTED_MODULE_5__["navView"].FRIEND) {
+      if (action.payload.note === _actions__WEBPACK_IMPORTED_MODULE_6__["navView"].FRIEND) {
         return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
           notifications: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications, {
             friendReq: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.notifications.friendReq, {
@@ -12869,10 +12926,10 @@ var user = function user() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_USER"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_USER"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, action.user);
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_UPDATE"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_UPDATE"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, action.payload));
 
     default:
@@ -12885,36 +12942,36 @@ var greenpost = function greenpost() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_GREENINFO"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_GREENINFO"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         info: action.option
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_GREEN_CREATOR"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_GREEN_CREATOR"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         creator: !state.creator
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_GREENPOST"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_GREENPOST"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         current: action.greenpost
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_GREEN_LIKE"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_GREEN_LIKE"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         current: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.current, {
           likes: [action.like].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(state.current.likes))
         })
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_WISH"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_WISH"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         current: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.current, {
           wish: action.wish
         })
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["OFF_GREEN_LIKE"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["OFF_GREEN_LIKE"]:
       var nextState = state.current.likes.filter(function (like) {
         return like._id !== action.uid;
       });
@@ -12924,7 +12981,7 @@ var greenpost = function greenpost() {
         })
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_GREEN_WISH_FOUND"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_GREEN_WISH_FOUND"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         current: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.current, {
           wish: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.current.wish, {
@@ -12933,7 +12990,7 @@ var greenpost = function greenpost() {
         })
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_GREEN_COMMENT"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_GREEN_COMMENT"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         current: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.current, {
           comments: [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(state.current.comments), [action.comment])
@@ -12948,24 +13005,24 @@ var greenpost = function greenpost() {
 var greenstore = function greenstore() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState.store;
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  var HOME = _actions__WEBPACK_IMPORTED_MODULE_5__["storeSections"].HOME,
-      PRODUCT = _actions__WEBPACK_IMPORTED_MODULE_5__["storeSections"].PRODUCT,
-      MUSIC = _actions__WEBPACK_IMPORTED_MODULE_5__["storeSections"].MUSIC,
-      TV = _actions__WEBPACK_IMPORTED_MODULE_5__["storeSections"].TV,
-      EBOOK = _actions__WEBPACK_IMPORTED_MODULE_5__["storeSections"].EBOOK,
-      CANDY = _actions__WEBPACK_IMPORTED_MODULE_5__["storeSections"].CANDY,
-      TOY = _actions__WEBPACK_IMPORTED_MODULE_5__["storeSections"].TOY,
-      JEWEL = _actions__WEBPACK_IMPORTED_MODULE_5__["storeSections"].JEWEL;
+  var HOME = _actions__WEBPACK_IMPORTED_MODULE_6__["storeSections"].HOME,
+      PRODUCT = _actions__WEBPACK_IMPORTED_MODULE_6__["storeSections"].PRODUCT,
+      MUSIC = _actions__WEBPACK_IMPORTED_MODULE_6__["storeSections"].MUSIC,
+      TV = _actions__WEBPACK_IMPORTED_MODULE_6__["storeSections"].TV,
+      EBOOK = _actions__WEBPACK_IMPORTED_MODULE_6__["storeSections"].EBOOK,
+      CANDY = _actions__WEBPACK_IMPORTED_MODULE_6__["storeSections"].CANDY,
+      TOY = _actions__WEBPACK_IMPORTED_MODULE_6__["storeSections"].TOY,
+      JEWEL = _actions__WEBPACK_IMPORTED_MODULE_6__["storeSections"].JEWEL;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_STORE"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_STORE"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         visible: !state.visible,
         home: true,
         postType: action.payload || ''
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_PRODUCTS"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_PRODUCTS"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         items: action.products
       });
@@ -13076,7 +13133,7 @@ var postregister = function postregister() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState.postregister;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
-  if (action.type === _actions__WEBPACK_IMPORTED_MODULE_5__["ON_POST_REGISTER"]) {
+  if (action.type === _actions__WEBPACK_IMPORTED_MODULE_6__["ON_POST_REGISTER"]) {
     return !state;
   }
 
@@ -13087,11 +13144,11 @@ var floatingnotes = function floatingnotes() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState.floatingnotes;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
-  if (action.type === _actions__WEBPACK_IMPORTED_MODULE_5__["ON_FLOAT"]) {
+  if (action.type === _actions__WEBPACK_IMPORTED_MODULE_6__["ON_FLOAT"]) {
     return [].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(state), [action.payload]);
   }
 
-  if (action.type === _actions__WEBPACK_IMPORTED_MODULE_5__["OFF_FLOAT"]) {
+  if (action.type === _actions__WEBPACK_IMPORTED_MODULE_6__["OFF_FLOAT"]) {
     var nextState = state.filter(function (note) {
       return note.id !== action.id;
     });
@@ -13106,18 +13163,18 @@ var vault = function vault() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_VAULT"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_VAULT"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         visible: !state.visible
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_VAULT_HOME"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_VAULT_HOME"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         home: true,
         product: false
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_VAULT_PRODUCT"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_VAULT_PRODUCT"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         home: false,
         product: true,
@@ -13134,7 +13191,7 @@ var space = function space() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_SPACE_HOME"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_SPACE_HOME"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         home: true,
         wall: false,
@@ -13143,7 +13200,7 @@ var space = function space() {
         events: false
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_SPACE_WALL"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_SPACE_WALL"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         home: false,
         wall: true,
@@ -13152,7 +13209,7 @@ var space = function space() {
         events: false
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_SPACE_CHAT"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_SPACE_CHAT"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         home: false,
         wall: false,
@@ -13161,7 +13218,7 @@ var space = function space() {
         events: false
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_SPACE_FRIENDS"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_SPACE_FRIENDS"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         home: false,
         wall: false,
@@ -13170,7 +13227,7 @@ var space = function space() {
         events: false
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_SPACE_EVENTS"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_SPACE_EVENTS"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         home: false,
         wall: false,
@@ -13189,17 +13246,17 @@ var wall = function wall() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_POST"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_POST"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         posts: [action.post].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(state.posts))
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_WALL_TOP"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_WALL_TOP"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         top: action.posts
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_WALL_POSTS"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_WALL_POSTS"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         posts: action.posts
       });
@@ -13214,7 +13271,7 @@ var confirm = function confirm() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_CONFIRM"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_CONFIRM"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         visible: !state.visible,
         current: action.current
@@ -13231,20 +13288,20 @@ var chat = function chat() {
   var privates = state.privates;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_CHAT_PRIVATE"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_CHAT_PRIVATE"]:
       //const nextArr = privates.length === 4 ?  privates.slice(0, 3) : privates;
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         privates: [action.user].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_1__["default"])(privates.slice(3)))
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_CHAT_CLOSE"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_CHAT_CLOSE"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         privates: privates.filter(function (user) {
           return user._id !== action._id;
         })
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_CHAT_MINIMIZE"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_CHAT_MINIMIZE"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         privates: privates.map(function (user) {
           return user._id !== action._id ? user : _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, user, {
@@ -13253,7 +13310,7 @@ var chat = function chat() {
         })
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_CHAT_MSG"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_CHAT_MSG"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         privates: privates.map(function (user) {
           return user._id !== action._id ? user : _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, user, {
@@ -13263,7 +13320,7 @@ var chat = function chat() {
         current: action._id
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_CHAT_ALERT"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_CHAT_ALERT"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         privates: privates.map(function (user) {
           return user._id !== action._id ? user : _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, user, {
@@ -13282,7 +13339,7 @@ var main = function main() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_MAIN_NAV"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_MAIN_NAV"]:
       var visible = state.nav.visible;
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         nav: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.nav, {
@@ -13292,12 +13349,12 @@ var main = function main() {
         })
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_MAIN_THEME"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_MAIN_THEME"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         theme: action.index
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_MAIN_LOGIN"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_MAIN_LOGIN"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         nav: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.nav, {
           register: false,
@@ -13305,7 +13362,7 @@ var main = function main() {
         })
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_MAIN_REGISTER"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_MAIN_REGISTER"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         nav: _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state.nav, {
           register: true,
@@ -13323,10 +13380,39 @@ var post = function post() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_5__["ON_POST_VIEW"]:
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_POST_VIEW"]:
       return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
         current: action.post,
         visible: !state.visible
+      });
+
+    default:
+      return state;
+  }
+};
+
+var events = function events() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState.events;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  var visible = state.visible;
+
+  switch (action.type) {
+    case _actions__WEBPACK_IMPORTED_MODULE_6__["ON_EVENT"]:
+      if (action.eventType === _actions__WEBPACK_IMPORTED_MODULE_6__["eventType"].TREE) return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        visible: !visible,
+        current: _events_dog__WEBPACK_IMPORTED_MODULE_5__["tree"]
+      });
+      if (action.eventType === _actions__WEBPACK_IMPORTED_MODULE_6__["eventType"].COLD) return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        visible: !visible,
+        current: _events_dog__WEBPACK_IMPORTED_MODULE_5__["cold"]
+      });
+      if (action.eventType === _actions__WEBPACK_IMPORTED_MODULE_6__["eventType"].DOG) return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        visible: !visible,
+        current: _events_dog__WEBPACK_IMPORTED_MODULE_5__["dog"]
+      });
+      if (action.eventType === null) return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, state, {
+        visible: !visible,
+        current: {}
       });
 
     default:
@@ -13347,7 +13433,8 @@ var store = Object(redux__WEBPACK_IMPORTED_MODULE_3__["combineReducers"])({
   confirm: confirm,
   chat: chat,
   main: main,
-  post: post
+  post: post,
+  events: events
 });
 
 /***/ }),

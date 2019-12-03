@@ -8,8 +8,7 @@ import Link from 'next/link';
 const Menu = () => {
   const dispatch = useDispatch();
   const visible = useSelector(state => state.main.nav.visible);
-  const perfil = false;
-  /*const [perfil, setPerfil] = useState('');
+  const [perfil, setPerfil] = useState('');
   const onTest = async()=> {
     try{
       const res = await axios.get('/user/testLogin');
@@ -20,7 +19,7 @@ const Menu = () => {
   }
   useEffect(()=> {
     onTest();
-  },[])*/
+  },[])
   return(
     <nav>
       <header>
@@ -30,7 +29,7 @@ const Menu = () => {
       <ul>
         <li>
           {
-            perfil ? <Link href={`/perfil/${perfil}`}><a href={`/perfil/${perfil}`}>Perfil</a></Link> : <button onClick={()=> dispatch({ type: ON_MAIN_LOGIN })}>Login</button>
+            perfil ? <Link href={`/perfil/${perfil._id}`}><a href={`/perfil/${perfil._id}`}>Perfil</a></Link> : <button onClick={()=> dispatch({ type: ON_MAIN_LOGIN })}>Login</button>
           }
         </li>
         <li>

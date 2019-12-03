@@ -1,4 +1,4 @@
-import Header from './header';
+  import Header from './header';
 import { useSelector } from 'react-redux';
 import '../../layout/base.scss';
 import Head from 'next/head';

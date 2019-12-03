@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { themeGreen, themeRed, themeBlue } from '../layout/main';
+import { tree, cold, dog } from '../events/dog';
 const themes = [themeGreen, themeRed, themeBlue];
 import {
   ON_DOWN, ON_VIEW_NAV,
@@ -50,6 +51,8 @@ import {
   ON_MAIN_LOGIN,
   ON_MAIN_REGISTER,
   ON_POST_VIEW,
+  ON_EVENT,
+  eventType,
 } from './actions';
 
 export const initialState = {
@@ -176,6 +179,10 @@ export const initialState = {
     theme: 0,
   },
   post: {
+    visible: false,
+    current: {},
+  },
+  events: {
     visible: false,
     current: {},
   }
@@ -521,6 +528,18 @@ const post = (state = initialState.post, action) => {
       return state;
   }
 }
+const events = (state = initialState.events, action) => {
+  const { visible } = state;
+  switch(action.type){
+    case ON_EVENT:
+      if(action.eventType === eventType.TREE) return Object.assign({}, state, { visible: !visible, current: tree });
+      if(action.eventType === eventType.COLD) return Object.assign({}, state, { visible: !visible, current: cold });
+      if(action.eventType === eventType.DOG) return Object.assign({}, state, { visible: !visible, current: dog });
+      if(action.eventType === null) return Object.assign({}, state, { visible: !visible, current: {} });
+    default:
+      return state;
+  }
+}
 
 export const store = combineReducers({
   nav,
@@ -536,4 +555,5 @@ export const store = combineReducers({
   chat,
   main,
   post,
+  events,
 });

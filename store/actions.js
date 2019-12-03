@@ -104,3 +104,12 @@ export const ON_MAIN_REGISTER = 'ON_MAIN_REGISTER';
 POST VIEW
 *************************/
 export const ON_POST_VIEW = 'ON_POST_VIEW';
+/************************
+EVENTS
+*************************/
+export const ON_EVENT = 'ON_EVENT';
+export const eventType = {
+  DOG: 'DOG',
+  TREE: 'TREE',
+  COLD: 'COLD',
+};

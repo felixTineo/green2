@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { eventType, ON_EVENT } from '../../store/actions';
 import { color, font, themeBlue, themeRed } from '../../layout/main';
 import Title from './title';
 import AOS from 'aos';
 
 const Main = () => {
   const [width, setWidth] = useState(0);
+  const dispatch = useDispatch();
   useEffect(()=> {
     AOS.init();
     setWidth(window.innerWidth);
@@ -19,7 +22,7 @@ const Main = () => {
             <h2>siembra</h2>
             <p>Regalale vida al planeta.</p>
           </header>
-          <button>
+          <button onClick={()=> dispatch({ type: ON_EVENT, eventType: eventType.TREE })}>
             <span>participar</span>
             <div className="circle" />
           </button>
@@ -29,7 +32,7 @@ const Main = () => {
           <h2>ayuda</h2>
           <p>Las zonas andinas necesitan un corazon calido.</p>
         </header>
-        <button>
+        <button onClick={()=> dispatch({ type: ON_EVENT, eventType: eventType.COLD })}>
           <span>participar</span>
           <div className="circle" />
         </button>
@@ -39,7 +42,7 @@ const Main = () => {
           <h2>adopta</h2>
           <p>Un angel llega en cualquier forma.</p>
         </header>
-        <button>
+        <button onClick={()=> dispatch({ type: ON_EVENT, eventType: eventType.DOG })}>
           <span>participar</span>
           <div className="circle" />
         </button>
